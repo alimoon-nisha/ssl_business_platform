@@ -1,0 +1,104 @@
+"use client";
+
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { ButtonLink } from "@/components/ui/Button";
+import { cn } from "@/lib/cn";
+
+const navLinks = [
+  { label: "Products", href: "/#services" },
+  { label: "Solutions", href: "/#overview" },
+  { label: "Pricing", href: "/#plans" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Support", href: "/#faq" },
+];
+
+export function Logo({ centered = false }: { centered?: boolean }) {
+  return (
+    <Link
+      href="/"
+      className={cn(
+        "inline-flex items-center gap-2 text-sm font-semibold text-text-primary",
+        centered && "justify-center",
+      )}
+      aria-label="SSL Business Platform home"
+    >
+      <span className="grid size-7 grid-cols-2 gap-0.5 rounded-lg border border-border-soft bg-white p-1">
+        <span className="rounded-sm bg-primary" />
+        <span className="rounded-sm bg-success" />
+        <span className="rounded-sm bg-warning" />
+        <span className="rounded-sm bg-error" />
+      </span>
+      <span>SSL Business Platform</span>
+    </Link>
+  );
+}
+
+export function Header() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
+      <div className="container-xl flex h-16 items-center justify-between gap-6">
+        <Logo />
+
+        <nav className="hidden items-center gap-7 text-sm font-medium text-text-secondary lg:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="transition-colors hover:text-text-primary focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-4 text-sm font-medium lg:flex">
+          <Link href="/#newsletter" className="text-primary hover:text-primary-hover">
+            Contact sales
+          </Link>
+          <Link href="/login" className="text-primary hover:text-primary-hover">
+            Sign in
+          </Link>
+          <ButtonLink href="/get-started" className="h-9 px-5">
+            Get started
+          </ButtonLink>
+        </div>
+
+        <button
+          type="button"
+          className="inline-flex size-10 items-center justify-center rounded-full text-text-secondary hover:bg-surface lg:hidden"
+          aria-label="Open navigation menu"
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        </button>
+      </div>
+
+      {open ? (
+        <div className="border-t border-border-soft bg-white lg:hidden">
+          <nav className="container-xl flex flex-col gap-1 py-4 text-sm">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="rounded-lg px-3 py-3 text-text-secondary hover:bg-surface"
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="mt-3 flex flex-col gap-2 border-t border-border-soft pt-4">
+              <Link href="/login" className="rounded-lg px-3 py-3 text-primary">
+                Sign in
+              </Link>
+              <ButtonLink href="/get-started">Get started</ButtonLink>
+            </div>
+          </nav>
+        </div>
+      ) : null}
+    </header>
+  );
+}

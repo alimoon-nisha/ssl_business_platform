@@ -1,0 +1,37 @@
+import { Bell, HelpCircle, Search } from "lucide-react";
+import { Logo } from "@/components/marketing/Header";
+import { currentBusiness } from "@/data/mockPlatform";
+
+export function TopBar() {
+  return (
+    <header className="sticky top-0 z-40 border-b border-border bg-white">
+      <div className="flex h-16 items-center gap-5 px-4 md:px-6">
+        <div className="w-[240px] shrink-0">
+          <Logo />
+        </div>
+        <div className="hidden min-w-[190px] rounded-full border border-border-soft px-4 py-2 text-sm font-medium text-text-primary lg:block">
+          {currentBusiness.name}
+        </div>
+        <div className="relative hidden max-w-xl flex-1 md:block">
+          <Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-text-secondary" />
+          <input
+            className="h-10 w-full rounded-full border border-border-soft bg-surface pl-10 pr-4 text-sm"
+            placeholder="Search services, documents, applications"
+            aria-label="Search services, documents, applications"
+          />
+        </div>
+        <div className="ml-auto flex items-center gap-2">
+          <button className="flex size-10 items-center justify-center rounded-full text-text-secondary hover:bg-surface" aria-label="Help">
+            <HelpCircle className="size-5" />
+          </button>
+          <button className="flex size-10 items-center justify-center rounded-full text-text-secondary hover:bg-surface" aria-label="Notifications">
+            <Bell className="size-5" />
+          </button>
+          <span className="flex size-9 items-center justify-center rounded-full bg-blue-50 text-sm font-semibold text-primary">
+            S
+          </span>
+        </div>
+      </div>
+    </header>
+  );
+}
