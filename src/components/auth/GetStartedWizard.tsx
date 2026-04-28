@@ -234,8 +234,8 @@ export function GetStartedWizard() {
                 body: "Your account gives you access to service applications, document vault, billing, support, and team management.",
               }
             : {
-                title: "Start managing services from one place",
-                body: "Use your business profile to apply for SSL services, reuse documents, track application progress, and return anytime from your dashboard.",
+                title: "One account for every SSL service",
+                body: "Your account gives you access to service applications, document vault, billing, support, and team management.",
               };
 
   const continuationHref = hasSelectedService
