@@ -29,16 +29,19 @@ export const featureCards = [
     title: "Activate SSLCOMMERZ faster",
     body: "Apply for the payment gateway, submit merchant documents, and follow review status from the same workspace.",
     visual: "payments",
+    href: "/products/payment-gateway",
   },
   {
     title: "Manage messaging campaigns",
     body: "Prepare SMS services, sender IDs, approvals, balance, and campaign reports from a shared account.",
     visual: "messages",
+    href: "/products/messaging-suite",
   },
   {
     title: "Start corporate top-up services",
     body: "Set up recharge services, manage operators, track balances, and keep activity visible for your team.",
     visual: "recharge",
+    href: "/products/corporate-recharge",
   },
 ] as const;
 
@@ -48,7 +51,7 @@ export const servicePlans = [
     description: "Use for new businesses exploring SSL services.",
     cta: "Create account",
     href: "/get-started",
-    highlighted: false,
+    highlighted: true,
     features: [
       "Business profile",
       "Document vault",
@@ -60,9 +63,9 @@ export const servicePlans = [
   {
     name: "Payment gateway",
     description: "Apply for SSLCOMMERZ with merchant onboarding support.",
-    cta: "Start application",
-    href: "/products/payment-gateway",
-    highlighted: true,
+    cta: "Start Application",
+    href: "/get-started",
+    highlighted: false,
     features: [
       "SSLCOMMERZ onboarding",
       "Merchant document checklist",
@@ -74,7 +77,7 @@ export const servicePlans = [
   {
     name: "Messaging suite",
     description: "Set up business SMS and sender ID readiness.",
-    cta: "Explore SMS",
+    cta: "Start Application",
     href: "/get-started",
     highlighted: false,
     features: [
@@ -88,7 +91,7 @@ export const servicePlans = [
   {
     name: "Corporate recharge",
     description: "Prepare operator services and top-up workflows.",
-    cta: "Explore top-up",
+    cta: "Start Application",
     href: "/get-started",
     highlighted: false,
     features: [
@@ -134,22 +137,25 @@ export const services = [
     description:
       "Accept online payments through cards, mobile wallets, and bank channels.",
     cta: "Start application",
+    href: "/products/payment-gateway",
   },
   {
     id: "bulk-sms",
-    name: "Bulk SMS",
+    name: "Messaging Suite",
     status: "Available",
     description:
       "Set up sender ID, campaigns, delivery reports, and business messaging.",
     cta: "Explore",
+    href: "/products/messaging-suite",
   },
   {
     id: "corporate-top-up",
-    name: "Corporate Top-Up",
+    name: "Corporate Recharge",
     status: "Available",
     description:
       "Manage business recharge requests, balances, and operator services.",
     cta: "Explore",
+    href: "/products/corporate-recharge",
   },
   {
     id: "cloud-security",
@@ -158,6 +164,7 @@ export const services = [
     description:
       "Plan secure hosting, protection, and managed technology support.",
     cta: "Contact sales",
+    href: "/get-started",
   },
 ];
 

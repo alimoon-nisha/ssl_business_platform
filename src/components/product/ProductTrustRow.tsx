@@ -1,23 +1,27 @@
-import { Banknote, BarChart3, CreditCard, FileCode2, Landmark, Plug, Smartphone } from "lucide-react";
-
-const icons = [CreditCard, Smartphone, Landmark, Banknote, FileCode2, Plug, BarChart3];
+import type { LucideIcon } from "lucide-react";
+import { CreditCard } from "lucide-react";
+import { Card } from "@/components/ui/Card";
 
 export function ProductTrustRow({
   title,
   subtitle,
   items,
   disclaimer,
+  icons,
+  valueCards,
 }: {
   title: string;
   subtitle: string;
   items: string[];
-  disclaimer: string;
+  disclaimer?: string;
+  icons?: LucideIcon[];
+  valueCards?: Array<{ title: string; body: string }>;
 }) {
   return (
     <section className="container-lg py-20 text-center">
       <div className="mb-6 flex items-center justify-center gap-3">
         {items.slice(0, 5).map((item, index) => {
-          const Icon = icons[index];
+          const Icon = icons?.[index] ?? CreditCard;
           return (
             <span
               key={item}
@@ -36,7 +40,7 @@ export function ProductTrustRow({
       </p>
       <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-3">
         {items.map((item, index) => {
-          const Icon = icons[index] ?? CreditCard;
+          const Icon = icons?.[index] ?? CreditCard;
           return (
             <span
               key={item}
@@ -48,9 +52,25 @@ export function ProductTrustRow({
           );
         })}
       </div>
-      <p className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-text-secondary">
-        {disclaimer}
-      </p>
+      {disclaimer ? (
+        <p className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-text-secondary">
+          {disclaimer}
+        </p>
+      ) : null}
+      {valueCards ? (
+        <div className="mt-12 grid gap-5 text-left md:grid-cols-3">
+          {valueCards.map((card) => (
+            <Card key={card.title} className="p-6">
+              <h3 className="text-lg font-semibold leading-6 text-text-primary">
+                {card.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-text-secondary">
+                {card.body}
+              </p>
+            </Card>
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }

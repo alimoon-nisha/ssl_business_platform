@@ -1,10 +1,13 @@
 import { BarChart3, CalendarDays, CheckCircle2, CreditCard, Smartphone } from "lucide-react";
+import Link from "next/link";
 import { Card } from "@/components/ui/Card";
+
+const visualShellClass = "flex h-[320px] items-center justify-center rounded-2xl bg-surface p-5";
 
 function FeatureVisual({ type }: { type: "payments" | "messages" | "recharge" }) {
   if (type === "messages") {
     return (
-      <div className="rounded-2xl bg-surface p-5">
+      <div className={visualShellClass}>
         <div className="mx-auto max-w-[230px] rounded-2xl border border-border-soft bg-white p-4">
           <div className="mb-4 flex items-center gap-2">
             <CalendarDays className="size-5 text-primary" />
@@ -30,7 +33,7 @@ function FeatureVisual({ type }: { type: "payments" | "messages" | "recharge" })
 
   if (type === "recharge") {
     return (
-      <div className="rounded-2xl bg-surface p-5">
+      <div className={visualShellClass}>
         <div className="mx-auto max-w-[230px] rounded-2xl border border-border-soft bg-white p-4">
           <div className="mb-4 flex items-center justify-between">
             <Smartphone className="size-6 text-success" />
@@ -52,7 +55,7 @@ function FeatureVisual({ type }: { type: "payments" | "messages" | "recharge" })
   }
 
   return (
-    <div className="rounded-2xl bg-surface p-5">
+    <div className={visualShellClass}>
       <div className="mx-auto max-w-[230px] rounded-2xl border border-border-soft bg-white p-4">
         <div className="mb-4 flex items-center justify-between">
           <CreditCard className="size-6 text-primary" />
@@ -81,20 +84,28 @@ export function FeatureCard({
   title,
   body,
   visual,
+  href,
 }: {
   title: string;
   body: string;
   visual: "payments" | "messages" | "recharge";
+  href: string;
 }) {
   return (
-    <Card className="overflow-hidden">
-      <FeatureVisual type={visual} />
-      <div className="p-6">
-        <h3 className="text-xl font-semibold tracking-normal text-text-primary">
-          {title}
-        </h3>
-        <p className="mt-3 text-sm leading-6 text-text-secondary">{body}</p>
-      </div>
-    </Card>
+    <Link
+      href={href}
+      className="group block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      aria-label={`Explore ${title}`}
+    >
+      <Card className="h-full overflow-hidden transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:border-primary group-hover:shadow-[0_14px_30px_rgba(26,115,232,0.08)] group-hover:ring-1 group-hover:ring-primary group-focus-visible:border-primary group-focus-visible:ring-1 group-focus-visible:ring-primary">
+        <FeatureVisual type={visual} />
+        <div className="p-6">
+          <h3 className="text-xl font-semibold tracking-normal text-text-primary transition-colors duration-300 group-hover:text-primary">
+            {title}
+          </h3>
+          <p className="mt-3 text-sm leading-6 text-text-secondary">{body}</p>
+        </div>
+      </Card>
+    </Link>
   );
 }

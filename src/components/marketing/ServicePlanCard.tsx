@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import { ButtonLink } from "@/components/ui/Button";
+import Link from "next/link";
 import { cn } from "@/lib/cn";
 
 export function ServicePlanCard({
@@ -18,25 +18,34 @@ export function ServicePlanCard({
   highlighted?: boolean;
 }) {
   return (
-    <article
+    <Link
+      href={href}
       className={cn(
-        "flex min-h-full flex-col rounded-2xl border bg-white p-6",
-        highlighted ? "border-primary ring-1 ring-primary" : "border-border-soft",
+        "group flex min-h-full flex-col rounded-2xl border bg-white p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+        highlighted
+          ? "border-primary ring-1 ring-primary"
+          : "border-border-soft hover:border-border",
       )}
+      aria-label={`${cta} for ${name}`}
     >
       <div className="mb-5">
-        <h3 className="text-xl font-semibold text-text-primary">{name}</h3>
+        <h3 className="text-xl font-semibold text-text-primary group-hover:text-primary">
+          {name}
+        </h3>
         <p className="mt-2 min-h-12 text-sm leading-6 text-text-secondary">
           {description}
         </p>
       </div>
-      <ButtonLink
-        href={href}
-        variant={highlighted ? "primary" : "secondary"}
-        className="mb-6 h-10 w-full"
+      <span
+        className={cn(
+          "mb-6 inline-flex h-10 w-full items-center justify-center rounded-full border px-5 text-sm font-medium transition-colors",
+          highlighted
+            ? "border-primary bg-primary text-white group-hover:bg-primary-hover"
+            : "border-border bg-white text-primary group-hover:bg-blue-50",
+        )}
       >
         {cta}
-      </ButtonLink>
+      </span>
       <ul className="space-y-3 text-sm text-text-secondary">
         {features.map((feature) => (
           <li key={feature} className="flex gap-2.5">
@@ -45,6 +54,6 @@ export function ServicePlanCard({
           </li>
         ))}
       </ul>
-    </article>
+    </Link>
   );
 }

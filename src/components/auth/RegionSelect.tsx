@@ -7,7 +7,7 @@ export function RegionSelect() {
       <select
         id="region"
         name="region"
-        className="h-16 w-full rounded-lg border border-border bg-white px-5 text-lg text-text-primary focus:border-primary"
+        className="h-12 w-full rounded-lg border border-border bg-white px-4 text-base text-text-primary focus:border-primary"
         defaultValue="Bangladesh"
       >
         <option>Bangladesh</option>

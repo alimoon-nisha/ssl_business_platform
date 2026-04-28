@@ -7,11 +7,11 @@ import { ButtonLink } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
 const navLinks = [
-  { label: "Products", href: "/#services" },
-  { label: "Solutions", href: "/#overview" },
-  { label: "Pricing", href: "/#plans" },
+  { label: "Overview", href: "/#overview" },
+  { label: "Services", href: "/#services" },
+  { label: "Activation", href: "/#activation" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Resources", href: "/#resources" },
-  { label: "Support", href: "/#faq" },
 ];
 
 export function Logo({ centered = false }: { centered?: boolean }) {

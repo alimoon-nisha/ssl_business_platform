@@ -5,8 +5,10 @@ import { IconBadge } from "@/components/ui/IconBadge";
 const stepIcons = [Building2, FileCheck2, PlugZap];
 
 export function SetupSteps({
+  title,
   steps,
 }: {
+  title: string;
   steps: Array<{ title: string; body: string; cta: string }>;
 }) {
   return (
@@ -16,7 +18,7 @@ export function SetupSteps({
           How it works
         </p>
         <h2 className="mx-auto mt-3 max-w-xl text-3xl font-medium leading-tight text-text-primary">
-          Start accepting payments in a few clear steps
+          {title}
         </h2>
         <div className="mt-12 grid gap-8 text-left md:grid-cols-3">
           {steps.map((step, index) => (

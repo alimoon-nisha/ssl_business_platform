@@ -15,7 +15,7 @@ export function AuthInput({
       <input
         id={id}
         className={cn(
-          "h-16 w-full rounded-lg border border-border bg-white px-5 text-lg text-text-primary placeholder:text-text-secondary focus:border-primary",
+          "h-12 w-full rounded-lg border border-border bg-white px-4 text-base text-text-primary placeholder:text-text-secondary focus:border-primary",
           className,
         )}
         {...props}

@@ -23,42 +23,34 @@ const iconMap = [
   { Icon: UsersRound, tone: "text-amber-700 bg-amber-50" },
 ];
 
-const anchors = ["Overview", "Services", "Activation", "Dashboard", "FAQ"];
+const productHrefs: Record<string, string> = {
+  "Payment Gateway": "/products/payment-gateway",
+  SMS: "/products/messaging-suite",
+  "Corporate Top-Up": "/products/corporate-recharge",
+  "Virtual Recharge": "/products/corporate-recharge",
+};
 
 export function ProductIconStrip() {
   return (
-    <section className="container-lg -mt-2 pb-16">
-      <div className="mx-auto mb-10 flex w-fit max-w-full flex-wrap items-center justify-center rounded-full border border-border-soft bg-white px-3 py-2 text-sm text-text-secondary shadow-sm">
-        {anchors.map((item) => (
+    <div className="mt-12 flex flex-wrap items-start justify-center gap-x-5 gap-y-5">
+      {productIconItems.map((item, index) => {
+        const { Icon, tone } = iconMap[index];
+        return (
           <Link
             key={item}
-            href={`/#${item === "FAQ" ? "faq" : item.toLowerCase()}`}
-            className="rounded-full px-4 py-2 hover:bg-surface hover:text-text-primary"
+            href={productHrefs[item] ?? "/get-started"}
+            className="flex w-[92px] flex-col items-center gap-2 text-center"
           >
-            {item}
-          </Link>
-        ))}
-      </div>
-
-      <div className="flex flex-wrap items-start justify-center gap-x-5 gap-y-5">
-        {productIconItems.map((item, index) => {
-          const { Icon, tone } = iconMap[index];
-          return (
-            <div
-              key={item}
-              className="flex w-[92px] flex-col items-center gap-2 text-center"
+            <span
+              className={`inline-flex size-9 items-center justify-center rounded-xl ${tone}`}
             >
-              <span
-                className={`inline-flex size-9 items-center justify-center rounded-xl ${tone}`}
-              >
-                <Icon className="size-5" aria-hidden="true" />
-              </span>
-              <span className="text-xs leading-4 text-text-secondary">{item}</span>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+              <Icon className="size-5" aria-hidden="true" />
+            </span>
+            <span className="text-xs leading-4 text-text-secondary">{item}</span>
+          </Link>
+        );
+      })}
+    </div>
   );
 }
 

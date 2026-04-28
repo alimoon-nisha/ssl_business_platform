@@ -15,6 +15,7 @@ export function ServiceCard({
     status: string;
     description: string;
     cta: string;
+    href?: string;
   };
   index: number;
 }) {
@@ -34,7 +35,11 @@ export function ServiceCard({
       <p className="mt-3 flex-1 text-sm leading-6 text-text-secondary">
         {service.description}
       </p>
-      <ButtonLink href="/get-started" variant="secondary" className="mt-5 h-10 w-fit px-5">
+      <ButtonLink
+        href={service.href ?? "/get-started"}
+        variant="secondary"
+        className="mt-5 h-10 w-fit px-5"
+      >
         {service.cta}
       </ButtonLink>
     </Card>

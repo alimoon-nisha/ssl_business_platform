@@ -43,28 +43,28 @@ export default function Home() {
             </div>
             <HeroMockup />
           </div>
-          <ProductIconStrip />
+
+          <section id="overview" className="container-lg pb-20 text-center">
+            <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary">
+              All the services your business needs, managed from one account.
+            </h2>
+            <div className="mt-10 grid gap-8 md:grid-cols-3">
+              {valueColumns.map((column) => (
+                <div key={column.title}>
+                  <h3 className="text-lg font-semibold text-text-primary">
+                    {column.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-text-secondary">
+                    {column.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <ProductIconStrip />
+          </section>
         </section>
 
-        <section id="overview" className="container-lg pb-20 text-center">
-          <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary">
-            All the services your business needs, managed from one account.
-          </h2>
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {valueColumns.map((column) => (
-              <div key={column.title}>
-                <h3 className="text-lg font-semibold text-text-primary">
-                  {column.title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-text-secondary">
-                  {column.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="services" className="container-lg section-pad border-t border-border-soft">
+        <section id="services" className="container-lg section-pad">
           <h2 className="text-center text-3xl font-medium text-text-primary">
             One account. Many SSL services.
           </h2>
@@ -75,10 +75,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="plans" className="container-xl section-pad">
+        <section id="activation" className="container-xl section-pad">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-medium leading-tight text-text-primary">
-              Find the right services for your business.
+              Activate the right services for your business.
             </h2>
             <p className="mt-3 text-sm leading-6 text-text-secondary">
               Start with one service, then add more from the same SSL account.
@@ -94,7 +94,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section id="activation" className="container-lg py-16">
+        <section id="onboarding" className="container-lg py-16">
           <div className="grid gap-8 md:grid-cols-[1fr_0.8fr] md:items-center">
             <div className="max-w-lg">
               <h2 className="text-2xl font-medium leading-tight text-text-primary">

@@ -9,14 +9,14 @@ export function BusinessSizeRadioGroup({
 }) {
   return (
     <fieldset>
-      <legend className="mb-5 text-base text-text-primary">
+      <legend className="mb-4 text-sm text-text-primary">
         Number of employees, including you
       </legend>
-      <div className="space-y-5">
+      <div className="space-y-4">
         {options.map((option) => (
           <label
             key={option}
-            className="flex cursor-pointer items-center gap-6 text-lg text-text-primary"
+            className="flex cursor-pointer items-center gap-4 text-base text-text-primary"
           >
             <input
               type="radio"
@@ -24,7 +24,7 @@ export function BusinessSizeRadioGroup({
               value={option}
               checked={value === option}
               onChange={() => onChange(option)}
-              className="size-6 accent-primary"
+              className="size-[18px] accent-primary"
             />
             {option}
           </label>
