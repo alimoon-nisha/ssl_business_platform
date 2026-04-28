@@ -5,11 +5,13 @@ export function ProductCTA({
   title,
   body,
   cta,
+  href = "/get-started",
   icon: Icon,
 }: {
   title: string;
   body: string;
   cta: string;
+  href?: string;
   icon: LucideIcon;
 }) {
   return (
@@ -24,7 +26,7 @@ export function ProductCTA({
         <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-text-secondary">
           {body}
         </p>
-        <ButtonLink href="/get-started" className="mt-6 h-10 px-5">
+          <ButtonLink href={href} className="mt-6 h-10 px-5">
           {cta}
         </ButtonLink>
       </div>

@@ -63,8 +63,8 @@ export const servicePlans = [
   {
     name: "Payment gateway",
     description: "Apply for SSLCOMMERZ with merchant onboarding support.",
-    cta: "Start Application",
-    href: "/get-started",
+    cta: "Start application",
+    href: "/get-started?service=payment-gateway",
     highlighted: false,
     features: [
       "SSLCOMMERZ onboarding",
@@ -77,8 +77,8 @@ export const servicePlans = [
   {
     name: "Messaging suite",
     description: "Set up business SMS and sender ID readiness.",
-    cta: "Start Application",
-    href: "/get-started",
+    cta: "Explore SMS",
+    href: "/get-started?service=messaging-suite",
     highlighted: false,
     features: [
       "Bulk SMS setup",
@@ -91,8 +91,8 @@ export const servicePlans = [
   {
     name: "Corporate recharge",
     description: "Prepare operator services and top-up workflows.",
-    cta: "Start Application",
-    href: "/get-started",
+    cta: "Explore top-up",
+    href: "/get-started?service=corporate-recharge",
     highlighted: false,
     features: [
       "Corporate top-up request",

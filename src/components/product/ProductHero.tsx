@@ -233,6 +233,8 @@ export function ProductHero({
   body,
   primaryCta,
   secondaryCta,
+  primaryHref = "/get-started",
+  secondaryHref = "/get-started",
   kind,
   icon: Icon,
 }: {
@@ -242,6 +244,8 @@ export function ProductHero({
   body: string;
   primaryCta: string;
   secondaryCta: string;
+  primaryHref?: string;
+  secondaryHref?: string;
   kind: ProductKind;
   icon: LucideIcon;
 }) {
@@ -270,8 +274,8 @@ export function ProductHero({
             {body}
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <ButtonLink href="/get-started">{primaryCta}</ButtonLink>
-            <ButtonLink href="/get-started" variant="secondary">
+            <ButtonLink href={primaryHref}>{primaryCta}</ButtonLink>
+            <ButtonLink href={secondaryHref} variant="secondary">
               {secondaryCta}
             </ButtonLink>
           </div>

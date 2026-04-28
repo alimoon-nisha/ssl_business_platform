@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { Logo } from "@/components/marketing/Header";
 import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/cn";
 
 export function AuthShell({
   children,
@@ -9,12 +10,14 @@ export function AuthShell({
   title,
   body,
   image = "/illustrations/business-profile.svg",
+  contentAlign = "start",
 }: {
   children: ReactNode;
   badge?: string;
   title: string;
   body: string;
   image?: string;
+  contentAlign?: "start" | "center";
 }) {
   return (
     <main className="min-h-screen bg-white">
@@ -22,7 +25,7 @@ export function AuthShell({
         <Logo centered />
       </div>
       <div className="container-lg grid gap-16 py-16 lg:grid-cols-[460px_1fr] lg:items-start lg:py-20">
-        <section>{children}</section>
+        <section className={cn(contentAlign === "center" && "lg:self-center")}>{children}</section>
         <aside className="hidden text-center lg:block">
           <Image
             src={image}

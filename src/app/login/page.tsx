@@ -12,9 +12,19 @@ export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const emailError = submitted && !email.trim() ? "Email or mobile number is required." : "";
+  const passwordError = submitted && !password.trim() ? "Password is required." : "";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSubmitted(true);
+
+    if (!email.trim() || !password.trim()) {
+      return;
+    }
+
     router.push("/dashboard");
   }
 
@@ -32,12 +42,15 @@ export default function LoginPage() {
         <div className="space-y-6">
           <AuthInput
             id="email"
-            label="Email or phone"
+            label="Email or mobile number"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            placeholder="Email or phone"
+            placeholder="Email or mobile number"
             required
+            aria-invalid={Boolean(emailError)}
+            className={emailError ? "border-error focus:border-error" : ""}
           />
+          {emailError ? <p className="-mt-4 text-sm text-error">{emailError}</p> : null}
           <AuthInput
             id="password"
             label="Password"
@@ -46,13 +59,16 @@ export default function LoginPage() {
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
             required
+            aria-invalid={Boolean(passwordError)}
+            className={passwordError ? "border-error focus:border-error" : ""}
           />
+          {passwordError ? <p className="-mt-4 text-sm text-error">{passwordError}</p> : null}
         </div>
         <div className="mt-5 flex items-center justify-between text-sm">
           <Link href="/get-started" className="text-primary hover:text-primary-hover">
             Create account
           </Link>
-          <Link href="/get-started" className="text-primary hover:text-primary-hover">
+          <Link href="/forgot-password" className="text-primary hover:text-primary-hover">
             Forgot password?
           </Link>
         </div>

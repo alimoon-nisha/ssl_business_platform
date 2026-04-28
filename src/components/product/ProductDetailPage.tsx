@@ -12,6 +12,8 @@ import { VideoDemoBlock } from "@/components/product/VideoDemoBlock";
 import type { ProductDetailContent } from "@/data/productContent";
 
 export function ProductDetailPage({ product }: { product: ProductDetailContent }) {
+  const startHref = `/get-started?service=${product.slug}`;
+
   return (
     <>
       <Header />
@@ -23,6 +25,7 @@ export function ProductDetailPage({ product }: { product: ProductDetailContent }
           body={product.body}
           primaryCta={product.primaryCta}
           secondaryCta={product.secondaryCta}
+          primaryHref={startHref}
           kind={product.kind}
           icon={product.heroIcon}
         />
@@ -61,6 +64,7 @@ export function ProductDetailPage({ product }: { product: ProductDetailContent }
           title={product.finalTitle}
           body={product.finalBody}
           cta={product.finalButton}
+          href={startHref}
           icon={product.heroIcon}
         />
         <NewsletterBlock />

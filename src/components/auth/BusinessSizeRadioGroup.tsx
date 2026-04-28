@@ -10,7 +10,7 @@ export function BusinessSizeRadioGroup({
   return (
     <fieldset>
       <legend className="mb-4 text-sm text-text-primary">
-        Number of employees, including you
+        Number of employees, including you<span className="text-error">*</span>
       </legend>
       <div className="space-y-4">
         {options.map((option) => (

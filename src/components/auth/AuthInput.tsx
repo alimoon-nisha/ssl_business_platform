@@ -5,13 +5,17 @@ export function AuthInput({
   id,
   label,
   className,
+  helperText,
   ...props
-}: ComponentPropsWithoutRef<"input"> & { id: string; label: string }) {
+}: ComponentPropsWithoutRef<"input"> & { id: string; label?: string; helperText?: string }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-sm text-text-secondary">
-        {label}
-      </label>
+      {label ? (
+        <label htmlFor={id} className="mb-2 block text-sm text-text-secondary">
+          {label}
+          {props.required ? <span className="text-error">*</span> : null}
+        </label>
+      ) : null}
       <input
         id={id}
         className={cn(
@@ -20,6 +24,7 @@ export function AuthInput({
         )}
         {...props}
       />
+      {helperText ? <p className="mt-2 text-xs text-text-secondary">{helperText}</p> : null}
     </div>
   );
 }
