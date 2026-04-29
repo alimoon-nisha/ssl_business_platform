@@ -77,7 +77,7 @@ export const servicePlans = [
   {
     name: "Messaging suite",
     description: "Set up business SMS and sender ID readiness.",
-    cta: "Explore SMS",
+    cta: "Start application",
     href: "/get-started?service=messaging-suite",
     highlighted: false,
     features: [
@@ -91,7 +91,7 @@ export const servicePlans = [
   {
     name: "Corporate recharge",
     description: "Prepare operator services and top-up workflows.",
-    cta: "Explore top-up",
+    cta: "Start application",
     href: "/get-started?service=corporate-recharge",
     highlighted: false,
     features: [
