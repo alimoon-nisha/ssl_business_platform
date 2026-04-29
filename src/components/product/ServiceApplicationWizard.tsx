@@ -306,7 +306,7 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
           ) : null}
           {step < 4 ? (
             <Button type="button" onClick={goNext} disabled={!canGoNext}>
-              {step === 3 ? "Continue" : "Next"}
+              Next
             </Button>
           ) : (
             <ButtonLink href="/dashboard">Pay now</ButtonLink>
