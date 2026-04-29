@@ -2,6 +2,8 @@ import { redirect } from "next/navigation";
 import { AuthShell } from "@/components/auth/AuthShell";
 import { ServiceApplicationWizard } from "@/components/product/ServiceApplicationWizard";
 
+import { products } from "@/data/productContent";
+
 const serviceLabels: Record<string, string> = {
   "payment-gateway": "SSLCOMMERZ Payment Gateway",
   "messaging-suite": "Messaging Suite",
@@ -31,11 +33,13 @@ export default async function ServiceApplicationPage({
         ? query.package[0]
         : "";
 
+  const product = products[service];
+
   return (
     <AuthShell
       badge="Application journey"
-      title={`Continue your ${serviceLabel} application`}
-      body="Review the terms, package options, and document checklist in one calm flow that stays connected to your SSL account."
+      title={`Continue your ${product?.serviceName || serviceLabel} application`}
+      body={product?.body || "Review the terms, package options, and document checklist in one calm flow that stays connected to your SSL account."}
       image="/illustrations/business-profile.svg"
     >
       <ServiceApplicationWizard
