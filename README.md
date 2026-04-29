@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SSL Business Platform
 
-## Getting Started
+Next.js prototype for a unified SSL Wireless business services platform.
 
-First, run the development server:
+The product direction is one SSL account where businesses can create a shared business profile, explore services, reuse common documents, start service application, track application status, and reach billing/support from a single dashboard.
+
+## Current Scope
+
+This is a front-end prototype. It intentionally uses local state and mock data only.
+
+Implemented areas:
+
+- Marketing landing page
+- Product detail pages for SSLCOMMERZ Payment Gateway, Messaging Suite, and Corporate Recharge
+- Contact sales request page
+- Login and forgot-password screens
+- Unified `/get-started` account setup flow
+- Selected service application entry flow
+- First dashboard page with service, application, document, billing, and support summaries
+
+Not implemented yet:
+
+- Real authentication
+- Backend APIs
+- Persistence
+- File uploads
+- Payment/submission backend
+- Full dashboard subpages
+
+## Tech Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- lucide-react icons
+
+This repo has version-specific Next.js guidance in `AGENTS.md`. Before changing framework-sensitive code, read the relevant local docs under `node_modules/next/dist/docs/`.
+
+## Routes
+
+- `/` - marketing landing page
+- `/products/payment-gateway` - SSLCOMMERZ product detail page
+- `/products/messaging-suite` - messaging product detail page
+- `/products/corporate-recharge` - recharge product detail page
+- `/contact-sales` - sales request form
+- `/login` - sign in
+- `/forgot-password` - password recovery prototype
+- `/get-started` - unified signup and business setup journey
+- `/get-started?service=payment-gateway` - signup with selected service continuation
+- `/service-application/[service]` - selected service application prototype
+- `/dashboard` - first dashboard page
+
+There is no separate `/sign-up` journey. `Get started` is signup.
+
+## Project Structure
+
+```txt
+src/
+  app/                 Route entry points
+  components/
+    auth/              Login, get-started, and auth shell components
+    contact/           Contact sales form
+    dashboard/         Dashboard shell and summary cards
+    marketing/         Landing page, header, footer, FAQ, CTA components
+    product/           Product detail and service application components
+    ui/                Shared primitives
+  data/                Mock platform data and product content
+  lib/                 Shared utilities
+docs/                  Product, design, and build specs
+public/illustrations/  Local prototype illustrations
+```
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run lint:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a production build:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Prototype Notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Content and dashboard state live in `src/data/mockPlatform.ts` and `src/data/productContent.ts`.
+- Product pages share one reusable detail template.
+- `/get-started` handles account creation and base business setup.
+- Service-specific continuation lives under `/service-application/[service]`.
+- Dashboard sub-navigation is marked as coming soon until those sections are designed.

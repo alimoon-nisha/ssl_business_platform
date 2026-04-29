@@ -13,7 +13,7 @@ Important product decision:
 - If they did not select a service, they land on the dashboard after account creation.
 - Service application steps are not part of the general account setup unless a service was selected first.
 
-This journey must use the existing SSL Business Platform design language already created in the current prototype. Do not use the visual design style from the old flow screenshots. Those screenshots are only for understanding the flow logic.
+This journey must use the existing SSL Business Platform design language already created in the current prototype.
 
 ## UX rationale
 
@@ -206,9 +206,7 @@ Use the current SSL Business Platform visual language:
 - Existing header and logo treatment.
 - Existing input and button styling.
 
-Do not use the visual design pattern from the uploaded old flow screenshots.
-
-Those screenshots are only for flow logic:
+Use this flow logic:
 
 - multi-step account creation
 - account created screen
@@ -1128,7 +1126,7 @@ Do not:
 - Skip package confirmation when a package was pre-selected.
 - Ask for every possible KYC document during base account setup.
 - Make onboarding look like a dense dashboard.
-- Use the old uploaded screenshots as visual design reference.
+- Use unrelated legacy flows as visual design reference.
 - Use unrelated placeholder names like `Hercules ERP`.
 - Use dark login pages.
 - Add social login buttons unless explicitly requested.

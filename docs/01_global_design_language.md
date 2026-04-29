@@ -1,7 +1,7 @@
 # 01 Global Design Language
 
 ## Visual target
-Match the design language of the supplied Google Workspace screenshots:
+Use a Google Workspace-inspired design language:
 
 - White-first, very spacious layout.
 - Simple enterprise typography.
@@ -88,7 +88,7 @@ Use large vertical breathing room:
 - FAQ row height: 64px to 72px.
 
 ## Header
-Follow the supplied screenshot style:
+Use a restrained enterprise header style:
 
 - Sticky or static top header, white background.
 - Bottom border: 1px solid `#dadce0`.
@@ -131,7 +131,7 @@ Use Google Workspace-style cards:
 - Card image or UI mockup at top with light gray background.
 
 ## Forms
-Forms should match the get-started screenshot:
+Forms should use a spacious account-setup style:
 
 - Large title.
 - Inputs with 1px gray border.
@@ -173,7 +173,7 @@ Desktop:
 
 - Two-column hero where applicable.
 - Pricing/service cards in 3 or 4 columns.
-- FAQ left column with side cards, similar to screenshot.
+- FAQ left column with side cards.
 
 Tablet:
 
@@ -188,14 +188,14 @@ Mobile:
 - Dashboard cards become one column.
 
 ## Design strictness
-Codex must not invent a completely different design. The screenshots define the layout mood. Recreate:
+Codex must not invent a completely different design. The intended layout mood is:
 
 - Same whitespace level.
 - Same light header treatment.
 - Same centered content sections.
 - Same card density.
 - Same FAQ structure.
-- Same sign-up form structure.
+- Same get-started form structure.
 - Same product detail composition.
 
 Use different brand content and original graphics.

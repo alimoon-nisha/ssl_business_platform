@@ -16,13 +16,25 @@ Create these routes:
 
 - `/`
 - `/products/payment-gateway`
-- `/sign-in`
-- `/sign-up`
+- `/products/messaging-suite`
+- `/products/corporate-recharge`
+- `/contact-sales`
+- `/login`
+- `/forgot-password`
 - `/get-started`
-- `/onboarding/business`
-- `/onboarding/documents`
-- `/onboarding/complete`
+- `/service-application/[service]`
 - `/dashboard`
+
+Do not create a separate `/sign-up` journey. `Get started` is the account
+creation and business setup journey. If `/sign-up` is ever added as a
+compatibility route, it must redirect to `/get-started`.
+
+Do not create a separate `/sign-in` route unless it redirects to `/login`.
+
+The earlier standalone onboarding routes (`/onboarding/business`,
+`/onboarding/documents`, and `/onboarding/complete`) are deprecated for this
+prototype. Their intent is now covered by `/get-started` for base account setup
+and `/service-application/[service]` for selected service application.
 
 ## Suggested folder structure
 ```txt
@@ -32,18 +44,20 @@ src/
     products/
       payment-gateway/
         page.tsx
-    sign-in/
+      messaging-suite/
+        page.tsx
+      corporate-recharge/
+        page.tsx
+    contact-sales/
       page.tsx
-    sign-up/
+    login/
+      page.tsx
+    forgot-password/
       page.tsx
     get-started/
       page.tsx
-    onboarding/
-      business/
-        page.tsx
-      documents/
-        page.tsx
-      complete/
+    service-application/
+      [service]/
         page.tsx
     dashboard/
       page.tsx
@@ -74,8 +88,9 @@ src/
       AuthInput.tsx
       BusinessSizeRadioGroup.tsx
       RegionSelect.tsx
-      DocumentUploadCard.tsx
-      OnboardingChoiceCard.tsx
+      GetStartedWizard.tsx
+    contact/
+      ContactSalesForm.tsx
     dashboard/
       DashboardShell.tsx
       SidebarNav.tsx
@@ -197,12 +212,14 @@ Marketing pages:
 
 - Header links can route to sections or placeholder pages.
 - FAQ accordion must open and close.
-- CTA buttons must route to `/get-started` or `/sign-up`.
+- CTA buttons must route to `/get-started`, `/login`, product pages, or section anchors.
 
-Auth/onboarding:
+Auth and service application:
 
 - Forms can use local state.
-- On submit, route to the next page.
+- General signup/business setup happens in `/get-started`.
+- Selected service application happens in `/service-application/[service]`.
+- On submit, route to the next step or dashboard.
 - Do not connect to real auth.
 
 Dashboard:
@@ -214,9 +231,9 @@ Dashboard:
 ## Acceptance checklist
 The prototype is acceptable only if:
 
-- Landing page visually resembles the supplied Google Workspace landing page structure.
-- Product detail page visually resembles the supplied Google Workspace product detail page structure.
-- Get-started page visually resembles the supplied Google Workspace get-started page structure.
+- Landing page follows the Google Workspace-inspired landing page structure described in the specs.
+- Product detail pages follow the Google Workspace-inspired product detail structure described in the specs.
+- Get-started page follows the spacious account setup structure described in the specs.
 - Content is SSL Business Platform content, not Google content.
 - Header, footer, cards, FAQ, CTA, and newsletter blocks are consistent across pages.
 - Dashboard first page clearly shows service activation, applications, document vault, billing, and support.

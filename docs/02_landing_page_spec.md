@@ -4,7 +4,7 @@
 `/`
 
 ## Page goal
-Introduce SSL Business Platform as the unified entry point for SSL Wireless business services. The page should feel structurally very close to the Google Workspace landing page screenshot.
+Introduce SSL Business Platform as the unified entry point for SSL Wireless business services. The page should feel structurally close to a calm, Google Workspace-inspired enterprise landing page.
 
 ## Exact section order
 Build sections in this exact order:
@@ -67,7 +67,7 @@ Secondary CTA:
 
 Right visual:
 
-Create an original UI mockup inspired by the landing screenshot:
+Create an original UI mockup inspired by the landing page structure:
 
 - A clean admin panel preview.
 - Left mini sidebar with service icons.
@@ -83,7 +83,7 @@ Background:
 - No heavy gradient.
 
 ## 3. Product icon strip / anchor nav
-Replicate the feel of the small icon strip under the hero screenshot.
+Replicate the feel of a small icon strip under the hero.
 
 Structure:
 
@@ -139,7 +139,7 @@ Body:
 > Start with SSLCOMMERZ, messaging, and top-up services, then expand as your business grows.
 
 ## 5. Feature trio section
-Match the three-card section in the landing screenshot.
+Use a clean three-card section.
 
 Title:
 
@@ -258,7 +258,7 @@ Below the cards, add small disclaimer text:
 > Service availability, approval requirements, fees, and document checklists may vary by business type and selected product.
 
 ## 7. Migration / onboarding confidence section
-Match the small confidence block from the landing screenshot.
+Use a small confidence block.
 
 Left aligned narrow content.
 
@@ -281,7 +281,7 @@ Right side optional visual:
 - A reused trade license chip.
 
 ## 8. FAQ section
-Use light gray background band, similar to the screenshot.
+Use a light gray background band.
 
 Title:
 
@@ -359,7 +359,7 @@ Right form:
 - Subscribe button
 
 ## 12. Footer
-Large multi-column footer similar to the screenshot.
+Large multi-column footer.
 
 Columns:
 

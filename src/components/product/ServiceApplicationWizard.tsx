@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -47,11 +47,6 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
   const [uploadedDocuments, setUploadedDocuments] = useState<string[]>([]);
 
   const packageList = packageOptions[serviceSlug as ServiceSlug] ?? [];
-
-  const stepLabel = useMemo(() => {
-    if (step === 4) return "Review summary";
-    return [`Terms`, `Package`, `Documents`, `Summary`][step - 1];
-  }, [step]);
 
   const selectedPackageLabel =
     packageList.find((item) => item.id === selectedPackage)?.name || selectedPackage || "Not selected";

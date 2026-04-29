@@ -35,7 +35,11 @@ export function Logo({ centered = false }: { centered?: boolean }) {
   );
 }
 
-export function Header() {
+export function Header({
+  showContactSalesLink = true,
+}: {
+  showContactSalesLink?: boolean;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -56,9 +60,11 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-4 text-sm font-medium lg:flex">
-          <Link href="/#newsletter" className="text-primary hover:text-primary-hover">
-            Contact sales
-          </Link>
+          {showContactSalesLink ? (
+            <Link href="/contact-sales" className="text-primary hover:text-primary-hover">
+              Contact sales
+            </Link>
+          ) : null}
           <Link href="/login" className="text-primary hover:text-primary-hover">
             Sign in
           </Link>

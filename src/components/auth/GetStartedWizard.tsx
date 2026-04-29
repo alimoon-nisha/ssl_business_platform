@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
 import { AuthInput } from "@/components/auth/AuthInput";
@@ -8,7 +8,6 @@ import { AuthShell } from "@/components/auth/AuthShell";
 import { BusinessSizeRadioGroup } from "@/components/auth/BusinessSizeRadioGroup";
 import { RegionSelect } from "@/components/auth/RegionSelect";
 import { Button, ButtonLink } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/cn";
 
 const serviceLabels = {
@@ -90,7 +89,6 @@ function SelectField({
 }
 
 export function GetStartedWizard() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const serviceParam = searchParams.get("service") ?? "";
   const packageParam = searchParams.get("package") ?? "";

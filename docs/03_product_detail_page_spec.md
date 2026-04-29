@@ -4,9 +4,9 @@
 `/products/payment-gateway`
 
 ## Page goal
-Create a product detail page inspired by the Google Workspace Gmail business email screenshot. The first product detail page is for SSLCOMMERZ Payment Gateway.
+Create a Google Workspace-inspired product detail page. The first product detail page is for SSLCOMMERZ Payment Gateway.
 
-The design should match the product-detail screenshot structure: hero at top, centered trust/product icon row, video/demo block, setup steps, benefit section, FAQ, CTA, newsletter, footer.
+The design should use this product-detail structure: hero at top, centered trust/product icon row, video/demo block, setup steps, benefit section, FAQ, CTA, newsletter, footer.
 
 ## Exact section order
 1. Global header
@@ -64,7 +64,7 @@ Create an original product visual with:
 Do not use the exact Google Workspace Gmail image style or Google assets.
 
 ## 3. Trust/product icon row
-Centered section, similar to the `Join over 3 billion...` block in screenshot.
+Centered section with a broad trust statement and a compact icon row.
 
 Title:
 
@@ -95,11 +95,11 @@ Title:
 
 > See how payment gateway activation works
 
-Create a large rounded rectangle video placeholder, like the screenshot.
+Create a large rounded rectangle video placeholder.
 
 Inside the video placeholder:
 
-- Mock merchant dashboard screenshot.
+- Mock merchant dashboard preview.
 - Big play button centered.
 - Label: `Payment gateway onboarding overview`
 
@@ -158,7 +158,7 @@ CTA link:
 > View documentation
 
 ## 6. Benefits section
-Two-column layout inspired by the product screenshot.
+Two-column product benefits layout.
 
 Eyebrow:
 
