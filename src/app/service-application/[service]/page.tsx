@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { AuthShell } from "@/components/auth/AuthShell";
+import { ServiceApplicationShell } from "@/components/product/ServiceApplicationShell";
 import { ServiceApplicationWizard } from "@/components/product/ServiceApplicationWizard";
 
 import { products } from "@/data/productContent";
@@ -36,7 +36,7 @@ export default async function ServiceApplicationPage({
   const product = products[service];
 
   return (
-    <AuthShell
+    <ServiceApplicationShell
       title={`Continue your ${product?.serviceName || serviceLabel} application`}
       body={product?.body || "Review the terms, package options, and document checklist in one calm flow that stays connected to your SSL account."}
       image="/illustrations/business-profile.svg"
@@ -46,6 +46,6 @@ export default async function ServiceApplicationPage({
         serviceLabel={serviceLabel}
         packageName={packageName}
       />
-    </AuthShell>
+    </ServiceApplicationShell>
   );
 }

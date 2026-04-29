@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Upload, Check, X } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button, ButtonLink } from "@/components/ui/Button";
@@ -42,10 +43,15 @@ const documentOptions = [
 ];
 
 export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageName }: ServiceApplicationWizardProps) {
+  const [isMounted, setIsMounted] = useState(false);
   const [step, setStep] = useState<Step>(1);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(packageName || "");
   const [uploadedFiles, setUploadedFiles] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const packageList = packageOptions[serviceSlug as ServiceSlug] ?? [];
 
@@ -305,7 +311,7 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
             </Button>
           ) : null}
           {step < 4 ? (
-            <Button type="button" onClick={goNext} disabled={!canGoNext}>
+            <Button type="button" onClick={goNext} disabled={!isMounted || !canGoNext}>
               Next
             </Button>
           ) : (
@@ -313,9 +319,12 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
           )}
         </div>
 
-        <ButtonLink href="/dashboard" variant="secondary">
+        <Link
+          href="/dashboard"
+          className="text-sm font-medium text-text-secondary transition-colors hover:text-primary"
+        >
           Skip to Dashboard
-        </ButtonLink>
+        </Link>
       </div>
     </div>
   );
