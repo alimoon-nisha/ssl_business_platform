@@ -2,13 +2,14 @@
 
 import { useSearchParams } from "next/navigation";
 import type { FormEvent } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AuthInput } from "@/components/auth/AuthInput";
 import { AuthShell } from "@/components/auth/AuthShell";
 import { BusinessSizeRadioGroup } from "@/components/auth/BusinessSizeRadioGroup";
 import { RegionSelect } from "@/components/auth/RegionSelect";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { getAssessmentAnswers } from "@/lib/assessmentPrefill";
 
 const serviceLabels = {
   "payment-gateway": "SSLCOMMERZ Payment Gateway",
@@ -104,6 +105,18 @@ export function GetStartedWizard() {
   const [businessSize, setBusinessSize] = useState("");
   const [businessType, setBusinessType] = useState("");
   const [sector, setSector] = useState("");
+
+  useEffect(() => {
+    const isAssessmentSource = searchParams.get("source") === "assessment";
+    if (isAssessmentSource) {
+      const saved = getAssessmentAnswers();
+      if (saved) {
+        if (saved.businessType) setBusinessType(saved.businessType);
+        if (saved.sector) setSector(saved.sector);
+        if (saved.employeeRange) setBusinessSize(saved.employeeRange);
+      }
+    }
+  }, [searchParams]);
   const [contactPersonName, setContactPersonName] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
   const [designation, setDesignation] = useState("");

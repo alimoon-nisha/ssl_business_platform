@@ -10,6 +10,7 @@ import { Header } from "@/components/marketing/Header";
 import { HeroMockup } from "@/components/marketing/HeroMockup";
 import { NewsletterBlock } from "@/components/marketing/NewsletterBlock";
 import { ProductIconStrip } from "@/components/marketing/ProductIconStrip";
+import { AssessmentTriggerCard } from "@/components/marketing/AssessmentTriggerCard";
 import { ResourceCard } from "@/components/marketing/ResourceCard";
 import { ServicePlanCard } from "@/components/marketing/ServicePlanCard";
 import {
@@ -140,21 +141,19 @@ export default function Home() {
             <div className="mt-10 grid gap-8 md:grid-cols-[1fr_280px]">
               <FAQAccordion items={landingFaqs} />
               <div className="space-y-4">
-                {[
-                  ["Explore services", "See which SSL services fit your business needs.", "View services"],
-                  ["Talk to sales", "Need help choosing the right service setup?", "Contact sales"],
-                ].map(([title, body, cta]) => (
-                  <Card key={title} className="p-5">
-                    <h3 className="font-semibold text-text-primary">{title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-text-secondary">{body}</p>
-                    <Link
-                      href={cta === "Contact sales" ? "/contact-sales" : "/get-started"}
-                      className="mt-4 inline-flex text-sm font-medium text-primary"
-                    >
-                      {cta}
-                    </Link>
-                  </Card>
-                ))}
+                <AssessmentTriggerCard />
+                <Card className="p-5">
+                  <h3 className="font-semibold text-text-primary">Talk to sales</h3>
+                  <p className="mt-2 text-sm leading-6 text-text-secondary">
+                    Need help choosing a service or package? Our team can guide you.
+                  </p>
+                  <Link
+                    href="/contact-sales"
+                    className="mt-4 inline-flex text-sm font-medium text-primary"
+                  >
+                    Contact sales
+                  </Link>
+                </Card>
               </div>
             </div>
           </div>
