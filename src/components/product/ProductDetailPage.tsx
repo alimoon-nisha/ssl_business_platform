@@ -13,6 +13,9 @@ import type { ProductDetailContent } from "@/data/productContent";
 
 export function ProductDetailPage({ product }: { product: ProductDetailContent }) {
   const startHref = `/get-started?service=${product.slug}`;
+  const secondaryHref = product.secondaryCta.toLowerCase().includes("contact sales")
+    ? "/contact-sales"
+    : startHref;
 
   return (
     <>
@@ -26,6 +29,7 @@ export function ProductDetailPage({ product }: { product: ProductDetailContent }
           primaryCta={product.primaryCta}
           secondaryCta={product.secondaryCta}
           primaryHref={startHref}
+          secondaryHref={secondaryHref}
           kind={product.kind}
           icon={product.heroIcon}
         />

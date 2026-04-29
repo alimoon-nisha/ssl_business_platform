@@ -164,7 +164,7 @@ export const services = [
     description:
       "Plan secure hosting, protection, and managed technology support.",
     cta: "Contact sales",
-    href: "/get-started",
+    href: "/contact-sales",
   },
 ];
 

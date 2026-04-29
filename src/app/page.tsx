@@ -36,7 +36,7 @@ export default function Home() {
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <ButtonLink href="/get-started">Get started</ButtonLink>
-                <ButtonLink href="#newsletter" variant="secondary">
+                <ButtonLink href="/contact-sales" variant="secondary">
                   Contact sales
                 </ButtonLink>
               </div>
@@ -147,7 +147,10 @@ export default function Home() {
                   <Card key={title} className="p-5">
                     <h3 className="font-semibold text-text-primary">{title}</h3>
                     <p className="mt-2 text-sm leading-6 text-text-secondary">{body}</p>
-                    <Link href="/get-started" className="mt-4 inline-flex text-sm font-medium text-primary">
+                    <Link
+                      href={cta === "Contact sales" ? "/contact-sales" : "/get-started"}
+                      className="mt-4 inline-flex text-sm font-medium text-primary"
+                    >
                       {cta}
                     </Link>
                   </Card>
