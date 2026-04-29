@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 
 export function AuthShell({
   children,
-  badge = "Included feature",
+  badge,
   title,
   body,
   image = "/illustrations/business-profile.svg",
@@ -35,9 +35,11 @@ export function AuthShell({
             className="mx-auto h-auto w-[360px]"
             priority
           />
-          <Badge tone="green" className="mt-4">
-            {badge}
-          </Badge>
+          {badge && (
+            <Badge tone="green" className="mt-4">
+              {badge}
+            </Badge>
+          )}
           <h2 className="mx-auto mt-7 max-w-md text-3xl font-medium leading-tight text-text-primary">
             {title}
           </h2>
