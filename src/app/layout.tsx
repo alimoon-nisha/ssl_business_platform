@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SSL Business Platform",
+  title: "SSL Business Hub",
   description:
     "One SSL account to activate and manage payments, messaging, recharge, and business services.",
 };

@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { serviceSupportChips } from "@/data/contactSales";
 
 export const metadata: Metadata = {
-  title: "Contact sales | SSL Business Platform",
+  title: "Contact sales | SSL Business Hub",
   description:
     "Contact SSL Wireless sales for service guidance, package questions, custom pricing, onboarding help, or support routing.",
 };
