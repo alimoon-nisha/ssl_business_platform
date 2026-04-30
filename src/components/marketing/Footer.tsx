@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Search } from "lucide-react";
 import { Logo } from "./Header";
 
@@ -96,8 +97,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-border-soft pt-6 text-xs text-text-secondary sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <span className="font-medium text-text-primary">SSL Wireless</span>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Image src="/sslwireless.svg" alt="SSL Wireless" width={120} height={22} className="h-5.5 w-auto" />
             <Link href="/get-started">Privacy</Link>
             <Link href="/get-started">Terms</Link>
             <Link href="/get-started">Contact</Link>

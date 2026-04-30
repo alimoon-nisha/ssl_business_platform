@@ -41,16 +41,11 @@ export function ProductIconStrip() {
 }
 
 export function MiniPaymentMarks() {
-  const marks = [
-    { icon: CreditCard, tone: "text-primary bg-blue-50" },
-    { icon: Smartphone, tone: "text-success bg-green-50" },
-    { icon: Banknote, tone: "text-amber-700 bg-amber-50" },
-    { icon: Code2, tone: "text-error bg-red-50" },
-  ];
+  const marks = Object.values(serviceIconMap);
 
   return (
     <div className="flex items-center justify-center gap-3">
-      {marks.map(({ icon: Icon, tone }, index) => (
+      {marks.map(({ Icon, tone }, index) => (
         <span
           key={index}
           className={`inline-flex size-8 items-center justify-center rounded-lg ${tone}`}

@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { MiniPaymentMarks } from "./ProductIconStrip";
 
 export function CTASection({
-  title = "Start with one SSL account today.",
+  title = "Start your SSL Business Hub account today.",
   body = "Create your business profile, explore services, and begin activation when you are ready.",
   cta = "Get started",
   icon = "marks",
@@ -23,7 +23,7 @@ export function CTASection({
             <CreditCard className="size-7" aria-hidden="true" />
           </span>
         )}
-        <h2 className="mx-auto mt-6 max-w-xl text-3xl font-medium leading-tight text-text-primary">
+        <h2 className="mx-auto mt-6 max-w-full text-3xl font-medium leading-tight text-text-primary">
           {title}
         </h2>
         <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-text-secondary">
