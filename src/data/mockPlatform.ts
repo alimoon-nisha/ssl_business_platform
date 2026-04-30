@@ -101,7 +101,7 @@ export const servicePlans = [
 ];
 
 export const landingFaqs = [
-  "What is SSL Business Platform?",
+  "What is SSL Business Hub?",
   "Is this the same as SSLCOMMERZ?",
   "Can I activate more than one service from one account?",
   "Do I need to upload the same documents again?",

@@ -6,7 +6,6 @@ import {
   Smartphone,
   UsersRound,
 } from "lucide-react";
-import Link from "next/link";
 import { productIconItems } from "@/data/mockPlatform";
 
 export const serviceIconMap = {
@@ -16,11 +15,7 @@ export const serviceIconMap = {
   "Sales Force Automation": { Icon: UsersRound, tone: "text-orange-800 bg-orange-50" },
 };
 
-const productHrefs: Record<string, string> = {
-  "Payment Gateway": "/products/payment-gateway",
-  "Bulk SMS": "/products/messaging-suite",
-  "Corporate Top-Up": "/products/corporate-recharge",
-};
+
 
 export function ProductIconStrip() {
   return (
@@ -28,9 +23,8 @@ export function ProductIconStrip() {
       {productIconItems.map((item) => {
         const { Icon, tone } = serviceIconMap[item as keyof typeof serviceIconMap];
         return (
-          <Link
+          <div
             key={item}
-            href={productHrefs[item] ?? "/get-started"}
             className="flex w-[92px] flex-col items-center gap-2 text-center"
           >
             <span
@@ -39,7 +33,7 @@ export function ProductIconStrip() {
               <Icon className="size-5" aria-hidden="true" />
             </span>
             <span className="text-xs leading-4 text-text-secondary">{item}</span>
-          </Link>
+          </div>
         );
       })}
     </div>

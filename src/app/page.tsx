@@ -81,7 +81,7 @@ export default function Home() {
               Activate the right services for your business.
             </h2>
             <p className="mt-3 text-sm leading-6 text-text-secondary">
-              Start with one service, then add more from the same SSL account.
+              Start with one service, then add more from the same SSL Business Hub account.
             </p>
           </div>
           <div className="mt-10 grid gap-4 lg:grid-cols-4">
@@ -98,7 +98,7 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-[1fr_0.8fr] md:items-center">
             <div className="max-w-lg">
               <h2 className="text-2xl font-medium leading-tight text-text-primary">
-                Move your business setup into one SSL account.
+                Move your business setup into one SSL Business Hub account.
               </h2>
               <p className="mt-4 text-sm leading-6 text-text-secondary">
                 Existing SSL merchants and new businesses can bring their company profile, service applications, and documents into a single platform over time.
