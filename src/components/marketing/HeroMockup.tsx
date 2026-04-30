@@ -3,10 +3,17 @@
 import { useEffect, useState, useRef, useSyncExternalStore } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/cn";
+import { serviceIconMap } from "./ProductIconStrip";
 import styles from "./HeroMockup.module.css";
 
 const sidebarDots = ["bg-primary", "bg-success", "bg-warning", "bg-error"];
 const processLoopDuration = 7500;
+const floatingServiceIcons = [
+  { name: "Payment Gateway", className: styles["floating-service-payment"] },
+  { name: "SMS", className: styles["floating-service-sms"] },
+  { name: "Corporate Top-Up", className: styles["floating-service-top-up"] },
+  { name: "Sales Force Automation", className: styles["floating-service-sales"] },
+] as const;
 
 type IntroPhase = "frame" | "background" | "skeleton" | "loaded";
 
@@ -117,6 +124,29 @@ export function HeroMockup() {
 
   return (
     <div className={cn("relative mx-auto w-full max-w-[520px]", showContent && styles["process-loop"])}>
+      <div
+        aria-hidden="true"
+        className={cn(
+          styles["floating-service-layer"],
+          showContent && styles["floating-service-layer-visible"],
+        )}
+      >
+        {floatingServiceIcons.map(({ name, className }) => {
+          const { Icon, tone } = serviceIconMap[name];
+
+          return (
+            <span
+              key={name}
+              className={cn(styles["floating-service-icon"], className)}
+            >
+              <span className={cn(styles["floating-service-badge"], tone)}>
+                <Icon className="size-5" aria-hidden="true" />
+              </span>
+            </span>
+          );
+        })}
+      </div>
+
       {/* Floating chip: Documents reused */}
       <div className={cn(
         "absolute -left-5 top-12 hidden rounded-full border border-border-soft bg-white px-3 py-1.5 text-xs font-medium text-success shadow-sm md:block transition-all duration-500",

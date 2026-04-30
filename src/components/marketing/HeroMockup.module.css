@@ -47,6 +47,107 @@
   animation: review-status-active var(--process-loop-duration) var(--process-easing) infinite;
 }
 
+.floating-service-layer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+}
+
+.floating-service-icon {
+  --service-icon-size: 50px;
+  --service-rotation: 0deg;
+  --service-rgb: 26, 115, 232;
+  height: var(--service-icon-size);
+  opacity: 0;
+  position: absolute;
+  transform: translateY(12px) scale(0.94) rotate(var(--service-rotation));
+  transform-origin: center;
+  width: var(--service-icon-size);
+}
+
+.floating-service-badge {
+  align-items: center;
+  border: 1px solid rgba(var(--service-rgb), 0.18);
+  border-radius: 16px;
+  box-shadow:
+    0 12px 26px rgba(var(--service-rgb), 0.13),
+    0 0 20px rgba(var(--service-rgb), 0.09),
+    0 2px 8px rgba(60, 64, 67, 0.08);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.floating-service-layer-visible .floating-service-icon {
+  animation: floating-service-icon-in 640ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.floating-service-layer-visible .floating-service-badge {
+  animation: floating-service-idle 5.8s ease-in-out 1.1s infinite;
+}
+
+.floating-service-layer-visible .floating-service-icon:nth-child(1) {
+  animation-delay: 280ms;
+}
+
+.floating-service-layer-visible .floating-service-icon:nth-child(2) {
+  animation-delay: 420ms;
+}
+
+.floating-service-layer-visible .floating-service-icon:nth-child(3) {
+  animation-delay: 560ms;
+}
+
+.floating-service-layer-visible .floating-service-icon:nth-child(4) {
+  animation-delay: 700ms;
+}
+
+.floating-service-layer-visible .floating-service-icon:nth-child(2) .floating-service-badge {
+  animation-delay: 1.35s;
+  animation-duration: 6.2s;
+}
+
+.floating-service-layer-visible .floating-service-icon:nth-child(3) .floating-service-badge {
+  animation-delay: 1.55s;
+  animation-duration: 6s;
+}
+
+.floating-service-layer-visible .floating-service-icon:nth-child(4) .floating-service-badge {
+  animation-delay: 1.75s;
+  animation-duration: 6.4s;
+}
+
+.floating-service-payment {
+  --service-rgb: 26, 115, 232;
+  --service-rotation: -9deg;
+  left: 18%;
+  top: -10%;
+}
+
+.floating-service-sms {
+  --service-rgb: 24, 128, 56;
+  --service-rotation: 8deg;
+  right: 6%;
+  top: -7%;
+}
+
+.floating-service-sales {
+  --service-icon-size: 56px;
+  --service-rgb: 166, 88, 20;
+  --service-rotation: -7deg;
+  left: -7%;
+  top: 55%;
+}
+
+.floating-service-top-up {
+  --service-rgb: 217, 132, 0;
+  --service-rotation: 9deg;
+  bottom: -12%;
+  right: 28%;
+}
+
 @keyframes documents-reused-pulse {
   0%,
   8%,
@@ -189,6 +290,29 @@
   }
 }
 
+@keyframes floating-service-icon-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.94) rotate(var(--service-rotation));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(var(--service-rotation));
+  }
+}
+
+@keyframes floating-service-idle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .documents-reused-pulse,
   .document-vault-complete,
@@ -196,8 +320,15 @@
   .document-vault-dot,
   .readiness-badge-progress,
   .application-package-card,
-  .review-status-active {
+  .review-status-active,
+  .floating-service-icon,
+  .floating-service-badge {
     animation: none;
+  }
+
+  .floating-service-layer-visible .floating-service-icon {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(var(--service-rotation));
   }
 
   .document-vault-dot {
@@ -208,5 +339,42 @@
     box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.08);
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .floating-service-icon {
+    --service-icon-size: 46px;
+  }
+
+  .floating-service-badge {
+    border-radius: 14px;
+  }
+
+  .floating-service-sales {
+    --service-icon-size: 50px;
+    left: -3%;
+    top: 57%;
+  }
+
+  .floating-service-payment {
+    left: 13%;
+    top: -7%;
+  }
+
+  .floating-service-sms {
+    right: 2%;
+    top: -5%;
+  }
+
+  .floating-service-top-up {
+    bottom: -8%;
+    right: 18%;
+  }
+}
+
+@media (max-width: 640px) {
+  .floating-service-layer {
+    display: none;
   }
 }

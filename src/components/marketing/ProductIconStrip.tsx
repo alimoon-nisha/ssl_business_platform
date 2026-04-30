@@ -9,11 +9,11 @@ import {
 import Link from "next/link";
 import { productIconItems } from "@/data/mockPlatform";
 
-const iconMap = {
+export const serviceIconMap = {
   "Payment Gateway": { Icon: CreditCard, tone: "text-primary bg-blue-50" },
   SMS: { Icon: MessageSquareText, tone: "text-success bg-green-50" },
   "Corporate Top-Up": { Icon: Smartphone, tone: "text-amber-700 bg-amber-50" },
-  "Sales Force Automation": { Icon: UsersRound, tone: "text-error bg-red-50" },
+  "Sales Force Automation": { Icon: UsersRound, tone: "text-orange-800 bg-orange-50" },
 };
 
 const productHrefs: Record<string, string> = {
@@ -24,9 +24,9 @@ const productHrefs: Record<string, string> = {
 
 export function ProductIconStrip() {
   return (
-    <div className="mt-12 flex flex-wrap items-start justify-center gap-x-5 gap-y-5">
+    <div className="mb-8 mt-12 flex flex-wrap items-start justify-center gap-x-5 gap-y-5">
       {productIconItems.map((item) => {
-        const { Icon, tone } = iconMap[item as keyof typeof iconMap];
+        const { Icon, tone } = serviceIconMap[item as keyof typeof serviceIconMap];
         return (
           <Link
             key={item}
