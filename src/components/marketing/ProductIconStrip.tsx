@@ -11,14 +11,14 @@ import { productIconItems } from "@/data/mockPlatform";
 
 export const serviceIconMap = {
   "Payment Gateway": { Icon: CreditCard, tone: "text-primary bg-blue-50" },
-  SMS: { Icon: MessageSquareText, tone: "text-success bg-green-50" },
+  "Bulk SMS": { Icon: MessageSquareText, tone: "text-success bg-green-50" },
   "Corporate Top-Up": { Icon: Smartphone, tone: "text-amber-700 bg-amber-50" },
   "Sales Force Automation": { Icon: UsersRound, tone: "text-orange-800 bg-orange-50" },
 };
 
 const productHrefs: Record<string, string> = {
   "Payment Gateway": "/products/payment-gateway",
-  SMS: "/products/messaging-suite",
+  "Bulk SMS": "/products/messaging-suite",
   "Corporate Top-Up": "/products/corporate-recharge",
 };
 

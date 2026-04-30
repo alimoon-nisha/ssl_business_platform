@@ -6,11 +6,11 @@ import { cn } from "@/lib/cn";
 import { serviceIconMap } from "./ProductIconStrip";
 import styles from "./HeroMockup.module.css";
 
-const sidebarDots = ["bg-primary", "bg-success", "bg-warning", "bg-error"];
+const sidebarDots = ["bg-primary", "bg-primary-600", "bg-primary-400", "bg-primary-200"];
 const processLoopDuration = 7500;
 const floatingServiceIcons = [
   { name: "Payment Gateway", className: styles["floating-service-payment"] },
-  { name: "SMS", className: styles["floating-service-sms"] },
+  { name: "Bulk SMS", className: styles["floating-service-sms"] },
   { name: "Corporate Top-Up", className: styles["floating-service-top-up"] },
   { name: "Sales Force Automation", className: styles["floating-service-sales"] },
 ] as const;

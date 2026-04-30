@@ -1,6 +1,6 @@
 export const productIconItems = [
   "Payment Gateway",
-  "SMS",
+  "Bulk SMS",
   "Corporate Top-Up",
   "Sales Force Automation",
 ];

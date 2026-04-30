@@ -9,6 +9,9 @@
   --border: #dadce0;
   --border-soft: #e8eaed;
   --primary: #1e3a8a;
+  --primary-600: #2563eb;
+  --primary-400: #60a5fa;
+  --primary-200: #bfdbfe;
   --primary-hover: #1e40af;
   --success: #188038;
   --warning: #f9ab00;
@@ -25,6 +28,9 @@
   --color-border: var(--border);
   --color-border-soft: var(--border-soft);
   --color-primary: var(--primary);
+  --color-primary-600: var(--primary-600);
+  --color-primary-400: var(--primary-400);
+  --color-primary-200: var(--primary-200);
   --color-primary-hover: var(--primary-hover);
   --color-success: var(--success);
   --color-warning: var(--warning);
@@ -72,11 +78,55 @@ textarea {
   margin-inline: auto;
 }
 
+@keyframes driftBlob1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(15px, -20px) scale(1.05); }
+  66%      { transform: translate(-10px, 15px) scale(0.97); }
+}
+
+@keyframes driftBlob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-15px, 15px) scale(0.96); }
+  66%      { transform: translate(10px, -15px) scale(1.04); }
+}
+
 .soft-glow {
-  background:
-    radial-gradient(circle at 0% 85%, rgba(66, 133, 244, 0.12), transparent 24rem),
-    radial-gradient(circle at 100% 90%, rgba(30, 58, 138, 0.1), transparent 24rem),
-    #ffffff;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.soft-glow::before,
+.soft-glow::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(120px);
+}
+
+.soft-glow::before {
+  width: 40%;
+  height: 80%;
+  bottom: -10%;
+  left: -12%;
+  background: radial-gradient(circle, #4285f454 0%, #93c5fd36 35%, #0000 60%);
+  animation: driftBlob1 14s ease-in-out infinite;
+}
+
+.soft-glow::after {
+  width: 35%;
+  height: 75%;
+  bottom: -5%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(30, 58, 138, 0.22) 0%, rgba(191, 219, 254, 0.1) 35%, transparent 60%);
+  animation: driftBlob2 16s ease-in-out infinite;
+}
+
+.soft-glow > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section-pad {
