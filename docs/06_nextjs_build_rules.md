@@ -125,8 +125,8 @@ Create design tokens in `globals.css` or Tailwind config:
   --text-secondary: #5f6368;
   --border: #dadce0;
   --border-soft: #e8eaed;
-  --primary: #1a73e8;
-  --primary-hover: #185abc;
+  --primary: #1e3a8a;
+  --primary-hover: #1e40af;
   --success: #188038;
   --warning: #f9ab00;
   --error: #d93025;

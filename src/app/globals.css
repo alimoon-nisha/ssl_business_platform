@@ -8,8 +8,8 @@
   --text-secondary: #5f6368;
   --border: #dadce0;
   --border-soft: #e8eaed;
-  --primary: #1a73e8;
-  --primary-hover: #185abc;
+  --primary: #1e3a8a;
+  --primary-hover: #1e40af;
   --success: #188038;
   --warning: #f9ab00;
   --error: #d93025;
@@ -59,7 +59,7 @@ textarea {
 }
 
 ::selection {
-  background: rgba(26, 115, 232, 0.16);
+  background: rgba(30, 58, 138, 0.16);
 }
 
 .container-xl {
@@ -75,7 +75,7 @@ textarea {
 .soft-glow {
   background:
     radial-gradient(circle at 0% 85%, rgba(66, 133, 244, 0.12), transparent 24rem),
-    radial-gradient(circle at 100% 90%, rgba(26, 115, 232, 0.1), transparent 24rem),
+    radial-gradient(circle at 100% 90%, rgba(30, 58, 138, 0.1), transparent 24rem),
     #ffffff;
 }
 

@@ -38,7 +38,8 @@ export function ServicePlanCard({
       </div>
       <span
         className={cn(
-          "mb-6 inline-flex h-10 w-full items-center justify-center rounded-full border px-5 text-sm font-medium transition-colors",
+          "mb-6 inline-flex h-10 w-full items-center justify-center border px-5 text-sm font-medium transition-colors",
+          (cta === "Create account" || cta === "Start application") ? "rounded-sm" : "rounded-full",
           highlighted
             ? "border-primary bg-primary text-white group-hover:bg-primary-hover"
             : "border-border bg-white text-primary group-hover:bg-blue-50",

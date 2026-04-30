@@ -57,7 +57,7 @@
 .floating-service-icon {
   --service-icon-size: 50px;
   --service-rotation: 0deg;
-  --service-rgb: 26, 115, 232;
+  --service-rgb: 30, 58, 138;
   height: var(--service-icon-size);
   opacity: 0;
   position: absolute;
@@ -120,7 +120,7 @@
 }
 
 .floating-service-payment {
-  --service-rgb: 26, 115, 232;
+  --service-rgb: 30, 58, 138;
   --service-rotation: -9deg;
   left: 18%;
   top: -10%;
@@ -236,8 +236,8 @@
 
   39%,
   42% {
-    background-color: rgba(26, 115, 232, 0.035);
-    border-color: rgba(26, 115, 232, 0.22);
+    background-color: rgba(30, 58, 138, 0.035);
+    border-color: rgba(30, 58, 138, 0.22);
   }
 }
 
@@ -252,8 +252,8 @@
 
   41%,
   44% {
-    background-color: rgba(26, 115, 232, 0.035);
-    border-color: rgba(26, 115, 232, 0.22);
+    background-color: rgba(30, 58, 138, 0.035);
+    border-color: rgba(30, 58, 138, 0.22);
   }
 }
 
@@ -268,8 +268,8 @@
 
   43%,
   46% {
-    background-color: rgba(26, 115, 232, 0.035);
-    border-color: rgba(26, 115, 232, 0.22);
+    background-color: rgba(30, 58, 138, 0.035);
+    border-color: rgba(30, 58, 138, 0.22);
   }
 }
 
@@ -277,14 +277,14 @@
   0%,
   46%,
   100% {
-    box-shadow: 0 1px 2px rgba(26, 115, 232, 0.12);
+    box-shadow: 0 1px 2px rgba(30, 58, 138, 0.12);
     opacity: 0.94;
     transform: translateX(0);
   }
 
   52%,
   86% {
-    box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.08), 0 10px 24px rgba(26, 115, 232, 0.13);
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.08), 0 10px 24px rgba(30, 58, 138, 0.13);
     opacity: 1;
     transform: translateX(-6px);
   }
@@ -336,7 +336,7 @@
   }
 
   .review-status-active {
-    box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.08);
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.08);
     opacity: 1;
     transform: none;
   }

@@ -41,8 +41,8 @@ Use a Google Workspace-inspired color balance, but adapted to SSL:
 - Text secondary: `#5f6368`
 - Border: `#dadce0`
 - Subtle border: `#e8eaed`
-- Primary blue: `#1a73e8`
-- Primary blue hover: `#185abc`
+- Primary blue: `#1e3a8a`
+- Primary blue hover: `#1e40af`
 - Success green: `#188038`
 - Warning amber: `#f9ab00`
 - Error red: `#d93025`
