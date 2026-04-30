@@ -19,8 +19,7 @@ Build sections in this exact order:
 8. FAQ section
 9. Resources / learning cards section
 10. Final CTA block
-11. Newsletter signup block
-12. Footer
+11. Footer
 
 Do not add unrelated sections.
 
@@ -343,22 +342,7 @@ CTA:
 
 > Get started
 
-## 11. Newsletter signup block
-Match the pale blue newsletter block near the bottom of the Workspace page.
-
-Left text:
-
-> Sign up for product updates, service launches, and business tips.
-
-Right form:
-
-- First name
-- Last name
-- Business email
-- Region dropdown default: Bangladesh
-- Subscribe button
-
-## 12. Footer
+## 11. Footer
 Large multi-column footer.
 
 Columns:
@@ -388,7 +372,6 @@ Create these reusable components:
 - `ServicePlanCard`
 - `FAQAccordion`
 - `ResourceCard`
-- `NewsletterBlock`
 - `CTASection`
 
 ## Anti-patterns

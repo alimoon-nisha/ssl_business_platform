@@ -1,40 +1,32 @@
 import {
   Banknote,
-  Cloud,
   Code2,
   CreditCard,
   MessageSquareText,
-  RotateCcw,
-  ShieldCheck,
   Smartphone,
   UsersRound,
 } from "lucide-react";
 import Link from "next/link";
 import { productIconItems } from "@/data/mockPlatform";
 
-const iconMap = [
-  { Icon: CreditCard, tone: "text-primary bg-blue-50" },
-  { Icon: MessageSquareText, tone: "text-success bg-green-50" },
-  { Icon: Smartphone, tone: "text-amber-700 bg-amber-50" },
-  { Icon: RotateCcw, tone: "text-error bg-red-50" },
-  { Icon: Cloud, tone: "text-primary bg-blue-50" },
-  { Icon: ShieldCheck, tone: "text-success bg-green-50" },
-  { Icon: Code2, tone: "text-error bg-red-50" },
-  { Icon: UsersRound, tone: "text-amber-700 bg-amber-50" },
-];
+const iconMap = {
+  "Payment Gateway": { Icon: CreditCard, tone: "text-primary bg-blue-50" },
+  SMS: { Icon: MessageSquareText, tone: "text-success bg-green-50" },
+  "Corporate Top-Up": { Icon: Smartphone, tone: "text-amber-700 bg-amber-50" },
+  "Sales Force Automation": { Icon: UsersRound, tone: "text-error bg-red-50" },
+};
 
 const productHrefs: Record<string, string> = {
   "Payment Gateway": "/products/payment-gateway",
   SMS: "/products/messaging-suite",
   "Corporate Top-Up": "/products/corporate-recharge",
-  "Virtual Recharge": "/products/corporate-recharge",
 };
 
 export function ProductIconStrip() {
   return (
     <div className="mt-12 flex flex-wrap items-start justify-center gap-x-5 gap-y-5">
-      {productIconItems.map((item, index) => {
-        const { Icon, tone } = iconMap[index];
+      {productIconItems.map((item) => {
+        const { Icon, tone } = iconMap[item as keyof typeof iconMap];
         return (
           <Link
             key={item}

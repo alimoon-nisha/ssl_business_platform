@@ -8,7 +8,6 @@ import { FeatureCard } from "@/components/marketing/FeatureCard";
 import { Footer } from "@/components/marketing/Footer";
 import { Header } from "@/components/marketing/Header";
 import { HeroMockup } from "@/components/marketing/HeroMockup";
-import { NewsletterBlock } from "@/components/marketing/NewsletterBlock";
 import { ProductIconStrip } from "@/components/marketing/ProductIconStrip";
 import { AssessmentTriggerCard } from "@/components/marketing/AssessmentTriggerCard";
 import { ResourceCard } from "@/components/marketing/ResourceCard";
@@ -46,6 +45,7 @@ export default function Home() {
           </div>
 
           <section id="overview" className="container-lg pb-20 text-center">
+            <ProductIconStrip />
             <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary">
               All the services your business needs, managed from one account.
             </h2>
@@ -61,7 +61,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <ProductIconStrip />
           </section>
         </section>
 
@@ -171,7 +170,6 @@ export default function Home() {
         </section>
 
         <CTASection />
-        <NewsletterBlock />
       </main>
       <Footer />
     </>

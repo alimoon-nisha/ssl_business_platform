@@ -73,7 +73,6 @@ src/
       ServicePlanCard.tsx
       FAQAccordion.tsx
       ResourceCard.tsx
-      NewsletterBlock.tsx
       CTASection.tsx
     product/
       ProductHero.tsx
@@ -235,7 +234,7 @@ The prototype is acceptable only if:
 - Product detail pages follow the Google Workspace-inspired product detail structure described in the specs.
 - Get-started page follows the spacious account setup structure described in the specs.
 - Content is SSL Business Platform content, not Google content.
-- Header, footer, cards, FAQ, CTA, and newsletter blocks are consistent across pages.
+- Header, footer, cards, FAQ, and CTA blocks are consistent across pages.
 - Dashboard first page clearly shows service activation, applications, document vault, billing, and support.
 - Mobile layout is usable.
 - No Google assets or copied Google text are used.

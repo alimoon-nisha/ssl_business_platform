@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import { TopBar } from "@/components/dashboard/TopBar";
-import { cn } from "@/lib/cn";
 
 export function ServiceApplicationShell({
   children,

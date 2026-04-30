@@ -6,7 +6,7 @@
 ## Page goal
 Create a Google Workspace-inspired product detail page. The first product detail page is for SSLCOMMERZ Payment Gateway.
 
-The design should use this product-detail structure: hero at top, centered trust/product icon row, video/demo block, setup steps, benefit section, FAQ, CTA, newsletter, footer.
+The design should use this product-detail structure: hero at top, centered trust/product icon row, video/demo block, setup steps, benefit section, FAQ, CTA, footer.
 
 ## Exact section order
 1. Global header
@@ -17,8 +17,7 @@ The design should use this product-detail structure: hero at top, centered trust
 6. Benefits section
 7. Product FAQ
 8. Final product CTA
-9. Newsletter signup block
-10. Footer
+9. Footer
 
 ## 1. Global header
 Same as landing page.
@@ -220,10 +219,7 @@ CTA:
 
 > Get started
 
-## 9. Newsletter signup block
-Same component as landing page.
-
-## 10. Footer
+## 9. Footer
 Same footer as landing page.
 
 ## Product detail template requirement

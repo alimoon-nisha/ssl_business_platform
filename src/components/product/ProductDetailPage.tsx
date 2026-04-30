@@ -1,6 +1,5 @@
 import { Footer } from "@/components/marketing/Footer";
 import { Header } from "@/components/marketing/Header";
-import { NewsletterBlock } from "@/components/marketing/NewsletterBlock";
 import { ProductBenefits } from "@/components/product/ProductBenefits";
 import { ProductCTA } from "@/components/product/ProductCTA";
 import { ProductFAQ } from "@/components/product/ProductFAQ";
@@ -71,7 +70,6 @@ export function ProductDetailPage({ product }: { product: ProductDetailContent }
           href={startHref}
           icon={product.heroIcon}
         />
-        <NewsletterBlock />
       </main>
       <Footer />
     </>

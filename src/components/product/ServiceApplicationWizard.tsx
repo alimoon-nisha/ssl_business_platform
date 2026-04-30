@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { Upload, Check, X } from "lucide-react";
+import { Upload, Check } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button, ButtonLink } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/cn";
 
 type ServiceSlug = "payment-gateway" | "messaging-suite" | "corporate-recharge" | "cloud-hosting";
@@ -43,20 +42,12 @@ const documentOptions = [
 ];
 
 export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageName }: ServiceApplicationWizardProps) {
-  const [isMounted, setIsMounted] = useState(false);
   const [step, setStep] = useState<Step>(1);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(packageName || "");
   const [uploadedFiles, setUploadedFiles] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   const packageList = packageOptions[serviceSlug as ServiceSlug] ?? [];
-
-  const selectedPackageLabel =
-    packageList.find((item) => item.id === selectedPackage)?.name || selectedPackage || "Not selected";
 
   const canGoNext =
     (step === 1 && termsAccepted) ||
@@ -311,7 +302,7 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
             </Button>
           ) : null}
           {step < 4 ? (
-            <Button type="button" onClick={goNext} disabled={!isMounted || !canGoNext}>
+            <Button type="button" onClick={goNext} disabled={!canGoNext}>
               Next
             </Button>
           ) : (
