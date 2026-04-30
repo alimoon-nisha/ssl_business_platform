@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -24,13 +25,7 @@ export function Logo({ centered = false }: { centered?: boolean }) {
       )}
       aria-label="SSL Business Platform home"
     >
-      <span className="grid size-7 grid-cols-2 gap-0.5 rounded-lg border border-border-soft bg-white p-1">
-        <span className="rounded-sm bg-primary" />
-        <span className="rounded-sm bg-success" />
-        <span className="rounded-sm bg-warning" />
-        <span className="rounded-sm bg-error" />
-      </span>
-      <span>SSL Business Platform</span>
+      <Image src="/logo.svg" alt="SSL Business Platform" width={200} height={37} priority />
     </Link>
   );
 }
