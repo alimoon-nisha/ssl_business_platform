@@ -5,8 +5,8 @@ import { currentBusiness } from "@/data/mockPlatform";
 export function TopBar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-white">
-      <div className="flex h-16 items-center gap-5 px-4 md:px-6">
-        <div className="w-[240px] shrink-0">
+      <div className="container-full flex h-16 items-center gap-5">
+        <div className="flex w-[240px] shrink-0 items-center">
           <Logo />
         </div>
         <div className="hidden min-w-[190px] rounded-full border border-border-soft px-4 py-2 text-sm font-medium text-text-primary lg:block">

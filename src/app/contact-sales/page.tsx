@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ContactSalesPage() {
   return (
     <>
-      <Header showContactSalesLink={false} />
+      <Header />
       <main>
         <section className="container-xl section-pad">
           <ContactSalesForm />

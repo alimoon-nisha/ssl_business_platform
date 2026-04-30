@@ -21,7 +21,7 @@ export function AuthShell({
 }) {
   return (
     <main className="min-h-screen bg-white">
-      <div className="flex h-[74px] items-center justify-center border-b border-border">
+      <div className="flex h-16 items-center justify-center border-b border-border">
         <Logo centered />
       </div>
       <div className="container-lg grid gap-16 py-16 lg:grid-cols-[460px_1fr] lg:items-start lg:py-20">

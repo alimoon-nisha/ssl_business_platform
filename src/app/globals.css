@@ -78,6 +78,11 @@ textarea {
   margin-inline: auto;
 }
 
+.container-full {
+  width: 100%;
+  padding-inline: 20px;
+}
+
 @keyframes driftBlob1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33%      { transform: translate(15px, -20px) scale(1.05); }
@@ -137,6 +142,10 @@ textarea {
   .container-xl,
   .container-lg {
     width: min(100% - 28px, 1180px);
+  }
+
+  .container-full {
+    padding-inline: 14px;
   }
 
   .section-pad {

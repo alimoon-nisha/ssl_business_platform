@@ -39,7 +39,7 @@ export function Header({
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
-      <div className="container-xl flex h-16 items-center justify-between gap-6">
+      <div className="container-full flex h-16 items-center justify-between gap-6">
         <Logo />
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-text-secondary lg:flex">
@@ -80,7 +80,7 @@ export function Header({
 
       {open ? (
         <div className="border-t border-border-soft bg-white lg:hidden">
-          <nav className="container-xl flex flex-col gap-1 py-4 text-sm">
+          <nav className="container-full flex flex-col gap-1 py-4 text-sm">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
