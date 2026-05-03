@@ -1,4 +1,4 @@
-# SSL Business Platform Website and App Prototype Docs
+# SSL Business Hub Website and App Prototype Docs
 
 Use these markdown files as the implementation contract for the prototype.
 

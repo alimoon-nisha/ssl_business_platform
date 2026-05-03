@@ -8,12 +8,12 @@ Important product decision:
 
 - `/get-started` and `/sign-up` are not separate journeys.
 - `Get Started` is the unified signup and business setup flow.
-- Users create one SSL Business Platform account first.
+- Users create one SSL Business Hub account first.
 - If they selected a service before signup, they can continue into that service application after account creation.
 - If they did not select a service, they land on the dashboard after account creation.
 - Service application steps are not part of the general account setup unless a service was selected first.
 
-This journey must use the existing SSL Business Platform design language already created in the current prototype.
+This journey must use the existing SSL Business Hub design language already created in the current prototype.
 
 ## UX rationale
 
@@ -194,7 +194,7 @@ Rules:
 
 ## Shared visual direction
 
-Use the current SSL Business Platform visual language:
+Use the current SSL Business Hub visual language:
 
 - Clean white background.
 - Workspace-inspired spacing.
@@ -220,7 +220,7 @@ Use this flow logic:
 
 Purpose:
 
-Allow existing users to access their SSL Business Platform dashboard.
+Allow existing users to access their SSL Business Hub dashboard.
 
 Title:
 
@@ -314,7 +314,7 @@ Behavior:
 
 Purpose:
 
-Create one SSL Business Platform account and collect minimum business setup data.
+Create one SSL Business Hub account and collect minimum business setup data.
 
 This flow replaces the previous separate `/sign-up` and `/get-started` journeys.
 
@@ -544,7 +544,7 @@ Account created
 Title:
 
 ```text
-Your SSL Business account is ready
+Your SSL Business Hub account is ready
 ```
 
 Body:
@@ -581,7 +581,7 @@ Account created
 Title:
 
 ```text
-Your SSL Business account is ready
+Your SSL Business Hub account is ready
 ```
 
 Service continuation card title:

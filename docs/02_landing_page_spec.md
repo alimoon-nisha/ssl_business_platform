@@ -4,7 +4,7 @@
 `/`
 
 ## Page goal
-Introduce SSL Business Platform as the unified entry point for SSL Wireless business services. The page should feel structurally close to a calm, Google Workspace-inspired enterprise landing page.
+Introduce SSL Business Hub as the unified entry point for SSL Wireless business services. The page should feel structurally close to a calm, Google Workspace-inspired enterprise landing page.
 
 ## Exact section order
 Build sections in this exact order:
@@ -28,7 +28,7 @@ Use the global header from `01_global_design_language.md`.
 
 Header content:
 
-- Logo text: `SSL Business Platform`
+- Logo text: `SSL Business Hub`
 - Nav links: Products, Solutions, Pricing, Resources, Support
 - Right links: Contact sales, Sign in, Get started
 
@@ -288,7 +288,7 @@ Title:
 
 FAQ rows:
 
-1. What is SSL Business Platform?
+1. What is SSL Business Hub?
 2. Is this the same as SSLCOMMERZ?
 3. Can I activate more than one service from one account?
 4. Do I need to upload the same documents again?

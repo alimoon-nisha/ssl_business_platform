@@ -37,7 +37,7 @@ Desktop structure:
 ## Top bar
 Left:
 
-- SSL Business Platform logo.
+- SSL Business Hub logo.
 - Business switcher: `Rahman Traders Ltd.` or placeholder company.
 
 Center optional:

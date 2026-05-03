@@ -61,7 +61,7 @@ Codex should use these only for content facts, not for visual design:
 - https://merchant.sslcommerz.com/
 
 ## Product positioning
-Working name: SSL Business Platform
+Working name: SSL Business Hub
 
 Suggested one-line positioning:
 

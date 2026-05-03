@@ -233,7 +233,7 @@ The prototype is acceptable only if:
 - Landing page follows the Google Workspace-inspired landing page structure described in the specs.
 - Product detail pages follow the Google Workspace-inspired product detail structure described in the specs.
 - Get-started page follows the spacious account setup structure described in the specs.
-- Content is SSL Business Platform content, not Google content.
+- Content is SSL Business Hub content, not Google content.
 - Header, footer, cards, FAQ, and CTA blocks are consistent across pages.
 - Dashboard first page clearly shows service activation, applications, document vault, billing, and support.
 - Mobile layout is usable.

@@ -92,7 +92,7 @@ Use a restrained enterprise header style:
 
 - Sticky or static top header, white background.
 - Bottom border: 1px solid `#dadce0`.
-- Left: SSL Business Platform wordmark.
+- Left: SSL Business Hub wordmark.
 - Middle nav: Products, Solutions, Pricing, Resources, Support.
 - Right: Contact sales, Sign in, Get started button.
 - Get started is a blue rounded pill.
