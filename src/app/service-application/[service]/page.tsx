@@ -6,7 +6,9 @@ import { products } from "@/data/productContent";
 
 const serviceLabels: Record<string, string> = {
   "payment-gateway": "SSLCOMMERZ Payment Gateway",
+  "bulk-sms": "Bulk SMS",
   "messaging-suite": "Messaging Suite",
+  "corporate-top-up": "Corporate Top-Up",
   "corporate-recharge": "Corporate Recharge",
   "cloud-hosting": "Cloud Hosting",
 };

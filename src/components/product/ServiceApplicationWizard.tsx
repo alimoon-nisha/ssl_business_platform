@@ -7,7 +7,13 @@ import { Badge } from "@/components/ui/Badge";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
-type ServiceSlug = "payment-gateway" | "messaging-suite" | "corporate-recharge" | "cloud-hosting";
+type ServiceSlug =
+  | "payment-gateway"
+  | "bulk-sms"
+  | "messaging-suite"
+  | "corporate-top-up"
+  | "corporate-recharge"
+  | "cloud-hosting";
 type Step = 1 | 2 | 3 | 4;
 
 type ServiceApplicationWizardProps = {
@@ -23,19 +29,25 @@ type DocumentRequirement = {
   capture?: "user";
 };
 
-const packageOptions: Record<ServiceSlug, Array<{ id: string; name: string; price: string; description: string }>> = {
+const messagingPackageOptions = [
+  { id: "starter", name: "Starter Plan", price: "৳1732.50", description: "Ideal for small-scale campaigns", quantity: "5,000 SMS" },
+  { id: "value", name: "Value Plan", price: "৳3360.00", description: "Best for high-volume messaging", quantity: "10,000 SMS" },
+];
+
+const corporateRechargePackageOptions = [
+  { id: "standard", name: "Standard", price: "Custom pricing", description: "For business recharge workflows and approvals." },
+  { id: "volume", name: "Volume", price: "Custom pricing", description: "For larger recharge programs and reporting." },
+];
+
+const packageOptions: Record<ServiceSlug, Array<{ id: string; name: string; price: string; description: string; quantity?: string }>> = {
   "payment-gateway": [
     { id: "standard", name: "Standard", price: "Custom pricing", description: "Best for new merchants reviewing onboarding requirements." },
     { id: "growth", name: "Growth", price: "Custom pricing", description: "For businesses expecting higher payment volume." },
   ],
-  "messaging-suite": [
-    { id: "starter", name: "Starter", price: "Custom pricing", description: "For teams starting with bulk SMS and alerts." },
-    { id: "standard", name: "Standard", price: "Custom pricing", description: "Includes sender ID and campaign support." },
-  ],
-  "corporate-recharge": [
-    { id: "standard", name: "Standard", price: "Custom pricing", description: "For business recharge workflows and approvals." },
-    { id: "volume", name: "Volume", price: "Custom pricing", description: "For larger recharge programs and reporting." },
-  ],
+  "bulk-sms": messagingPackageOptions,
+  "messaging-suite": messagingPackageOptions,
+  "corporate-top-up": corporateRechargePackageOptions,
+  "corporate-recharge": corporateRechargePackageOptions,
   "cloud-hosting": [
     { id: "contact-sales", name: "Contact sales", price: "Custom pricing", description: "Pricing and scope depend on your infrastructure needs." },
   ],
@@ -65,7 +77,16 @@ const bulkSmsDocumentOptions: DocumentRequirement[] = [
 ];
 
 const documentOptionsByService: Record<ServiceSlug, DocumentRequirement[]> = {
+  "bulk-sms": bulkSmsDocumentOptions,
   "messaging-suite": bulkSmsDocumentOptions,
+  "corporate-top-up": [
+    ...bulkSmsDocumentOptions,
+    {
+      name: "VAT Certificate",
+      helper: "PDF, JPG, or PNG (Max 5MB)",
+      accept: ".pdf,.jpg,.jpeg,.png",
+    },
+  ],
   "corporate-recharge": [
     ...bulkSmsDocumentOptions,
     {
@@ -94,6 +115,37 @@ const documentOptionsByService: Record<ServiceSlug, DocumentRequirement[]> = {
     },
   ],
   "cloud-hosting": bulkSmsDocumentOptions,
+};
+
+const messagingSuiteTerms = [
+  "At all-time, we shall adhere to all the rules, regulations and guidelines of BTRC and time-to-time given instruction of the Telecom Operators and SSL while using the SMS service.",
+  "Telecom Operator and SSL shall have the right to disconnect, suspend and/or bar the services for any violation of any legal and regulatory requirement of BTRC or for sending any unauthorized SMS or for giving any false information in this regard..",
+  "We will ensure that the contents of SMS are not going against local legal requirement, national security and/or national interest, social norms, culture and religious belief of the people of Bangladesh in case of violation of this clause, we shall be sole responsible for whatever consequences that attracts..",
+  "We be sole responsible for any misuse of the port, hacking by third party or internally from our end, and will be responsible for the SMS text also.",
+  "We will not in any situation use SSL’s platform/API for sending SMS of A2P (Application-to-Person) of any entity of foreign origin (entity from the outside of Bangladesh). We shall be solely liable for any such unacceptable act. Furthermore, SSL shall be entitled to terminate the service with immediate effect if any such activity by us is detected. Moreover, SSL shall have the right to take any legal recourse against us for infringement of this clause and financial and/or reputational loss in addition to its right to the service termination.",
+  "All promotional/Notification/OTP mass communication through SMS, the content has to be in Bangla. No other language is allowed, as per BTRC regulations.",
+  "A single SMS in English will be counted as 160 characters, and in Bangla, it will be 70 characters.",
+  "For multiple English SMS, each will be counted as 153 characters, and for Bangla SMS, each will be 67 characters.",
+  "All SMS notifications must be in Bangla, as per BTRC regulations.",
+  "Promotional SMS content needs BTRC verification, handled by SSL on behalf of the client.",
+  "Masking, limited to 11 characters, will be in English and applicable for all local operators..",
+  "SMS validity is unlimited, and API compatibility is ensured.",
+  "No international traffic is allowed through local channels.",
+  "Regulatory actions can be taken for any illegal activity.",
+  "Clients need to fill masking registration forms on their letterhead.",
+  "No spam or illegal SMS are allowed as per operator/regulator policies.",
+  "Agreement and legal papers will be signed by all parties.",
+  "KYC documents must be provided by clients.",
+  "The lead time is 4-5 working days for masking account creation.",
+  "SMS rates may change at any time as per confirmation of operators and regulatory authority.",
+  "For local SMS, customers must have a physical entity in Bangladesh, and SMS must be generated from their local server.",
+  "Client's IP will be whitelisted for security purposes.",
+  "No English promotional SMS is allowed through API.",
+];
+
+const termsByService: Partial<Record<ServiceSlug, string[]>> = {
+  "messaging-suite": messagingSuiteTerms,
+  "bulk-sms": messagingSuiteTerms,
 };
 
 export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageName }: ServiceApplicationWizardProps) {
@@ -247,30 +299,44 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
               <p>
                 By proceeding with this application, you agree to the following terms and conditions governing the use of SSL Wireless business services. Please read this document carefully before continuing.
               </p>
-              <p>
-                <strong>1. Acceptance of Terms:</strong> You acknowledge that you have read, understood, and agree to be bound by these terms. If you are applying on behalf of a business entity, you represent that you have the authority to bind such entity to these terms.
-              </p>
-              <p>
-                <strong>2. Service Provision:</strong> SSL Wireless agrees to provide the services described in your application subject to successful review of your business profile and documents. Approval is at the sole discretion of SSL Wireless and its partner financial institutions where applicable.
-              </p>
-              <p>
-                <strong>3. Compliance & Documentation:</strong> You agree to provide accurate and complete information and documentation as required by the laws of Bangladesh and SSL internal policies. Failure to provide valid documentation may result in application rejection.
-              </p>
-              <p>
-                <strong>4. Fees & Payments:</strong> Service fees, transaction charges, and subscription costs are determined by the selected package and will be communicated during the onboarding process. Fees are subject to change with prior notice.
-              </p>
-              <p>
-                <strong>5. Data Privacy & Security:</strong> We value your privacy. Your business data is handled in accordance with our Privacy Policy. You are responsible for maintaining the security of your account credentials.
-              </p>
-              <p>
-                <strong>6. Prohibited Activities:</strong> You agree not to use SSL services for any illegal activities, including but not limited to money laundering, fraud, or unauthorized financial transactions.
-              </p>
-              <p>
-                <strong>7. Termination:</strong> Either party may terminate the service agreement with prior notice as specified in the service-specific contract.
-              </p>
-              <p>
-                <strong>8. Amendments:</strong> SSL Wireless reserves the right to amend these terms at any time. Continued use of the service constitutes acceptance of the updated terms.
-              </p>
+              
+              {termsByService[serviceSlug as ServiceSlug] ? (
+                <div className="space-y-4">
+                  {termsByService[serviceSlug as ServiceSlug]?.map((term, index) => (
+                    <p key={index}>
+                      <strong>{index + 1}.</strong> {term}
+                    </p>
+                  ))}
+                </div>
+              ) : (
+                <>
+                  <p>
+                    <strong>1. Acceptance of Terms:</strong> You acknowledge that you have read, understood, and agree to be bound by these terms. If you are applying on behalf of a business entity, you represent that you have the authority to bind such entity to these terms.
+                  </p>
+                  <p>
+                    <strong>2. Service Provision:</strong> SSL Wireless agrees to provide the services described in your application subject to successful review of your business profile and documents. Approval is at the sole discretion of SSL Wireless and its partner financial institutions where applicable.
+                  </p>
+                  <p>
+                    <strong>3. Compliance & Documentation:</strong> You agree to provide accurate and complete information and documentation as required by the laws of Bangladesh and SSL internal policies. Failure to provide valid documentation may result in application rejection.
+                  </p>
+                  <p>
+                    <strong>4. Fees & Payments:</strong> Service fees, transaction charges, and subscription costs are determined by the selected package and will be communicated during the onboarding process. Fees are subject to change with prior notice.
+                  </p>
+                  <p>
+                    <strong>5. Data Privacy & Security:</strong> We value your privacy. Your business data is handled in accordance with our Privacy Policy. You are responsible for maintaining the security of your account credentials.
+                  </p>
+                  <p>
+                    <strong>6. Prohibited Activities:</strong> You agree not to use SSL services for any illegal activities, including but not limited to money laundering, fraud, or unauthorized financial transactions.
+                  </p>
+                  <p>
+                    <strong>7. Termination:</strong> Either party may terminate the service agreement with prior notice as specified in the service-specific contract.
+                  </p>
+                  <p>
+                    <strong>8. Amendments:</strong> SSL Wireless reserves the right to amend these terms at any time. Continued use of the service constitutes acceptance of the updated terms.
+                  </p>
+                </>
+              )}
+              
               <p>
                 For more detailed information, please contact our support team or refer to the full service documentation available in your dashboard resources.
               </p>
@@ -311,9 +377,14 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
                   )}
                   <div>
                     <h2 className="text-lg font-semibold text-text-primary">{item.name}</h2>
+                    {item.quantity && (
+                      <div className="mt-1.5 inline-flex items-center rounded-md bg-black px-2 py-0.5 text-xs font-semibold text-white">
+                        {item.quantity}
+                      </div>
+                    )}
                     <p className="mt-2 text-sm leading-6 text-text-secondary">{item.description}</p>
                   </div>
-                  <p className="mt-5 text-sm font-medium text-primary">{item.price}</p>
+                  <p className="mt-5 text-xl font-medium text-primary">{item.price}</p>
                 </button>
               );
             })}
@@ -446,7 +517,7 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
                       >
                         {packageList.map((pkg) => (
                           <option key={pkg.id} value={pkg.id}>
-                            {pkg.name}
+                            {pkg.name} {pkg.quantity ? `(${pkg.quantity})` : ""}
                           </option>
                         ))}
                       </select>
@@ -459,7 +530,7 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
                   ),
                 },
                 { label: "Documents uploaded", value: Object.keys(uploadedFiles).length || 0 },
-                { label: "Total payable now", value: "Custom pricing" },
+                { label: "Total payable now", value: packageList.find(p => p.id === selectedPackage)?.price || "Custom pricing" },
               ].map((item, index) => (
                 <div
                   key={item.label}
