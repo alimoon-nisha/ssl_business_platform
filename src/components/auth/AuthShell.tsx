@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { Logo } from "@/components/marketing/Header";
 import { Badge } from "@/components/ui/Badge";
+import { SimplifiedFooter } from "@/components/marketing/Footer";
 import { cn } from "@/lib/cn";
 
 export function AuthShell({
@@ -20,11 +21,11 @@ export function AuthShell({
   contentAlign?: "start" | "center";
 }) {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="flex min-h-screen flex-col bg-white">
       <div className="flex h-16 items-center justify-center border-b border-border">
         <Logo centered />
       </div>
-      <div className="container-lg grid gap-16 py-16 lg:grid-cols-[460px_1fr] lg:items-start lg:py-20">
+      <div className="container-lg flex-1 grid gap-16 py-16 lg:grid-cols-[460px_1fr] lg:items-start lg:py-20">
         <section className={cn(contentAlign === "center" && "lg:self-center")}>{children}</section>
         <aside className="hidden text-center lg:block">
           <Image
@@ -48,6 +49,7 @@ export function AuthShell({
           </p>
         </aside>
       </div>
+      <SimplifiedFooter />
     </main>
   );
 }

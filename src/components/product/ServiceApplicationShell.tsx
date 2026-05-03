@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import { TopBar } from "@/components/dashboard/TopBar";
+import { SimplifiedFooter } from "@/components/marketing/Footer";
 
 export function ServiceApplicationShell({
   children,
@@ -14,9 +15,9 @@ export function ServiceApplicationShell({
   image?: string;
 }) {
   return (
-    <main className="min-h-screen bg-white">
-      <TopBar />
-      <div className="container-lg grid gap-16 py-12 lg:grid-cols-[1fr_400px] lg:items-start lg:py-16">
+    <main className="flex min-h-screen flex-col bg-white">
+      <TopBar showSearch={false} />
+      <div className="container-lg flex-1 grid gap-16 py-12 lg:grid-cols-[1fr_400px] lg:items-start lg:py-16">
         <section>{children}</section>
         <aside className="hidden text-center lg:block">
           <div className="sticky top-24">
@@ -37,6 +38,7 @@ export function ServiceApplicationShell({
           </div>
         </aside>
       </div>
+      <SimplifiedFooter />
     </main>
   );
 }

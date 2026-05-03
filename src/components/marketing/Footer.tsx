@@ -109,3 +109,21 @@ export function Footer() {
     </footer>
   );
 }
+
+export function SimplifiedFooter() {
+  return (
+    <footer className="border-t border-border-soft bg-white">
+      <div className="container-lg py-8">
+        <div className="flex flex-col gap-4 text-xs text-text-secondary sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Image src="/sslwireless.svg" alt="SSL Wireless" width={120} height={22} className="h-5.5 w-auto" />
+            <Link href="/get-started" className="hover:text-primary transition-colors">Terms & Conditions</Link>
+            <Link href="/get-started" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="/get-started" className="hover:text-primary transition-colors">Contact</Link>
+          </div>
+          <span>English - Bangladesh</span>
+        </div>
+      </div>
+    </footer>
+  );
+}

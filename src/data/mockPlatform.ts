@@ -122,7 +122,7 @@ export const currentBusiness = {
   name: "Rahman Traders Ltd.",
   userName: "Subin",
   profileCompletion: 65,
-  missingItems: ["Trade license", "Bank document"],
+  missingItems: ["Trade license", "NID Back Side"],
 };
 
 export const services = [
@@ -192,6 +192,6 @@ export const documents = [
   { name: "Trade license", status: "Missing" },
   { name: "TIN certificate", status: "Uploaded" },
   { name: "BIN/VAT certificate", status: "Optional" },
-  { name: "Authorized person NID", status: "Uploaded" },
-  { name: "Bank document", status: "Missing" },
+  { name: "NID Front Side", status: "Uploaded" },
+  { name: "NID Back Side", status: "Missing" },
 ];

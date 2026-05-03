@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Upload, Check } from "lucide-react";
+import { Camera, Check, Upload, X } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
@@ -14,6 +14,13 @@ type ServiceApplicationWizardProps = {
   serviceSlug: string;
   serviceLabel: string;
   packageName: string;
+};
+
+type DocumentRequirement = {
+  name: string;
+  helper: string;
+  accept: string;
+  capture?: "user";
 };
 
 const packageOptions: Record<ServiceSlug, Array<{ id: string; name: string; price: string; description: string }>> = {
@@ -34,20 +41,74 @@ const packageOptions: Record<ServiceSlug, Array<{ id: string; name: string; pric
   ],
 };
 
-const documentOptions = [
-  "Trade license",
-  "TIN certificate",
-  "Authorized person NID",
-  "Bank document or cheque leaf",
+const bulkSmsDocumentOptions: DocumentRequirement[] = [
+  {
+    name: "NID Front Side",
+    helper: "JPG or PNG (Max 5MB)",
+    accept: ".jpg,.jpeg,.png",
+  },
+  {
+    name: "NID Back Side",
+    helper: "JPG or PNG (Max 5MB)",
+    accept: ".jpg,.jpeg,.png",
+  },
+  {
+    name: "Trade license",
+    helper: "PDF, JPG, or PNG (Max 5MB)",
+    accept: ".pdf,.jpg,.jpeg,.png",
+  },
+  {
+    name: "TIN certificate",
+    helper: "PDF, JPG, or PNG (Max 5MB)",
+    accept: ".pdf,.jpg,.jpeg,.png",
+  },
 ];
+
+const documentOptionsByService: Record<ServiceSlug, DocumentRequirement[]> = {
+  "messaging-suite": bulkSmsDocumentOptions,
+  "corporate-recharge": [
+    ...bulkSmsDocumentOptions,
+    {
+      name: "VAT Certificate",
+      helper: "PDF, JPG, or PNG (Max 5MB)",
+      accept: ".pdf,.jpg,.jpeg,.png",
+    },
+  ],
+  "payment-gateway": [
+    {
+      name: "User photo",
+      helper: "Take a JPG or PNG photo (Max 5MB)",
+      accept: "image/*",
+      capture: "user",
+    },
+    ...bulkSmsDocumentOptions,
+    {
+      name: "Bank cheque leaf",
+      helper: "PDF, JPG, or PNG (Max 5MB)",
+      accept: ".pdf,.jpg,.jpeg,.png",
+    },
+    {
+      name: "Company logo",
+      helper: "JPG or PNG (Max 5MB)",
+      accept: ".jpg,.jpeg,.png",
+    },
+  ],
+  "cloud-hosting": bulkSmsDocumentOptions,
+};
 
 export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageName }: ServiceApplicationWizardProps) {
   const [step, setStep] = useState<Step>(1);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(packageName || "");
   const [uploadedFiles, setUploadedFiles] = useState<Record<string, string>>({});
+  const [cameraOpen, setCameraOpen] = useState(false);
+  const [cameraError, setCameraError] = useState("");
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const streamRef = useRef<MediaStream | null>(null);
 
   const packageList = packageOptions[serviceSlug as ServiceSlug] ?? [];
+  const documentOptions =
+    documentOptionsByService[serviceSlug as ServiceSlug] ?? bulkSmsDocumentOptions;
 
   const canGoNext =
     (step === 1 && termsAccepted) ||
@@ -60,6 +121,72 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
       setUploadedFiles((prev) => ({ ...prev, [docName]: file.name }));
     }
   }
+
+  function stopCamera() {
+    streamRef.current?.getTracks().forEach((track) => track.stop());
+    streamRef.current = null;
+
+    if (videoRef.current) {
+      videoRef.current.srcObject = null;
+    }
+  }
+
+  async function openCamera() {
+    setCameraError("");
+    setCameraOpen(true);
+
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setCameraError("Camera capture is not supported in this browser.");
+      return;
+    }
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "user" },
+        audio: false,
+      });
+      streamRef.current = stream;
+
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play();
+      }
+    } catch {
+      setCameraError("Unable to open the camera. Please allow camera access and try again.");
+    }
+  }
+
+  function closeCamera() {
+    stopCamera();
+    setCameraOpen(false);
+  }
+
+  function captureUserPhoto() {
+    const video = videoRef.current;
+
+    if (!video || video.videoWidth === 0 || video.videoHeight === 0) {
+      setCameraError("Camera preview is not ready yet.");
+      return;
+    }
+
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const context = canvas.getContext("2d");
+
+    if (!context) {
+      setCameraError("Unable to capture the photo. Please try again.");
+      return;
+    }
+
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    setUploadedFiles((prev) => ({ ...prev, "User photo": "Captured photo" }));
+    closeCamera();
+  }
+
+  useEffect(() => {
+    return () => stopCamera();
+  }, []);
 
   function goNext() {
     if (step < 4) {
@@ -198,12 +325,13 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
         <div>
           <div className="space-y-4">
             {documentOptions.map((item) => {
-              const fileName = uploadedFiles[item];
+              const fileName = uploadedFiles[item.name];
               const uploaded = Boolean(fileName);
+              const requiresCapture = Boolean(item.capture);
 
               return (
                 <div
-                  key={item}
+                  key={item.name}
                   className="flex items-center justify-between rounded-2xl border border-border-soft bg-white p-4 transition-all hover:border-border"
                 >
                   <div className="flex items-center gap-4">
@@ -211,35 +339,93 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
                       "flex size-10 items-center justify-center rounded-full transition-colors",
                       uploaded ? "bg-success/10 text-success" : "bg-surface-alt text-text-secondary"
                     )}>
-                      {uploaded ? <Check className="size-5" /> : <Upload className="size-5" />}
+                      {uploaded ? (
+                        <Check className="size-5" />
+                      ) : requiresCapture ? (
+                        <Camera className="size-5" />
+                      ) : (
+                        <Upload className="size-5" />
+                      )}
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-text-primary">{item}</p>
+                      <p className="text-sm font-medium text-text-primary">{item.name}</p>
                       <p className="text-xs text-text-secondary">
-                        {uploaded ? fileName : "PDF, JPG, or PNG (Max 5MB)"}
+                        {uploaded ? fileName : item.helper}
                       </p>
                     </div>
                   </div>
-                  <label>
-                    <input
-                      type="file"
-                      className="hidden"
-                      onChange={(e) => handleFileChange(item, e)}
-                      accept=".pdf,.jpg,.jpeg,.png"
-                    />
-                    <div className={cn(
-                      "inline-flex h-9 cursor-pointer items-center justify-center rounded-full border border-border bg-white px-4 text-xs font-medium text-primary transition-colors hover:bg-blue-50"
-                    )}>
-                      {uploaded ? "Replace" : "Upload"}
-                    </div>
-                  </label>
+                  {requiresCapture ? (
+                    <button
+                      type="button"
+                      onClick={openCamera}
+                      className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full border border-border bg-white px-4 text-xs font-medium text-primary transition-colors hover:bg-blue-50"
+                    >
+                      {uploaded ? "Retake" : "Capture"}
+                    </button>
+                  ) : (
+                    <label>
+                      <input
+                        type="file"
+                        className="hidden"
+                        onChange={(e) => handleFileChange(item.name, e)}
+                        accept={item.accept}
+                      />
+                      <div className="inline-flex h-9 cursor-pointer items-center justify-center rounded-full border border-border bg-white px-4 text-xs font-medium text-primary transition-colors hover:bg-blue-50">
+                        {uploaded ? "Replace" : "Upload"}
+                      </div>
+                    </label>
+                  )}
                 </div>
               );
             })}
           </div>
           <p className="mt-6 text-xs text-text-secondary">
-            Uploaded documents will be saved to your document vault. If you skip now, you can continue later using the saved copies, or replace them anytime if needed.
+            You can upload the remaining documents later from your dashboard. Any files you upload now will be saved to your document vault, and your application progress will be saved as a draft.
           </p>
+        </div>
+      ) : null}
+
+      {cameraOpen ? (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-xl rounded-2xl bg-white p-5 shadow-xl">
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <div>
+                <h2 className="text-lg font-semibold text-text-primary">Capture user photo</h2>
+                <p className="mt-1 text-sm text-text-secondary">
+                  Center the user&apos;s face clearly before capturing.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={closeCamera}
+                className="flex size-9 items-center justify-center rounded-full text-text-secondary hover:bg-surface"
+                aria-label="Close camera"
+              >
+                <X className="size-5" />
+              </button>
+            </div>
+
+            <div className="overflow-hidden rounded-xl bg-black">
+              <video
+                ref={videoRef}
+                className="aspect-[4/3] w-full object-cover"
+                autoPlay
+                muted
+                playsInline
+              />
+            </div>
+
+            {cameraError ? <p className="mt-3 text-sm text-error">{cameraError}</p> : null}
+
+            <div className="mt-5 flex flex-wrap justify-end gap-3">
+              <Button type="button" variant="secondary" onClick={closeCamera}>
+                Cancel
+              </Button>
+              <Button type="button" onClick={captureUserPhoto} disabled={Boolean(cameraError)}>
+                Capture photo
+              </Button>
+            </div>
+          </div>
         </div>
       ) : null}
 
@@ -314,7 +500,7 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
           href="/dashboard"
           className="text-sm font-medium text-text-secondary transition-colors hover:text-primary"
         >
-          Skip to Dashboard
+          Save and continue later
         </Link>
       </div>
     </div>
