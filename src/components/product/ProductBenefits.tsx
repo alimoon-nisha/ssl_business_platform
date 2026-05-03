@@ -1,4 +1,4 @@
-import { CheckCircle2, Code2, FileText, MessageSquareText, ShieldCheck, Smartphone, Upload } from "lucide-react";
+import { BarChart3, CheckCircle2, Code2, FileText, MessageSquareText, ShieldCheck, Smartphone, Upload, UsersRound } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import type { ProductKind } from "@/data/productContent";
@@ -168,6 +168,59 @@ function RechargeBenefitsVisual() {
   );
 }
 
+function SalesBenefitsVisual() {
+  return (
+    <>
+      <div className="rounded-2xl border border-border-soft bg-white p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="flex size-10 items-center justify-center rounded-xl bg-orange-50 text-orange-800">
+              <UsersRound className="size-5" />
+            </span>
+            <div>
+              <h3 className="text-sm font-semibold text-text-primary">
+                Field activity
+              </h3>
+              <p className="text-xs text-text-secondary">Visits, orders, and tracking</p>
+            </div>
+          </div>
+          <Badge tone="green">Live</Badge>
+        </div>
+        <div className="mt-5 space-y-3">
+          {["Territory plan", "Order workflow", "Inventory visibility"].map(
+            (item, index) => (
+              <div
+                key={item}
+                className="flex items-center justify-between rounded-xl bg-surface-alt px-3 py-3"
+              >
+                <span className="text-xs font-medium text-text-secondary">
+                  {item}
+                </span>
+                {index === 2 ? (
+                  <BarChart3 className="size-4 text-primary" />
+                ) : (
+                  <ShieldCheck className="size-4 text-success" />
+                )}
+              </div>
+            ),
+          )}
+        </div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-border-soft bg-white p-4">
+        <div className="mb-3 flex items-center justify-between">
+          <span className="text-sm font-semibold text-text-primary">
+            Operations view
+          </span>
+          <Badge>85%</Badge>
+        </div>
+        <div className="h-2 rounded-full bg-border-soft">
+          <div className="h-2 w-[85%] rounded-full bg-orange-700" />
+        </div>
+      </div>
+    </>
+  );
+}
+
 function ProductBenefitsVisual({ kind }: { kind: ProductKind }) {
   return (
     <Card className="p-5">
@@ -176,6 +229,8 @@ function ProductBenefitsVisual({ kind }: { kind: ProductKind }) {
           <PaymentBenefitsVisual />
         ) : kind === "messaging" ? (
           <MessagingBenefitsVisual />
+        ) : kind === "sales" ? (
+          <SalesBenefitsVisual />
         ) : (
           <RechargeBenefitsVisual />
         )}
@@ -194,7 +249,7 @@ export function ProductBenefits({
   kind: ProductKind;
 }) {
   return (
-    <section className="container-lg section-pad">
+    <section className="container-xl section-pad">
       <div className="text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary">
           Why use the platform

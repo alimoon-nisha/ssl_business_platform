@@ -13,7 +13,7 @@ export function SetupSteps({
 }) {
   return (
     <section className="bg-surface-alt py-20">
-      <div className="container-lg text-center">
+      <div className="container-xl text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary">
           How it works
         </p>

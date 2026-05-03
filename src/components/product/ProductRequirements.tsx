@@ -11,7 +11,7 @@ export function ProductRequirements({
   note: string;
 }) {
   return (
-    <section className="container-lg pb-20">
+    <section className="container-xl pb-20">
       <Card className="grid gap-8 p-6 md:grid-cols-[0.75fr_1.25fr] md:p-8">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary">

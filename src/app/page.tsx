@@ -11,12 +11,10 @@ import { HeroMockup } from "@/components/marketing/HeroMockup";
 import { ProductIconStrip } from "@/components/marketing/ProductIconStrip";
 import { AssessmentTriggerCard } from "@/components/marketing/AssessmentTriggerCard";
 import { ResourceCard } from "@/components/marketing/ResourceCard";
-import { ServicePlanCard } from "@/components/marketing/ServicePlanCard";
 import {
   featureCards,
   landingFaqs,
   resourceCards,
-  servicePlans,
   valueColumns,
 } from "@/data/mockPlatform";
 
@@ -44,7 +42,7 @@ export default function Home() {
             <HeroMockup />
           </div>
 
-          <section id="overview" className="container-lg pb-20 text-center">
+          <section id="overview" className="container-xl pb-20 text-center">
             <ProductIconStrip />
             <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary">
               All the services your business needs, managed from one account.
@@ -64,29 +62,16 @@ export default function Home() {
           </section>
         </section>
 
-        <section id="services" className="container-lg section-pad">
+        <section id="services" className="container-xl section-pad">
           <h2 className="text-center text-3xl font-medium text-text-primary">
             One account. Many SSL services.
           </h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-6 text-text-secondary">
+            Start with one service, then add more from the same SSL Business Hub account.
+          </p>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {featureCards.map((card) => (
               <FeatureCard key={card.title} {...card} />
-            ))}
-          </div>
-        </section>
-
-        <section id="activation" className="container-xl section-pad">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-medium leading-tight text-text-primary">
-              Activate the right services for your business.
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-text-secondary">
-              Start with one service, then add more from the same SSL Business Hub account.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-4 lg:grid-cols-4">
-            {servicePlans.map((plan) => (
-              <ServicePlanCard key={plan.name} {...plan} />
             ))}
           </div>
           <p className="mx-auto mt-6 max-w-4xl text-center text-xs leading-5 text-text-secondary">
@@ -94,7 +79,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section id="onboarding" className="container-lg py-16">
+        <section id="onboarding" className="container-xl py-16">
           <div className="grid gap-8 md:grid-cols-[1fr_0.8fr] md:items-center">
             <div className="max-w-lg">
               <h2 className="text-2xl font-medium leading-tight text-text-primary">
@@ -133,7 +118,7 @@ export default function Home() {
         </section>
 
         <section id="faq" className="bg-surface-alt py-20">
-          <div className="container-lg">
+          <div className="container-xl">
             <h2 className="text-center text-3xl font-medium text-text-primary">
               Find the answers that you need.
             </h2>
@@ -158,7 +143,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="resources" className="container-lg section-pad">
+        <section id="resources" className="container-xl section-pad">
           <h2 className="max-w-xl text-3xl font-medium leading-tight text-text-primary">
             Learn how SSL services can support your business.
           </h2>

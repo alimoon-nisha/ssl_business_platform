@@ -10,7 +10,7 @@ export function ProductFAQ({
   faqs: string[];
 }) {
   return (
-    <section className="container-lg pb-20">
+    <section className="container-xl pb-20">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-medium text-text-primary">
           {title}

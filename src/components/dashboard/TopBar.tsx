@@ -1,6 +1,7 @@
 import { Bell, HelpCircle, Search } from "lucide-react";
 import { Logo } from "@/components/marketing/Header";
 import { currentBusiness } from "@/data/mockPlatform";
+import { ProfileMenu } from "./ProfileMenu";
 import { ProductLauncherMenu } from "./ProductLauncherMenu";
 
 export function TopBar({ showSearch = true }: { showSearch?: boolean }) {
@@ -31,9 +32,7 @@ export function TopBar({ showSearch = true }: { showSearch?: boolean }) {
             <Bell className="size-5" />
           </button>
           <ProductLauncherMenu />
-          <span className="flex size-9 items-center justify-center rounded-full bg-blue-50 text-sm font-semibold text-primary">
-            S
-          </span>
+          <ProfileMenu />
         </div>
       </div>
     </header>

@@ -13,6 +13,7 @@ type ServiceSlug =
   | "messaging-suite"
   | "corporate-top-up"
   | "corporate-recharge"
+  | "sales-force-automation"
   | "cloud-hosting";
 type Step = 1 | 2 | 3 | 4;
 
@@ -29,6 +30,16 @@ type DocumentRequirement = {
   capture?: "user";
 };
 
+type PackageOption = {
+  id: string;
+  name: string;
+  price: string;
+  description: string;
+  quantity?: string;
+  details?: string[];
+  note?: string;
+};
+
 const messagingPackageOptions = [
   { id: "starter", name: "Starter Plan", price: "৳1732.50", description: "Ideal for small-scale campaigns", quantity: "5,000 SMS" },
   { id: "value", name: "Value Plan", price: "৳3360.00", description: "Best for high-volume messaging", quantity: "10,000 SMS" },
@@ -39,15 +50,52 @@ const corporateRechargePackageOptions = [
   { id: "volume", name: "Volume", price: "Custom pricing", description: "For larger recharge programs and reporting." },
 ];
 
-const packageOptions: Record<ServiceSlug, Array<{ id: string; name: string; price: string; description: string; quantity?: string }>> = {
+const packageOptions: Record<ServiceSlug, PackageOption[]> = {
   "payment-gateway": [
-    { id: "standard", name: "Standard", price: "Custom pricing", description: "Best for new merchants reviewing onboarding requirements." },
-    { id: "growth", name: "Growth", price: "Custom pricing", description: "For businesses expecting higher payment volume." },
+    {
+      id: "online-business",
+      name: "Online Business",
+      price: "BDT 34,000/yr",
+      description: "For website or app-based ecommerce businesses.",
+      details: [
+        "One-time setup fee, non-refundable",
+        "2.50% per transaction for Visa, Mastercard, and MFS",
+        "3.50% per transaction for Amex and foreign cards",
+      ],
+      note: "7 days free trial, then BDT 34,000 per year",
+    },
+    {
+      id: "physical-store",
+      name: "Physical Business",
+      price: "BDT 15,000/yr",
+      description: "For physical shops and retail businesses.",
+      details: [
+        "Setup fee: BDT 2,000, includes QR stand",
+        "1.50% per transaction for dynamic QR payments",
+        "2.00% per transaction for physical card swipe (POS)",
+      ],
+      note: "14 days free trial, then BDT 15,000 per year",
+    },
+    {
+      id: "f-commerce",
+      name: "F commerce",
+      price: "Pay as you go",
+      description: "For Facebook and Instagram sellers.",
+      details: [
+        "Monthly platform fee: BDT 500, first month free",
+        "0% gateway fee as a special launch offer",
+        "1.00% platform commission per successful sale",
+      ],
+      note: "No hidden setup charges",
+    },
   ],
   "bulk-sms": messagingPackageOptions,
   "messaging-suite": messagingPackageOptions,
   "corporate-top-up": corporateRechargePackageOptions,
   "corporate-recharge": corporateRechargePackageOptions,
+  "sales-force-automation": [
+    { id: "demo", name: "Demo and scoping", price: "Custom pricing", description: "For teams reviewing sales automation modules and rollout needs." },
+  ],
   "cloud-hosting": [
     { id: "contact-sales", name: "Contact sales", price: "Custom pricing", description: "Pricing and scope depend on your infrastructure needs." },
   ],
@@ -95,6 +143,7 @@ const documentOptionsByService: Record<ServiceSlug, DocumentRequirement[]> = {
       accept: ".pdf,.jpg,.jpeg,.png",
     },
   ],
+  "sales-force-automation": bulkSmsDocumentOptions,
   "payment-gateway": [
     {
       name: "User photo",
@@ -143,9 +192,39 @@ const messagingSuiteTerms = [
   "No English promotional SMS is allowed through API.",
 ];
 
-const termsByService: Partial<Record<ServiceSlug, string[]>> = {
-  "messaging-suite": messagingSuiteTerms,
-  "bulk-sms": messagingSuiteTerms,
+const paymentGatewayTerms = [
+  "This Agreement (\"Agreement\") is a legally binding document between you (meaning the individual person or the Company or the Proprietor as the case may be) (hereinafter referred to as the \"Merchant\") and Software Shop Limited (hereinafter referred to as \"SSL\").",
+  {
+    title: "1 Scope of Work:",
+    items: [
+      "By accepting the terms and conditions contained herein, the Merchant shall be able to instantly open a merchant account at SSLCOMMERZ Payment gateway for availing the payment gateway service, subject to the fulfillment of the conditions provided herein."
+    ]
+  },
+  {
+    title: "2 Service Terms and Conditions:",
+    items: [
+      "i. Within 7 (seven) days of the instant merchant account opening, the Merchant needs to complete the following:\n- Complete the signing-up process and sign the necessary payment gateway service agreement or Merchant Enrollment Form as per the prescribed format of SSL.\n- Pay applicable fees/charges to SSL.\n- Provide necessary due diligence and Know Your Customer (KYC) documents as per the requirements of SSL.\n- The Merchant will receive a test API from SSL and the Merchant shall be allowed to do limited live transactions through the payment gateway. However, if the Merchant fails to satisfy the requirements of SSL for the full live account, complete the signing-up process, or provide complete and accurate information, or meet the compliance requirements of SSL, then the Merchant's ability to operate the merchant account opened instantly hereunder shall cease.",
+      "ii. Any transactions occurring within this interim period of 7 days are subject to settlement only if the Merchant successfully completes the signing-up process, pays necessary charges to SSL, satisfies Know Your Customer and due diligence of SSL as per SSL's discretion. Failing which, SSL reserves the right to reverse the transaction/payment to the customer at SSL's discretion. The Merchant shall have no claim or dispute over the same reversal of the transaction.",
+      "iii. Notwithstanding anything contrary provided in any part of this Agreement, payment release by SSL in favor of the Merchant shall be governed by the prevailing laws, rules-regulation, guidelines, and escrow payment modality shall be applied if such modality is applicable as per the concerned rules-regulations, guidelines of the competent regulatory authority(ies).",
+      "iv. The Merchant shall strictly adhere to applicable anti-money laundering and combating financing of terrorism laws, rules, regulations, and regulatory guidelines.",
+      "v. Merchant shall not sell any products that are illegal according to the laws of the land.",
+      "vi. SSL retains the full authority to deny any transaction request if it appears suspicious or fraudulent, with the aim of maintaining the integrity and security of the payment system.",
+      "vii. The Merchant acknowledges and agrees that the liability for chargebacks arising from transactions shall be solely the responsibility of the Merchant. SSL shall not be held accountable for any chargeback related to the Merchant's transactions.",
+      "viii. The Merchant acknowledges that all liabilities related to the products or services offered through the Payment Gateway Service shall be the sole responsibility of the Merchant. Any disputes arising in connection with these products or services will be limited to resolution between the customer and the Merchant.",
+      "ix. In the event of any violation of the terms and conditions contained herein or for the other reasons whatsoever, SSL may, at its own discretion, instantly deactivate the Merchant's payment gateway account, halt any transaction processing, or take other appropriate actions as it deems necessary."
+    ]
+  }
+];
+
+type TermItem = string | { title: string; items: string[] };
+
+const termsByService: Partial<Record<ServiceSlug, { title?: string; items: TermItem[] }>> = {
+  "messaging-suite": { items: messagingSuiteTerms },
+  "bulk-sms": { items: messagingSuiteTerms },
+  "payment-gateway": {
+    title: "AGREEMENT FOR INSTANT PAYMENT GATEWAY ACCOUNT OPENING",
+    items: paymentGatewayTerms
+  }
 };
 
 export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageName }: ServiceApplicationWizardProps) {
@@ -302,11 +381,34 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
               
               {termsByService[serviceSlug as ServiceSlug] ? (
                 <div className="space-y-4">
-                  {termsByService[serviceSlug as ServiceSlug]?.map((term, index) => (
-                    <p key={index}>
-                      <strong>{index + 1}.</strong> {term}
+                  {termsByService[serviceSlug as ServiceSlug]?.title && (
+                    <p className="font-bold text-text-primary uppercase border-b border-border-soft pb-2">
+                      {termsByService[serviceSlug as ServiceSlug]?.title}
                     </p>
-                  ))}
+                  )}
+                  {termsByService[serviceSlug as ServiceSlug]?.items.map((item, index) => {
+                    if (typeof item === "string") {
+                      const hasManualNumbering = /^[0-9]+\.\s/.test(item) || /^[ivx]+\.\s/i.test(item);
+                      return (
+                        <p key={index} className="whitespace-pre-wrap">
+                          {!hasManualNumbering && termsByService[serviceSlug as ServiceSlug]?.title === undefined && (
+                            <strong>{index + 1}. </strong>
+                          )}
+                          {item}
+                        </p>
+                      );
+                    }
+                    return (
+                      <div key={index} className="space-y-3">
+                        <p className="font-semibold text-text-primary">{item.title}</p>
+                        <div className="space-y-3 pl-4 border-l-2 border-border-soft">
+                          {item.items.map((subItem, subIndex) => (
+                            <p key={subIndex} className="whitespace-pre-wrap">{subItem}</p>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               ) : (
                 <>
@@ -384,7 +486,25 @@ export function ServiceApplicationWizard({ serviceSlug, serviceLabel, packageNam
                     )}
                     <p className="mt-2 text-sm leading-6 text-text-secondary">{item.description}</p>
                   </div>
+                  {item.details ? (
+                    <ul className="mt-4 space-y-2 border-t border-border-soft pt-4">
+                      {item.details.map((detail) => (
+                        <li
+                          key={detail}
+                          className="flex gap-2 text-xs leading-5 text-text-secondary"
+                        >
+                          <Check className="mt-0.5 size-3.5 shrink-0 text-success" aria-hidden="true" />
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                   <p className="mt-5 text-xl font-medium text-primary">{item.price}</p>
+                  {item.note ? (
+                    <p className="mt-2 text-xs leading-5 text-text-secondary">
+                      {item.note}
+                    </p>
+                  ) : null}
                 </button>
               );
             })}

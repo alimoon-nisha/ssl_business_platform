@@ -23,21 +23,31 @@ export const valueColumns = [
 export const featureCards = [
   {
     title: "Activate SSLCOMMERZ faster",
-    body: "Apply for the payment gateway, submit merchant documents, and follow review status from the same workspace.",
+    body: "Accept online payments across cards, wallets, and banks. Track transactions and reports easily.",
     visual: "payments",
     href: "/products/payment-gateway",
+    applicationHref: "/get-started?service=payment-gateway",
   },
   {
     title: "Manage messaging campaigns",
     body: "Prepare SMS services, sender IDs, approvals, balance, and campaign reports from a shared account.",
     visual: "messages",
     href: "/products/messaging-suite",
+    applicationHref: "/get-started?service=messaging-suite",
   },
   {
     title: "Start corporate top-up services",
     body: "Set up recharge services, manage operators, track balances, and keep activity visible for your team.",
     visual: "recharge",
     href: "/products/corporate-recharge",
+    applicationHref: "/get-started?service=corporate-recharge",
+  },
+  {
+    title: "Coordinate field sales operations",
+    body: "Plan visits, track orders, manage delivery activity, and keep sales teams visible from one workflow.",
+    visual: "sales",
+    href: "/products/sales-force-automation",
+    applicationHref: "/get-started?service=sales-force-automation",
   },
 ] as const;
 

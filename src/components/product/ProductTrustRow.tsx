@@ -18,7 +18,7 @@ export function ProductTrustRow({
   valueCards?: Array<{ title: string; body: string }>;
 }) {
   return (
-    <section className="container-lg py-20 text-center">
+    <section className="container-xl py-20 text-center">
       <div className="mb-6 flex items-center justify-center gap-3">
         {items.slice(0, 5).map((item, index) => {
           const Icon = icons?.[index] ?? CreditCard;

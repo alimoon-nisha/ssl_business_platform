@@ -15,7 +15,7 @@ export function ProductCTA({
   icon: LucideIcon;
 }) {
   return (
-    <section className="container-lg py-16">
+    <section className="container-xl py-16">
       <div className="rounded-sm bg-surface-alt px-6 py-16 text-center">
         <span className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-blue-50 text-primary">
           <Icon className="size-7" aria-hidden="true" />

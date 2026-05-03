@@ -10,6 +10,7 @@ const serviceLabels: Record<string, string> = {
   "messaging-suite": "Messaging Suite",
   "corporate-top-up": "Corporate Top-Up",
   "corporate-recharge": "Corporate Recharge",
+  "sales-force-automation": "Sales Force Automation",
   "cloud-hosting": "Cloud Hosting",
 };
 

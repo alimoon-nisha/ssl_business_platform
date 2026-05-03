@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { BarChart3, CalendarClock, CreditCard, MessageSquareText, Send, Smartphone, Upload } from "lucide-react";
+import { BarChart3, CalendarClock, CheckCircle2, CreditCard, MessageSquareText, Send, Smartphone, Upload, UsersRound } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import type { ProductKind } from "@/data/productContent";
@@ -205,6 +205,62 @@ function RechargeHeroVisual() {
   );
 }
 
+function SalesHeroVisual() {
+  return (
+    <div className="rounded-[28px] border border-border-soft bg-white p-4 shadow-[0_16px_40px_rgba(60,64,67,0.08)]">
+      <div className="rounded-2xl border border-border-soft bg-surface p-4">
+        <div className="grid gap-4 md:grid-cols-[1fr_160px]">
+          <div className="rounded-2xl border border-border-soft bg-white p-4">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <div className="h-3 w-28 rounded-full bg-text-primary/70" />
+                <div className="mt-2 h-2 w-32 rounded-full bg-border-soft" />
+              </div>
+              <UsersRound className="size-7 text-orange-800" />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {["Visit plan", "Order capture", "Inventory sync", "Delivery"].map((item, index) => (
+                <div key={item} className="rounded-xl border border-border-soft p-3">
+                  <CheckCircle2 className={`size-4 ${index < 2 ? "text-success" : "text-primary"}`} />
+                  <span className="mt-3 block text-[11px] font-medium text-text-secondary">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 rounded-2xl bg-orange-50 p-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-orange-800">Team activity</span>
+                <span className="text-xs text-text-secondary">85%</span>
+              </div>
+              <div className="mt-3 h-2 rounded-full bg-white">
+                <div className="h-2 w-[85%] rounded-full bg-orange-700" />
+              </div>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-border-soft bg-white p-4">
+              <Badge tone="green">Live</Badge>
+              <div className="mt-4 h-2 w-24 rounded-full bg-border-soft" />
+              <div className="mt-3 h-2 w-16 rounded-full bg-border-soft" />
+            </div>
+            <div className="rounded-2xl border border-border-soft bg-white p-4">
+              <BarChart3 className="mb-3 size-5 text-primary" />
+              <div className="space-y-2">
+                {[78, 54, 90].map((width) => (
+                  <div key={width} className="h-2 rounded-full bg-orange-50">
+                    <div className="h-2 rounded-full bg-orange-700/45" style={{ width }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProductHeroVisual({ kind }: { kind: ProductKind }) {
   return (
     <div className="relative mx-auto max-w-[500px]">
@@ -213,12 +269,16 @@ function ProductHeroVisual({ kind }: { kind: ProductKind }) {
           ? "Application under review"
           : kind === "messaging"
             ? "Scheduled message"
-            : "Batch request ready"}
+            : kind === "sales"
+              ? "Field team live"
+              : "Batch request ready"}
       </div>
       {kind === "payment" ? (
         <PaymentHeroVisual />
       ) : kind === "messaging" ? (
         <MessagingHeroVisual />
+      ) : kind === "sales" ? (
+        <SalesHeroVisual />
       ) : (
         <RechargeHeroVisual />
       )}
@@ -251,7 +311,7 @@ export function ProductHero({
 }) {
   return (
     <section className="soft-glow">
-      <div className="container-lg grid gap-12 py-20 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+      <div className="container-xl grid gap-12 py-20 md:grid-cols-[0.95fr_1.05fr] md:items-center">
         <div>
           <div className="mb-5 inline-flex items-center gap-2 text-sm font-medium text-text-secondary">
             <span className="flex size-8 items-center justify-center rounded-lg bg-blue-50 text-primary">

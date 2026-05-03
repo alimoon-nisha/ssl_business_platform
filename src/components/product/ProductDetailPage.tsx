@@ -4,6 +4,7 @@ import { ProductBenefits } from "@/components/product/ProductBenefits";
 import { ProductCTA } from "@/components/product/ProductCTA";
 import { ProductFAQ } from "@/components/product/ProductFAQ";
 import { ProductHero } from "@/components/product/ProductHero";
+import { ProductPricing } from "@/components/product/ProductPricing";
 import { ProductRequirements } from "@/components/product/ProductRequirements";
 import { ProductTrustRow } from "@/components/product/ProductTrustRow";
 import { SetupSteps } from "@/components/product/SetupSteps";
@@ -51,6 +52,7 @@ export function ProductDetailPage({ product }: { product: ProductDetailContent }
           benefits={product.benefits}
           kind={product.kind}
         />
+        {product.pricing ? <ProductPricing pricing={product.pricing} /> : null}
         {product.requirements ? (
           <ProductRequirements
             title={product.requirements.title}

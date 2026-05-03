@@ -1,4 +1,4 @@
-import { BarChart3, Play, Send, Smartphone } from "lucide-react";
+import { BarChart3, Play, Send, Smartphone, UsersRound } from "lucide-react";
 import type { ProductKind } from "@/data/productContent";
 
 function PreviewRows({ kind }: { kind: ProductKind }) {
@@ -50,6 +50,33 @@ function PreviewRows({ kind }: { kind: ProductKind }) {
     );
   }
 
+  if (kind === "sales") {
+    return (
+      <>
+        <div className="space-y-3">
+          {["Visit planning", "Order capture", "Inventory sync", "Delivery tracking"].map(
+            (item, index) => (
+              <div key={item} className="flex items-center gap-3 rounded-xl bg-surface-alt p-3">
+                <UsersRound className={`size-4 ${index < 2 ? "text-orange-800" : "text-primary"}`} />
+                <div className="h-2 rounded-full bg-border" style={{ width: [148, 176, 126, 98][index] }} />
+              </div>
+            ),
+          )}
+        </div>
+        <div className="rounded-xl bg-orange-50 p-4">
+          <BarChart3 className="mb-4 size-5 text-orange-800" />
+          <div className="space-y-2">
+            {[84, 62, 76].map((width) => (
+              <div key={width} className="h-2 rounded-full bg-white">
+                <div className="h-2 rounded-full bg-orange-700/45" style={{ width }} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="space-y-3">
@@ -77,7 +104,7 @@ export function VideoDemoBlock({
   kind: ProductKind;
 }) {
   return (
-    <section className="container-lg pb-20 text-center">
+    <section className="container-xl pb-20 text-center">
       <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary">
         {title}
       </h2>

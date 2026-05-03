@@ -15,6 +15,7 @@ const serviceLabels = {
   "payment-gateway": "SSLCOMMERZ Payment Gateway",
   "messaging-suite": "Messaging Suite",
   "corporate-recharge": "Corporate Recharge",
+  "sales-force-automation": "Sales Force Automation",
   "cloud-hosting": "Cloud Hosting",
 } as const;
 

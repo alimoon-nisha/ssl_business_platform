@@ -21,8 +21,7 @@ const products: ProductLauncherItem[] = [
   { label: "Corporate Top-Up", href: "/service-application/corporate-top-up" },
   {
     label: "Sales Force Automation",
-    href: "/contact-sales",
-    contactSales: true,
+    href: "/products/sales-force-automation",
   },
 ];
 

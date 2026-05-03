@@ -18,7 +18,7 @@ import {
   WalletCards,
 } from "lucide-react";
 
-export type ProductKind = "payment" | "messaging" | "recharge";
+export type ProductKind = "payment" | "messaging" | "recharge" | "sales";
 
 export type ProductDetailContent = {
   slug: string;
@@ -42,6 +42,19 @@ export type ProductDetailContent = {
   steps: Array<{ title: string; body: string; cta: string }>;
   benefitsTitle: string;
   benefits: Array<{ title: string; body: string }>;
+  pricing?: {
+    title: string;
+    description: string;
+    disclaimer: string;
+    plans: Array<{
+      name: string;
+      description: string;
+      cta: string;
+      href: string;
+      features: string[];
+      highlighted?: boolean;
+    }>;
+  };
   requirements?: {
     title: string;
     items: string[];
@@ -350,8 +363,167 @@ export const products: Record<string, ProductDetailContent> = {
       "Create your SSL Business Profile, share your recharge requirements, and begin the service setup process.",
     finalButton: "Get started",
   },
+  "sales-force-automation": {
+    slug: "sales-force-automation",
+    serviceName: "Sales Force Automation",
+    label: "Field sales operations",
+    headline: "Run sales, distribution, and field activity from one connected workspace",
+    body: "Coordinate sales teams, orders, inventory, delivery tracking, payment reconciliation, and operational reporting through an integrated digital platform for distribution-led businesses.",
+    primaryCta: "Request a demo",
+    secondaryCta: "Contact sales",
+    kind: "sales",
+    heroIcon: UsersRound,
+    chipIcons: [UsersRound, ClipboardCheck, Upload, ReceiptText, BarChart3, CalendarClock, Plug],
+    trustTitle: "Built for businesses with field teams and distribution operations.",
+    trustSubtitle:
+      "Sales Force Automation helps teams plan visits, capture orders, track delivery activity, monitor inventory movement, and keep managers aligned through a shared operational view.",
+    trustItems: [
+      "Order collection",
+      "Delivery tracking",
+      "Inventory sync",
+      "Salesforce tracking",
+      "Payment recon",
+      "HR workflows",
+      "Reports",
+    ],
+    valueCards: [
+      {
+        title: "Track field teams clearly",
+        body: "Plan visits, organize territories, and monitor daily activity from a shared sales workspace.",
+      },
+      {
+        title: "Connect orders and inventory",
+        body: "Keep order capture, stock movement, requisitions, and delivery status visible across teams.",
+      },
+      {
+        title: "Improve operational reporting",
+        body: "Use structured activity, payment, and performance data to review progress faster.",
+      },
+    ],
+    demoTitle: "See how field sales automation works",
+    demoLabel:
+      "Visit planning, order capture, inventory visibility, delivery tracking, and reporting preview.",
+    stepsTitle: "Start automating sales operations in a few clear steps",
+    steps: [
+      {
+        title: "Map your sales workflow",
+        body: "Share your team structure, territories, order process, inventory model, and reporting needs.",
+        cta: "Prepare scope",
+      },
+      {
+        title: "Configure modules and users",
+        body: "Set up field teams, order and delivery flows, inventory views, reconciliation needs, and access roles.",
+        cta: "View modules",
+      },
+      {
+        title: "Pilot, train, and expand",
+        body: "Start with a focused team or region, review activity, train users, and scale the workflow across the business.",
+        cta: "Request demo",
+      },
+    ],
+    benefitsTitle:
+      "Sales Force Automation is easier when field work, inventory, and reporting stay connected",
+    benefits: [
+      {
+        title: "Increase field visibility",
+        body: "See visit plans, live activity, order collection, and team performance without relying on scattered updates.",
+      },
+      {
+        title: "Reduce operational blind spots",
+        body: "Connect order, delivery, stock, and return activity so managers can follow work from request to completion.",
+      },
+      {
+        title: "Support complex teams",
+        body: "Use structured roles, territories, approval flows, and reporting views for growing distribution teams.",
+      },
+      {
+        title: "Plan for industry needs",
+        body: "Adapt workflows for retail, distribution, pharma field activity, or other sales-heavy operations.",
+      },
+    ],
+    pricing: {
+      title: "Choose a Sales Force Automation setup path",
+      description:
+        "Start with a focused pilot, then expand modules and users as your field operation grows.",
+      disclaimer:
+        "Pricing, implementation timeline, integrations, and module availability may vary by business size, workflow complexity, and selected setup scope.",
+      plans: [
+        {
+          name: "Pilot setup",
+          description: "Use for one team, region, or distributor group starting with core field tracking.",
+          cta: "Request demo",
+          href: "/contact-sales",
+          highlighted: true,
+          features: [
+            "Field team setup",
+            "Visit planning",
+            "Basic order capture",
+            "Activity dashboard",
+            "Pilot support",
+          ],
+        },
+        {
+          name: "Operations rollout",
+          description: "Use for businesses connecting order, delivery, inventory, and reporting workflows.",
+          cta: "Contact sales",
+          href: "/contact-sales",
+          features: [
+            "Order and delivery flow",
+            "Inventory visibility",
+            "Payment reconciliation",
+            "Role-based access",
+            "Management reports",
+          ],
+        },
+        {
+          name: "Enterprise scope",
+          description: "Use for larger teams that need advanced configuration or integrations.",
+          cta: "Contact sales",
+          href: "/contact-sales",
+          features: [
+            "Custom module planning",
+            "Integration scoping",
+            "Advanced approvals",
+            "Multi-team rollout",
+            "Dedicated onboarding",
+          ],
+        },
+      ],
+    },
+    requirements: {
+      title: "Prepare what you may need for Sales Force Automation setup",
+      items: [
+        "Business and contact details",
+        "Sales team size and territory structure",
+        "Order and delivery workflow",
+        "Inventory or warehouse structure",
+        "Payment reconciliation needs",
+        "User roles and approval flow",
+        "Reporting and integration requirements",
+      ],
+      note: "Exact scope, timeline, and pricing depend on selected modules, team size, deployment model, and integration needs.",
+    },
+    faqTitle: "Sales Force Automation FAQs",
+    faqDescription:
+      "Answers to common questions about field sales tracking, inventory visibility, delivery workflows, and operational reporting.",
+    faqs: [
+      "What is Sales Force Automation?",
+      "Can it help manage field sales teams?",
+      "Can I track orders and delivery activity?",
+      "Does it support inventory visibility?",
+      "Can payment reconciliation be included?",
+      "Can it support pharma or distribution workflows?",
+      "How long does implementation take?",
+      "Can SSL Wireless help configure a pilot?",
+    ],
+    finalTitle: "Plan your Sales Force Automation setup",
+    finalBody:
+      "Share your field sales workflow and operational needs so SSL Wireless can guide the right setup path.",
+    finalButton: "Request a demo",
+  },
 };
 
 export const paymentGatewayProduct = products["payment-gateway"];
 export const messagingSuiteProduct = products["messaging-suite"];
 export const corporateRechargeProduct = products["corporate-recharge"];
+export const salesForceAutomationProduct = products["sales-force-automation"];
