@@ -15,7 +15,9 @@ export function CTASection({
 }) {
   return (
     <section id="cta" className="container-xl py-16">
-      <div className="rounded-sm bg-[#eaf3ff] px-6 py-16 text-center" data-reveal="fade-up">
+      <div className="cta-ambient-glow rounded-sm bg-[#eaf3ff] px-6 py-16 text-center" data-reveal="fade-up">
+        <div className="cta-glow cta-glow-1" aria-hidden="true" />
+        <div className="cta-glow cta-glow-2" aria-hidden="true" />
         {icon === "marks" ? (
           <MiniPaymentMarks />
         ) : (
