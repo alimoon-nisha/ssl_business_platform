@@ -64,7 +64,7 @@ const columns = [
 export function Footer() {
   return (
     <footer className="border-t border-border-soft bg-white">
-      <div className="container-lg py-12">
+      <div className="container-xl py-12">
         <div className="mb-9 flex flex-col gap-5 border-b border-border-soft pb-8 md:flex-row md:items-center md:justify-between">
           <Logo />
           <div className="relative w-full max-w-xs">
@@ -113,7 +113,7 @@ export function Footer() {
 export function SimplifiedFooter() {
   return (
     <footer className="border-t border-border-soft bg-white">
-      <div className="container-lg py-8">
+      <div className="container-xl py-8">
         <div className="flex flex-col gap-4 text-xs text-text-secondary sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Image src="/sslwireless.svg" alt="SSL Wireless" width={120} height={22} className="h-5.5 w-auto" />

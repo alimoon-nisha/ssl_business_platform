@@ -1,4 +1,3 @@
-import { ArrowRight, FileCheck2 } from "lucide-react";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { ButtonLink } from "@/components/ui/Button";
@@ -9,6 +8,7 @@ import { FeatureCard } from "@/components/marketing/FeatureCard";
 import { Footer } from "@/components/marketing/Footer";
 import { Header } from "@/components/marketing/Header";
 import { HeroMockup } from "@/components/marketing/HeroMockup";
+import { OnboardingConfidenceSection } from "@/components/marketing/OnboardingConfidenceSection";
 import { ProductIconStrip } from "@/components/marketing/ProductIconStrip";
 import { AssessmentTriggerCard } from "@/components/marketing/AssessmentTriggerCard";
 import { ResourceCard } from "@/components/marketing/ResourceCard";
@@ -26,7 +26,7 @@ export default function Home() {
       <Header />
       <PublicMotionController />
       <main>
-        <section className="soft-glow">
+        <section id="overview" className="soft-glow">
           <div className="container-xl grid gap-12 py-20 md:grid-cols-[0.92fr_1.08fr] md:items-center lg:py-24">
             <div>
               <h1
@@ -63,7 +63,7 @@ export default function Home() {
             </div>
           </div>
 
-          <section id="overview" className="container-xl pb-20 text-center">
+          <div className="container-xl pb-20 text-center">
             <div data-reveal="scale-in">
               <ProductIconStrip />
             </div>
@@ -89,7 +89,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </section>
+          </div>
         </section>
 
         <section id="services" className="container-xl section-pad">
@@ -126,49 +126,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section id="onboarding" className="container-xl py-16">
-          <div className="grid gap-8 md:grid-cols-[1fr_0.8fr] md:items-center">
-            <div className="max-w-lg" data-reveal="fade-left">
-              <h2 className="text-2xl font-medium leading-tight text-text-primary">
-                Move your business setup into one SSL Business Hub account.
-              </h2>
-              <p className="mt-4 text-sm leading-6 text-text-secondary">
-                Existing SSL merchants and new businesses can bring their company profile, service applications, and documents into a single platform over time.
-              </p>
-              <Link
-                href="/get-started"
-                className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary"
-              >
-                Learn about onboarding
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-            </div>
-            <div data-reveal="fade-right">
-              <Card className="p-5">
-                <div
-                  className="rounded-2xl bg-surface p-5"
-                  data-parallax
-                  data-parallax-speed="0.025"
-                >
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-green-50 text-success">
-                    <FileCheck2 className="size-5" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <h3 className="text-sm font-semibold text-text-primary">
-                      Document vault
-                    </h3>
-                    <p className="text-xs text-text-secondary">Trade license reused</p>
-                  </div>
-                </div>
-                <div className="h-2 rounded-full bg-white">
-                  <div className="h-2 w-2/3 rounded-full bg-success" />
-                </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </section>
+        <OnboardingConfidenceSection />
 
         <section id="faq" className="bg-surface-alt py-20">
           <div className="container-xl">
@@ -227,9 +185,7 @@ export default function Home() {
           </div>
         </section>
 
-        <div data-reveal="fade-up">
-          <CTASection />
-        </div>
+        <CTASection />
       </main>
       <Footer />
     </>

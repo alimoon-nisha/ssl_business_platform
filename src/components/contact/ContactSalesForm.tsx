@@ -1,6 +1,6 @@
 "use client";
 
-import { Building2, CheckCircle2, LifeBuoy } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import type { FormEvent } from "react";
 import { useState } from "react";
 import { AuthInput } from "@/components/auth/AuthInput";
@@ -9,12 +9,10 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import {
   businessTypeOptions,
-  contactInquiryTypes,
   employeeOptions,
   interestedServiceOptions,
   salesHelpOptions,
   sectorOptions,
-  type ContactInquiryType,
   type SelectOption,
 } from "@/data/contactSales";
 import { cn } from "@/lib/cn";
@@ -31,13 +29,12 @@ type FormValues = {
   interestedService: string;
   salesHelp: string;
   additionalDetails: string;
-  productUpdates: boolean;
   contactConsent: boolean;
 };
 
 type RequiredField = Exclude<
   keyof FormValues,
-  "additionalDetails" | "productUpdates"
+  "additionalDetails"
 >;
 
 const initialValues: FormValues = {
@@ -52,7 +49,6 @@ const initialValues: FormValues = {
   interestedService: "",
   salesHelp: "",
   additionalDetails: "",
-  productUpdates: false,
   contactConsent: false,
 };
 
@@ -181,19 +177,7 @@ function TextareaField({
   );
 }
 
-function InquiryIcon({ inquiry }: { inquiry: ContactInquiryType }) {
-  const Icon = inquiry.id === "new-services" ? Building2 : LifeBuoy;
-
-  return (
-    <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-primary">
-      <Icon className="size-5" aria-hidden="true" />
-    </span>
-  );
-}
-
 export function ContactSalesForm() {
-  const [selectedInquiry, setSelectedInquiry] =
-    useState<ContactInquiryType["id"]>("new-services");
   const [values, setValues] = useState<FormValues>(initialValues);
   const [touched, setTouched] = useState<Partial<Record<RequiredField, boolean>>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -235,10 +219,7 @@ export function ContactSalesForm() {
   if (submitted) {
     return (
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-        <ContactSalesIntro
-          selectedInquiry={selectedInquiry}
-          onSelectInquiry={setSelectedInquiry}
-        />
+        <ContactSalesIntro />
         <Card className="p-6 md:p-8">
           <Badge tone="green">Sales request submitted</Badge>
           <CheckCircle2 className="mt-8 size-12 text-success" aria-hidden="true" />
@@ -255,7 +236,6 @@ export function ContactSalesForm() {
             onClick={() => {
               setValues(initialValues);
               setTouched({});
-              setSelectedInquiry("new-services");
               setSubmitted(false);
             }}
           >
@@ -268,10 +248,7 @@ export function ContactSalesForm() {
 
   return (
     <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-      <ContactSalesIntro
-        selectedInquiry={selectedInquiry}
-        onSelectInquiry={setSelectedInquiry}
-      />
+      <ContactSalesIntro />
 
       <Card className="p-6 md:p-8">
         <form onSubmit={handleSubmit} noValidate>
@@ -420,18 +397,6 @@ export function ContactSalesForm() {
             <label className="flex items-start gap-3 text-sm leading-6 text-text-primary">
               <input
                 type="checkbox"
-                checked={values.productUpdates}
-                onChange={(event) => setValue("productUpdates", event.target.checked)}
-                className="mt-1 size-[18px] accent-primary"
-              />
-              <span>
-                I would like to receive product updates, service launches, and business tips from SSL Wireless.
-              </span>
-            </label>
-
-            <label className="flex items-start gap-3 text-sm leading-6 text-text-primary">
-              <input
-                type="checkbox"
                 checked={values.contactConsent}
                 onChange={(event) => setValue("contactConsent", event.target.checked)}
                 onBlur={() => markTouched("contactConsent")}
@@ -464,13 +429,7 @@ export function ContactSalesForm() {
   );
 }
 
-function ContactSalesIntro({
-  selectedInquiry,
-  onSelectInquiry,
-}: {
-  selectedInquiry: ContactInquiryType["id"];
-  onSelectInquiry: (id: ContactInquiryType["id"]) => void;
-}) {
+function ContactSalesIntro() {
   return (
     <section>
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary">
@@ -483,38 +442,26 @@ function ContactSalesIntro({
         Tell us what your business needs. Our team can help you choose the right SSL service, package, onboarding path, or custom setup.
       </p>
 
-      <p className="mt-9 text-sm font-medium text-text-primary">
-        Choose one option to get started:
-      </p>
-      <div className="mt-4 space-y-3">
-        {contactInquiryTypes.map((inquiry) => {
-          const selected = selectedInquiry === inquiry.id;
-
-          return (
-            <button
-              key={inquiry.id}
-              type="button"
-              onClick={() => onSelectInquiry(inquiry.id)}
-              className={cn(
-                "flex w-full items-start gap-4 rounded-2xl border bg-white p-5 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-                selected
-                  ? "border-primary"
-                  : "border-border-soft hover:border-border",
-              )}
-              aria-pressed={selected}
-            >
-              <InquiryIcon inquiry={inquiry} />
-              <span>
-                <span className="block text-base font-semibold leading-6 text-text-primary">
-                  {inquiry.title}
-                </span>
-                <span className="mt-2 block text-sm leading-6 text-text-secondary">
-                  {inquiry.description}
-                </span>
-              </span>
-            </button>
-          );
-        })}
+      <div className="mt-8 text-sm leading-6 text-text-primary">
+        <div>
+          <span className="font-medium">Email:</span>{" "}
+          <a
+            href="mailto:query@sslwireless.com"
+            className="text-primary hover:text-primary-hover"
+          >
+            query@sslwireless.com
+          </a>
+        </div>
+        <div>
+          <span className="font-medium">Phone:</span>{" "}
+          <a href="tel:+8809612221000" className="text-primary hover:text-primary-hover">
+            +88 09612221000
+          </a>
+          ,{" "}
+          <a href="tel:+8809677726222" className="text-primary hover:text-primary-hover">
+            +88 09677726222
+          </a>
+        </div>
       </div>
     </section>
   );
