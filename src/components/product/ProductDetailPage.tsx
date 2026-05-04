@@ -1,5 +1,6 @@
 import { Footer } from "@/components/marketing/Footer";
 import { Header } from "@/components/marketing/Header";
+import { PublicMotionController } from "@/components/motion/PublicMotionController";
 import { ProductBenefits } from "@/components/product/ProductBenefits";
 import { ProductCTA } from "@/components/product/ProductCTA";
 import { ProductFAQ } from "@/components/product/ProductFAQ";
@@ -20,6 +21,7 @@ export function ProductDetailPage({ product }: { product: ProductDetailContent }
   return (
     <>
       <Header />
+      <PublicMotionController />
       <main>
         <ProductHero
           label={product.label}

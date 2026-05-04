@@ -1,4 +1,5 @@
 import { BarChart3, Play, Send, Smartphone, UsersRound } from "lucide-react";
+import type { CSSProperties } from "react";
 import type { ProductKind } from "@/data/productContent";
 
 function PreviewRows({ kind }: { kind: ProductKind }) {
@@ -105,10 +106,17 @@ export function VideoDemoBlock({
 }) {
   return (
     <section className="container-xl pb-20 text-center">
-      <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary">
+      <h2
+        className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary"
+        data-reveal="fade-up"
+      >
         {title}
       </h2>
-      <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-border-soft bg-surface p-6">
+      <div
+        className="mx-auto mt-8 max-w-3xl rounded-2xl border border-border-soft bg-surface p-6"
+        data-reveal="scale-in"
+        style={{ "--reveal-delay": "100ms" } as CSSProperties}
+      >
         <div className="relative rounded-xl border border-border-soft bg-white p-5">
           <div className="mb-5 flex items-center gap-3 border-b border-border-soft pb-4">
             <span className="size-8 rounded-lg bg-blue-50" />
@@ -129,7 +137,10 @@ export function VideoDemoBlock({
           </button>
         </div>
       </div>
-      <p className="mx-auto mt-4 max-w-2xl text-sm font-medium leading-6 text-text-secondary">
+      <p
+        className="mx-auto mt-4 max-w-2xl text-sm font-medium leading-6 text-text-secondary"
+        data-reveal="fade-up"
+      >
         {label}
       </p>
     </section>

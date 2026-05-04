@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import { BarChart3, CalendarClock, CheckCircle2, CreditCard, MessageSquareText, Send, Smartphone, Upload, UsersRound } from "lucide-react";
+import type { CSSProperties } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import type { ProductKind } from "@/data/productContent";
@@ -313,7 +314,10 @@ export function ProductHero({
     <section className="soft-glow">
       <div className="container-xl grid gap-12 py-20 md:grid-cols-[0.95fr_1.05fr] md:items-center">
         <div>
-          <div className="mb-5 inline-flex items-center gap-2 text-sm font-medium text-text-secondary">
+          <div
+            className="mb-5 inline-flex items-center gap-2 text-sm font-medium text-text-secondary"
+            data-reveal="fade-up"
+          >
             <span className="flex size-8 items-center justify-center rounded-lg bg-blue-50 text-primary">
               <Icon className="size-5" aria-hidden="true" />
             </span>
@@ -327,20 +331,39 @@ export function ProductHero({
               {label}
             </span>
           </div>
-          <h1 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-normal text-text-primary md:text-5xl">
+          <h1
+            className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-normal text-text-primary md:text-5xl"
+            data-reveal="fade-up"
+            style={{ "--reveal-delay": "80ms" } as CSSProperties}
+          >
             {headline}
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-7 text-text-secondary">
+          <p
+            className="mt-5 max-w-xl text-base leading-7 text-text-secondary"
+            data-reveal="fade-up"
+            style={{ "--reveal-delay": "160ms" } as CSSProperties}
+          >
             {body}
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div
+            className="mt-7 flex flex-wrap gap-3"
+            data-reveal="fade-up"
+            style={{ "--reveal-delay": "240ms" } as CSSProperties}
+          >
             <ButtonLink href={primaryHref}>{primaryCta}</ButtonLink>
             <ButtonLink href={secondaryHref} variant="secondary">
               {secondaryCta}
             </ButtonLink>
           </div>
         </div>
-        <ProductHeroVisual kind={kind} />
+        <div
+          data-reveal="scale-in"
+          style={{ "--reveal-delay": "140ms" } as CSSProperties}
+        >
+          <div data-parallax data-parallax-speed="0.035">
+            <ProductHeroVisual kind={kind} />
+          </div>
+        </div>
       </div>
     </section>
   );

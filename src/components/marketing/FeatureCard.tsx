@@ -1,4 +1,5 @@
 import { BarChart3, CalendarDays, CheckCircle2, CreditCard, Smartphone, UsersRound } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 
@@ -111,11 +112,13 @@ export function FeatureCard({
   title,
   body,
   visual,
+  logo,
   href,
 }: {
   title: string;
   body: string;
   visual: "payments" | "messages" | "recharge" | "sales";
+  logo: string;
   href: string;
 }) {
   return (
@@ -127,6 +130,13 @@ export function FeatureCard({
       <Card className="h-full overflow-hidden transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:border-primary group-hover:shadow-[0_14px_30px_rgba(26,115,232,0.08)] group-hover:ring-1 group-hover:ring-primary group-focus-visible:border-primary group-focus-visible:ring-1 group-focus-visible:ring-primary">
         <FeatureVisual type={visual} />
         <div className="p-6">
+          <Image
+            src={logo}
+            alt=""
+            width={160}
+            height={32}
+            className="mb-4 h-5 w-auto object-contain"
+          />
           <h3 className="text-xl font-semibold tracking-normal text-text-primary transition-colors duration-300 group-hover:text-primary">
             {title}
           </h3>

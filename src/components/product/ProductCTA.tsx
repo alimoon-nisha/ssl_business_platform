@@ -16,7 +16,10 @@ export function ProductCTA({
 }) {
   return (
     <section className="container-xl py-16">
-      <div className="rounded-sm bg-surface-alt px-6 py-16 text-center">
+      <div
+        className="rounded-sm bg-surface-alt px-6 py-16 text-center"
+        data-reveal="fade-up"
+      >
         <span className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-blue-50 text-primary">
           <Icon className="size-7" aria-hidden="true" />
         </span>

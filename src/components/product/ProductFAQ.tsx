@@ -11,7 +11,7 @@ export function ProductFAQ({
 }) {
   return (
     <section className="container-xl pb-20">
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-3xl text-center" data-reveal="fade-up">
         <h2 className="text-3xl font-medium text-text-primary">
           {title}
         </h2>
@@ -19,7 +19,7 @@ export function ProductFAQ({
           {description}
         </p>
       </div>
-      <div className="mx-auto mt-8 max-w-4xl">
+      <div className="mx-auto mt-8 max-w-4xl" data-reveal="fade-up">
         <FAQAccordion items={faqs} />
       </div>
     </section>

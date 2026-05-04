@@ -1,5 +1,6 @@
 import { ArrowRight, Building2, FileCheck2, PlugZap } from "lucide-react";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { IconBadge } from "@/components/ui/IconBadge";
 
 const stepIcons = [Building2, FileCheck2, PlugZap];
@@ -14,15 +15,26 @@ export function SetupSteps({
   return (
     <section className="bg-surface-alt py-20">
       <div className="container-xl text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary">
+        <p
+          className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary"
+          data-reveal="fade-up"
+        >
           How it works
         </p>
-        <h2 className="mx-auto mt-3 max-w-xl text-3xl font-medium leading-tight text-text-primary">
+        <h2
+          className="mx-auto mt-3 max-w-xl text-3xl font-medium leading-tight text-text-primary"
+          data-reveal="fade-up"
+          style={{ "--reveal-delay": "80ms" } as CSSProperties}
+        >
           {title}
         </h2>
         <div className="mt-12 grid gap-8 text-left md:grid-cols-3">
           {steps.map((step, index) => (
-            <article key={step.title}>
+            <article
+              key={step.title}
+              data-reveal="fade-up"
+              style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
+            >
               <IconBadge icon={stepIcons[index]} />
               <h3 className="mt-5 text-lg font-semibold text-text-primary">
                 {step.title}

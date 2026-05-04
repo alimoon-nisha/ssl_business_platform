@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import { CreditCard } from "lucide-react";
+import type { CSSProperties } from "react";
 import { Card } from "@/components/ui/Card";
 
 export function ProductTrustRow({
@@ -19,7 +20,10 @@ export function ProductTrustRow({
 }) {
   return (
     <section className="container-xl py-20 text-center">
-      <div className="mb-6 flex items-center justify-center gap-3">
+      <div
+        className="mb-6 flex items-center justify-center gap-3"
+        data-reveal="fade-up"
+      >
         {items.slice(0, 5).map((item, index) => {
           const Icon = icons?.[index] ?? CreditCard;
           return (
@@ -32,10 +36,18 @@ export function ProductTrustRow({
           );
         })}
       </div>
-      <h2 className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary">
+      <h2
+        className="mx-auto max-w-2xl text-3xl font-medium leading-tight text-text-primary"
+        data-reveal="fade-up"
+        style={{ "--reveal-delay": "80ms" } as CSSProperties}
+      >
         {title}
       </h2>
-      <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-text-secondary">
+      <p
+        className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-text-secondary"
+        data-reveal="fade-up"
+        style={{ "--reveal-delay": "140ms" } as CSSProperties}
+      >
         {subtitle}
       </p>
       <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-3">
@@ -45,6 +57,8 @@ export function ProductTrustRow({
             <span
               key={item}
               className="inline-flex items-center gap-2 rounded-full border border-border-soft bg-white px-3 py-2 text-sm text-text-secondary"
+              data-reveal="fade-up"
+              style={{ "--reveal-delay": `${index * 55}ms` } as CSSProperties}
             >
               <Icon className="size-4 text-primary" aria-hidden="true" />
               {item}
@@ -53,14 +67,22 @@ export function ProductTrustRow({
         })}
       </div>
       {disclaimer ? (
-        <p className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-text-secondary">
+        <p
+          className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-text-secondary"
+          data-reveal="fade-up"
+        >
           {disclaimer}
         </p>
       ) : null}
       {valueCards ? (
         <div className="mt-12 grid gap-5 text-left md:grid-cols-3">
-          {valueCards.map((card) => (
-            <Card key={card.title} className="p-6">
+          {valueCards.map((card, index) => (
+            <Card
+              key={card.title}
+              className="p-6"
+              data-reveal="fade-up"
+              style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
+            >
               <h3 className="text-lg font-semibold leading-6 text-text-primary">
                 {card.title}
               </h3>

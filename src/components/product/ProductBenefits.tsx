@@ -1,4 +1,5 @@
 import { BarChart3, CheckCircle2, Code2, FileText, MessageSquareText, ShieldCheck, Smartphone, Upload, UsersRound } from "lucide-react";
+import type { CSSProperties } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import type { ProductKind } from "@/data/productContent";
@@ -251,17 +252,29 @@ export function ProductBenefits({
   return (
     <section className="container-xl section-pad">
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary">
+        <p
+          className="text-xs font-semibold uppercase tracking-[0.16em] text-text-secondary"
+          data-reveal="fade-up"
+        >
           Why use the platform
         </p>
-        <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-medium leading-tight text-text-primary">
+        <h2
+          className="mx-auto mt-3 max-w-2xl text-3xl font-medium leading-tight text-text-primary"
+          data-reveal="fade-up"
+          style={{ "--reveal-delay": "80ms" } as CSSProperties}
+        >
           {title}
         </h2>
       </div>
       <div className="mt-12 grid gap-12 md:grid-cols-[1fr_0.9fr] md:items-center">
         <div className="space-y-7">
-          {benefits.map((benefit) => (
-            <div key={benefit.title} className="flex gap-4">
+          {benefits.map((benefit, index) => (
+            <div
+              key={benefit.title}
+              className="flex gap-4"
+              data-reveal="fade-left"
+              style={{ "--reveal-delay": `${index * 80}ms` } as CSSProperties}
+            >
               <CheckCircle2 className="mt-1 size-5 shrink-0 text-success" />
               <div>
                 <h3 className="font-semibold text-text-primary">{benefit.title}</h3>
@@ -272,7 +285,11 @@ export function ProductBenefits({
             </div>
           ))}
         </div>
-        <ProductBenefitsVisual kind={kind} />
+        <div data-reveal="fade-right">
+          <div data-parallax data-parallax-speed="0.025">
+            <ProductBenefitsVisual kind={kind} />
+          </div>
+        </div>
       </div>
     </section>
   );
