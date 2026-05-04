@@ -27,10 +27,10 @@ export default function Home() {
           <div className="container-xl grid gap-12 py-20 md:grid-cols-[0.92fr_1.08fr] md:items-center lg:py-24">
             <div>
               <h1 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-normal text-text-primary md:text-[52px]">
-                The easiest way to manage and expand <span className="text-primary">your business</span>
+                <span className="text-primary">Essential services</span> your business needs to move faster
               </h1>
               <p className="mt-5 max-w-xl text-base leading-7 text-text-secondary">
-                Activate payments, messaging, recharge, and digital solutions from one SSL account. Submit business documents once, track every application, and manage services from a single place.
+                Activate payments, messaging, recharge, and field sales services from SSL Business Hub. Submit documents, track applications, and manage service activity from one place.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <ButtonLink href="/get-started">Get started</ButtonLink>

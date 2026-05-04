@@ -22,8 +22,8 @@ export const valueColumns = [
 
 export const featureCards = [
   {
-    title: "Activate SSLCOMMERZ faster",
-    body: "Accept online payments across cards, wallets, and banks. Track transactions and reports easily.",
+    title: "Accept payments anywhere",
+    body: "Accept payments online or in-store through cards, mobile wallets, and banks.",
     visual: "payments",
     href: "/products/payment-gateway",
     applicationHref: "/get-started?service=payment-gateway",

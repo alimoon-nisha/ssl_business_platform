@@ -2,7 +2,7 @@ import { BarChart3, CalendarDays, CheckCircle2, CreditCard, Smartphone, UsersRou
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 
-const visualShellClass = "flex h-[320px] items-center justify-center rounded-2xl bg-surface p-5";
+const visualShellClass = "flex h-[280px] items-center justify-center rounded-2xl bg-surface p-5";
 
 function FeatureVisual({ type }: { type: "payments" | "messages" | "recharge" | "sales" }) {
   if (type === "messages") {
@@ -112,40 +112,27 @@ export function FeatureCard({
   body,
   visual,
   href,
-  applicationHref,
 }: {
   title: string;
   body: string;
   visual: "payments" | "messages" | "recharge" | "sales";
   href: string;
-  applicationHref: string;
 }) {
   return (
-    <Card className="group h-full overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary hover:shadow-[0_14px_30px_rgba(26,115,232,0.08)] hover:ring-1 hover:ring-primary focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
-      <Link
-        href={href}
-        className="block rounded-t-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        aria-label={`Explore ${title}`}
-      >
+    <Link
+      href={href}
+      className="group block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      aria-label={`Explore ${title}`}
+    >
+      <Card className="h-full overflow-hidden transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:border-primary group-hover:shadow-[0_14px_30px_rgba(26,115,232,0.08)] group-hover:ring-1 group-hover:ring-primary group-focus-visible:border-primary group-focus-visible:ring-1 group-focus-visible:ring-primary">
         <FeatureVisual type={visual} />
-      </Link>
         <div className="p-6">
-          <Link
-            href={href}
-            className="block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          >
-            <h3 className="text-xl font-semibold tracking-normal text-text-primary transition-colors duration-300 group-hover:text-primary">
-              {title}
-            </h3>
-          </Link>
+          <h3 className="text-xl font-semibold tracking-normal text-text-primary transition-colors duration-300 group-hover:text-primary">
+            {title}
+          </h3>
           <p className="mt-3 text-sm leading-6 text-text-secondary">{body}</p>
-          <Link
-            href={applicationHref}
-            className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-sm border border-border bg-white px-5 text-sm font-medium text-primary transition-colors hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          >
-            Start application
-          </Link>
         </div>
-    </Card>
+      </Card>
+    </Link>
   );
 }
