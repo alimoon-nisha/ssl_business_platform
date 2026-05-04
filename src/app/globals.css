@@ -233,8 +233,8 @@ textarea {
   border-radius: 9999px;
   pointer-events: none;
   z-index: 0;
-  filter: blur(28px);
-  opacity: 0.82;
+  filter: blur(34px);
+  opacity: 0.48;
 }
 
 .cta-glow-1 {
@@ -242,7 +242,7 @@ textarea {
   height: 300px;
   left: -64px;
   top: -72px;
-  background: radial-gradient(circle, rgba(96, 165, 250, 0.56) 0%, rgba(191, 219, 254, 0.28) 40%, transparent 74%);
+  background: radial-gradient(circle, rgba(30, 58, 138, 0.24) 0%, rgba(37, 99, 235, 0.18) 38%, rgba(96, 165, 250, 0.1) 62%, transparent 78%);
   animation: ctaGlowDriftOne 18s ease-in-out infinite;
 }
 
@@ -251,7 +251,7 @@ textarea {
   height: 340px;
   right: -84px;
   bottom: -88px;
-  background: radial-gradient(circle, rgba(24, 128, 56, 0.26) 0%, rgba(30, 58, 138, 0.2) 38%, transparent 74%);
+  background: radial-gradient(circle, rgba(217, 48, 37, 0.22) 0%, rgba(248, 113, 113, 0.16) 38%, rgba(254, 202, 202, 0.08) 66%, transparent 80%);
   animation: ctaGlowDriftTwo 22s ease-in-out infinite;
 }
 
