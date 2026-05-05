@@ -1,4 +1,5 @@
 import { Bell, HelpCircle, Search } from "lucide-react";
+import Link from "next/link";
 import { Logo } from "@/components/marketing/Header";
 import { currentBusiness } from "@/data/mockPlatform";
 import { ProfileMenu } from "./ProfileMenu";
@@ -25,9 +26,15 @@ export function TopBar({ showSearch = true }: { showSearch?: boolean }) {
           </div>
         )}
         <div className="ml-auto flex items-center gap-2">
-          <button className="flex size-10 items-center justify-center rounded-full text-text-secondary hover:bg-surface" aria-label="Help">
+          <Link
+            href="https://support.sslwireless.com"
+            target="_blank"
+            rel="noreferrer"
+            className="flex size-10 items-center justify-center rounded-full text-text-secondary hover:bg-surface"
+            aria-label="Help"
+          >
             <HelpCircle className="size-5" />
-          </button>
+          </Link>
           <button className="flex size-10 items-center justify-center rounded-full text-text-secondary hover:bg-surface" aria-label="Notifications">
             <Bell className="size-5" />
           </button>
