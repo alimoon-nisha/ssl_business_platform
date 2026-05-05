@@ -13,13 +13,12 @@ Build sections in this exact order:
 2. Hero section
 3. Product icon strip / anchor nav
 4. Main value statement
-5. Feature trio section
-6. Service plans / service selection section
-7. Migration / onboarding confidence section
-8. FAQ section
-9. Resources / learning cards section
-10. Final CTA block
-11. Footer
+5. Feature cards section
+6. Migration / onboarding confidence section
+7. FAQ section
+8. Resources / learning cards section
+9. Final CTA block
+10. Footer
 
 Do not add unrelated sections.
 
@@ -29,7 +28,7 @@ Use the global header from `01_global_design_language.md`.
 Header content:
 
 - Logo text: `SSL Business Hub`
-- Nav links: Products, Solutions, Pricing, Resources, Support
+- Nav links: Overview, Services, FAQ, Resources
 - Right links: Contact sales, Sign in, Get started
 
 Header behavior:
@@ -50,11 +49,11 @@ Layout:
 
 Hero headline:
 
-> The better way to start and manage business services
+> Essential services your business needs to move faster
 
 Hero body:
 
-> Activate payments, messaging, recharge, and digital solutions from one SSL account. Submit business documents once, track every application, and manage services from a single place.
+> Activate payments, messaging, recharge, and field sales services from SSL Business Hub. Submit documents, track applications, and manage service activity from one place.
 
 Primary CTA:
 
@@ -94,12 +93,8 @@ Structure:
 Product icons:
 
 - Payment Gateway
-- SMS
+- Bulk SMS
 - Corporate Top-Up
-- Virtual Recharge
-- Cloud Hosting
-- Cyber Security
-- Software Development
 - Sales Force Automation
 
 Do not use Google app icons.
@@ -137,8 +132,8 @@ Body:
 
 > Start with SSLCOMMERZ, messaging, and top-up services, then expand as your business grows.
 
-## 5. Feature trio section
-Use a clean three-card section.
+## 5. Feature cards section
+Use a clean four-card section.
 
 Title:
 
@@ -149,11 +144,11 @@ Cards:
 ### Card 1
 Title:
 
-> Activate SSLCOMMERZ faster
+> Accept payments anywhere
 
 Body:
 
-> Apply for the payment gateway, submit merchant documents, and follow review status from the same workspace.
+> Accept payments online or in-store through cards, mobile wallets, and banks.
 
 Visual:
 
@@ -185,78 +180,27 @@ Visual:
 
 A recharge request form or balance card mockup.
 
+### Card 4
+Title:
+
+> Coordinate field sales operations
+
+Body:
+
+> Plan visits, track orders, manage delivery activity, and keep sales teams visible from one workflow.
+
+Visual:
+
+A field sales workflow or delivery activity mockup.
+
 Card style:
 
-- 3 columns on desktop.
+- 2 columns on tablet, 4 columns on desktop.
 - Card image area on top.
 - White card, subtle border, rounded corners.
 - Keep text short.
 
-## 6. Service plans / service selection section
-Do not copy Google Workspace pricing exactly. Use a service selection table/card section inspired by the pricing section.
-
-Title:
-
-> Find the right services for your business.
-
-Subtitle:
-
-> Start with one service, then add more from the same SSL account.
-
-Desktop layout:
-
-- Four columns, same rhythm as Workspace pricing cards.
-- One highlighted card with blue border.
-
-Cards:
-
-### Starter setup
-Use for new businesses exploring SSL services.
-CTA: `Create account`
-Includes:
-
-- Business profile
-- Document vault
-- Service catalog
-- Application tracking
-- Support requests
-
-### Payment gateway
-Highlight this card.
-CTA: `Start application`
-Includes:
-
-- SSLCOMMERZ onboarding
-- Merchant document checklist
-- API/plugin integration guidance
-- Payment method coverage
-- Review and approval tracking
-
-### Messaging suite
-CTA: `Explore SMS`
-Includes:
-
-- Bulk SMS setup
-- Sender ID request
-- Campaign readiness
-- Delivery report access
-- Balance and usage overview
-
-### Corporate recharge
-CTA: `Explore top-up`
-Includes:
-
-- Corporate top-up request
-- Operator/service setup
-- Recharge activity
-- Balance visibility
-- Team approval support
-
-Below the cards, add small disclaimer text:
-
-> Service availability, approval requirements, fees, and document checklists may vary by business type and selected product.
-
-## 7. Migration / onboarding confidence section
+## 6. Onboarding confidence section
 Use a small confidence block.
 
 Left aligned narrow content.
@@ -279,7 +223,7 @@ Right side optional visual:
 - A progress indicator.
 - A reused trade license chip.
 
-## 8. FAQ section
+## 7. FAQ section
 Use a light gray background band.
 
 Title:
@@ -300,9 +244,9 @@ Right side cards:
 
 Card 1:
 
-Title: `Explore services`
-Body: `See which SSL services fit your business needs.`
-CTA: `View services`
+Title: `Find your best-fit service`
+Body: `Answer a few questions and get SSL service recommendations based on your business type, sector, and needs.`
+CTA: `Take assessment`
 
 Card 2:
 
@@ -310,7 +254,7 @@ Title: `Talk to sales`
 Body: `Need help choosing the right service setup?`
 CTA: `Contact sales`
 
-## 9. Resources / learning cards section
+## 8. Resources / learning cards section
 Match the Google Workspace learning card layout.
 
 Title:
@@ -327,7 +271,7 @@ Cards:
 
 Use light cards with small illustrative thumbnails.
 
-## 10. Final CTA block
+## 9. Final CTA block
 Centered pale gray block.
 
 Title:
@@ -342,7 +286,7 @@ CTA:
 
 > Get started
 
-## 11. Footer
+## 10. Footer
 Large multi-column footer.
 
 Columns:
@@ -369,7 +313,8 @@ Create these reusable components:
 - `HeroMockup`
 - `ProductIconStrip`
 - `FeatureCard`
-- `ServicePlanCard`
+- `OnboardingConfidenceSection`
+- `AssessmentTriggerCard`
 - `FAQAccordion`
 - `ResourceCard`
 - `CTASection`

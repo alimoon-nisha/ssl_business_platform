@@ -142,39 +142,43 @@ export const currentBusiness = {
 export const services = [
   {
     id: "sslcommerz",
-    name: "SSLCOMMERZ Payment Gateway",
+    title: "Accept payments anywhere",
     status: "Recommended",
     description:
-      "Accept online payments through cards, mobile wallets, and bank channels.",
+      "Accept payments online or in-store through cards, mobile wallets, and banks.",
+    logo: "/sslcommerz.png",
     cta: "Start application",
-    href: "/products/payment-gateway",
+    href: "/service-application/payment-gateway",
   },
   {
     id: "bulk-sms",
-    name: "Messaging Suite",
+    title: "Manage messaging campaigns",
     status: "Available",
     description:
-      "Set up sender ID, campaigns, delivery reports, and business messaging.",
-    cta: "Explore",
-    href: "/products/messaging-suite",
+      "Prepare SMS services, sender IDs, approvals, balance, and campaign reports from a shared account.",
+    logo: "/isms.png",
+    cta: "Start application",
+    href: "/service-application/messaging-suite",
   },
   {
     id: "corporate-top-up",
-    name: "Corporate Recharge",
+    title: "Start corporate top-up services",
     status: "Available",
     description:
-      "Manage business recharge requests, balances, and operator services.",
-    cta: "Explore",
-    href: "/products/corporate-recharge",
+      "Set up recharge services, manage operators, track balances, and keep activity visible for your team.",
+    logo: "/virtualrecharge.png",
+    cta: "Start application",
+    href: "/service-application/corporate-recharge",
   },
   {
     id: "cloud-security",
-    name: "Coordinate field sales operations",
-    status: "Contact sales",
+    title: "Coordinate field sales operations",
+    status: "Available",
     description:
       "Plan visits, track orders, manage delivery activity, and keep sales teams visible from one workflow.",
-    cta: "Contact sales",
-    href: "/contact-sales",
+    logo: "/hercules.png",
+    cta: "Start application",
+    href: "/service-application/sales-force-automation",
   },
 ];
 
@@ -192,13 +196,6 @@ export const applications = [
     lastUpdated: "Yesterday",
     nextStep: "Choose SMS use case",
     cta: "Continue",
-  },
-  {
-    service: "Corporate Top-Up",
-    status: "Not started",
-    lastUpdated: "-",
-    nextStep: "Start request",
-    cta: "Start",
   },
 ];
 

@@ -70,7 +70,8 @@ src/
       HeroMockup.tsx
       ProductIconStrip.tsx
       FeatureCard.tsx
-      ServicePlanCard.tsx
+      OnboardingConfidenceSection.tsx
+      AssessmentTriggerCard.tsx
       FAQAccordion.tsx
       ResourceCard.tsx
       CTASection.tsx
@@ -164,7 +165,7 @@ Use realistic sample business:
 export const currentBusiness = {
   name: "Rahman Traders Ltd.",
   profileCompletion: 65,
-  missingItems: ["Trade license", "Bank document"],
+  missingItems: ["Trade license", "NID Back Side"],
 };
 ```
 
@@ -174,24 +175,32 @@ Use realistic services:
 export const services = [
   {
     id: "sslcommerz",
-    name: "SSLCOMMERZ Payment Gateway",
+    title: "Accept payments anywhere",
     status: "Recommended",
-    description: "Accept online payments through cards, mobile wallets, and bank channels.",
+    description: "Accept payments online or in-store through cards, mobile wallets, and banks.",
+    logo: "/sslcommerz.png",
     cta: "Start application",
   },
   {
     id: "bulk-sms",
-    name: "Bulk SMS",
-    status: "Available",
-    description: "Set up sender ID, campaigns, delivery reports, and business messaging.",
-    cta: "Explore",
+    title: "Manage messaging campaigns",
+    description: "Prepare SMS services, sender IDs, approvals, balance, and campaign reports from a shared account.",
+    logo: "/isms.png",
+    cta: "Start application",
   },
   {
     id: "corporate-top-up",
-    name: "Corporate Top-Up",
-    status: "Available",
-    description: "Manage business recharge requests, balances, and operator services.",
-    cta: "Explore",
+    title: "Start corporate top-up services",
+    description: "Set up recharge services, manage operators, track balances, and keep activity visible for your team.",
+    logo: "/virtualrecharge.png",
+    cta: "Start application",
+  },
+  {
+    id: "sales-force-automation",
+    title: "Coordinate field sales operations",
+    description: "Plan visits, track orders, manage delivery activity, and keep sales teams visible from one workflow.",
+    logo: "/hercules.png",
+    cta: "Start application",
   },
 ];
 ```

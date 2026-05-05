@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Create the authentication, account setup, and service application entry journey for SSL Business Platform.
+Create the authentication, account setup, and service application entry journey for SSL Business Hub.
 
 Important product decision:
 
@@ -759,8 +759,8 @@ Common document examples:
 - Trade license
 - TIN certificate
 - BIN/VAT certificate, if applicable
-- Authorized person NID
-- Bank document or cheque leaf
+- NID Front Side
+- NID Back Side
 - Company authorization letter
 - Service-specific agreement or approval document
 

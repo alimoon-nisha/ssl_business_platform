@@ -22,12 +22,8 @@ Do not use Google logos or Google app icons.
 Use SSL-style product icons instead:
 
 - SSLCOMMERZ Payment Gateway
-- SMS Solution
+- Bulk SMS
 - Corporate Top-Up
-- Virtual Recharge
-- Software Development
-- Cloud Hosting
-- Cyber Security
 - Sales Force Automation
 
 If real SVGs are not available, create simple original placeholder icons using colored geometric shapes. Keep them small, flat, and clean.
@@ -93,7 +89,7 @@ Use a restrained enterprise header style:
 - Sticky or static top header, white background.
 - Bottom border: 1px solid `#dadce0`.
 - Left: SSL Business Hub wordmark.
-- Middle nav: Products, Solutions, Pricing, Resources, Support.
+- Middle nav: Overview, Services, FAQ, Resources.
 - Right: Contact sales, Sign in, Get started button.
 - Get started is a blue rounded pill.
 - Header should be restrained, not oversized.

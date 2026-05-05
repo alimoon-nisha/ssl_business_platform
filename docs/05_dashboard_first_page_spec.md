@@ -12,7 +12,6 @@ This page should answer:
 - Which services can I activate?
 - Which applications need attention?
 - Which documents are missing or reusable?
-- Where do I manage billing, team, and support?
 
 ## Design direction
 Use the same clean, white, Google Workspace-inspired language:
@@ -48,7 +47,8 @@ Right:
 
 - Help icon
 - Notifications icon
-- User avatar
+- Product launcher menu
+- Profile menu
 
 ## Sidebar
 Navigation items:
@@ -58,9 +58,6 @@ Navigation items:
 3. Applications
 4. Documents
 5. Billing
-6. Team
-7. Support
-8. Settings
 
 Sidebar style:
 
@@ -75,7 +72,7 @@ Sidebar style:
 3. Service catalog cards
 4. Applications requiring attention
 5. Document vault summary
-6. Billing and support cards
+6. Slim footer in the content column
 
 ## 1. Welcome / account readiness banner
 Large white card at top.
@@ -95,7 +92,7 @@ Body:
 Progress element:
 
 - Business profile completion: 65%
-- Missing: Trade license, bank document
+- Missing: Trade license, NID Back Side
 
 Buttons:
 
@@ -131,45 +128,60 @@ Subtitle:
 
 > Start with one service and add more when your business needs them.
 
-Cards in 3 columns:
+Cards in 4 columns:
 
 ### SSLCOMMERZ Payment Gateway
 Status: `Recommended`
 Body:
 
-> Accept online payments through cards, mobile wallets, and bank channels.
+> Accept payments online or in-store through cards, mobile wallets, and banks.
+
+Logo:
+
+- Use the same service logo as the landing page feature card.
 
 CTA:
 
 > Start application
 
-### Bulk SMS
-Status: `Available`
+### Messaging Suite
 Body:
 
-> Set up sender ID, campaigns, delivery reports, and business messaging.
+> Prepare SMS services, sender IDs, approvals, balance, and campaign reports from a shared account.
+
+Logo:
+
+- Use the same service logo as the landing page feature card.
 
 CTA:
 
-> Explore
+> Start application
 
-### Corporate Top-Up
-Status: `Available`
+### Corporate Recharge
 Body:
 
-> Manage business recharge requests, balances, and operator services.
+> Set up recharge services, manage operators, track balances, and keep activity visible for your team.
+
+Logo:
+
+- Use the same service logo as the landing page feature card.
 
 CTA:
 
-> Explore
+> Start application
 
-Optional second row cards:
+### Coordinate field sales operations
+Body:
 
-- Cloud Hosting and Cyber Security
-- Software Development
-- Sales Force Automation
+> Plan visits, track orders, manage delivery activity, and keep sales teams visible from one workflow.
 
-These can be shown as `Coming soon` or `Contact sales` depending on prototype needs.
+Logo:
+
+- Use the same service logo as the landing page feature card.
+
+CTA:
+
+> Start application
 
 ## 4. Applications requiring attention
 Title:
@@ -224,8 +236,8 @@ Document statuses:
 - Trade license: Missing
 - TIN certificate: Uploaded
 - BIN/VAT certificate: Optional
-- Authorized person NID: Uploaded
-- Bank document: Missing
+- NID Front Side: Uploaded
+- NID Back Side: Missing
 
 CTA:
 
@@ -245,44 +257,16 @@ CTA:
 
 > Upload trade license
 
-## 6. Billing and support cards
-Two cards.
+## 6. Slim footer in the content column
+Show the slim footer below the main dashboard content, not below the sidebar.
 
-Billing card:
+Content:
 
-Title:
-
-> Billing
-
-Body:
-
-> View invoices, activation fees, subscriptions, and payment history.
-
-Status:
-
-> No pending invoice
-
-CTA:
-
-> View billing
-
-Support card:
-
-Title:
-
-> Support
-
-Body:
-
-> Get help with onboarding, documents, service activation, and integration.
-
-Status:
-
-> Average response: within business hours
-
-CTA:
-
-> Open support
+- SSL Wireless
+- Terms & Conditions
+- Privacy Policy
+- Contact
+- English - Bangladesh
 
 ## Empty states
 Implement empty states, even if dummy data is used:
@@ -296,7 +280,7 @@ Implement empty states, even if dummy data is used:
 Desktop:
 
 - Sidebar visible.
-- 3-column service cards.
+- 4-column service cards.
 
 Tablet:
 
@@ -320,7 +304,7 @@ Create:
 - `ServiceCard`
 - `ApplicationStatusList`
 - `DocumentVaultSummary`
-- `BillingSupportCard`
+- `SimplifiedFooter`
 
 ## Data requirements for prototype
 Use a centralized mock data file:
@@ -334,8 +318,6 @@ Include:
 - Services
 - Applications
 - Documents
-- Billing summary
-- Support summary
 
 Do not scatter dummy data inside components.
 

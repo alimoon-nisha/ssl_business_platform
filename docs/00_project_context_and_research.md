@@ -31,12 +31,11 @@ Use these as the main service catalog items:
    - Airtime recharge and bill payment services for business use cases.
    - Corporate recharge, operator selection, balance management, approvals, and recharge reports.
 
-4. Optional future services, visible as secondary cards only
-   - Software development
+4. Current feature-grid services in the prototype
    - Sales force automation
-   - Ecommerce website development
-   - Cloud hosting and cyber security
-   - Insurance payment solutions
+   - Payment gateway
+   - Bulk SMS and messaging
+   - Corporate top-up / virtual recharge
 
 ## Research notes from official SSL sources
 Use official sources as the content baseline:
@@ -45,7 +44,7 @@ Use official sources as the content baseline:
 - SSLCOMMERZ is positioned as a secure and authorized online payment gateway platform developed by SSL Wireless.
 - SSLCOMMERZ describes itself as an end-to-end payment solution with extensive coverage, seamless integration, and multiple channels.
 - SSLCOMMERZ highlights quick activation, simple integration, 30+ payment plans and 30+ banks' EMI, campaign management, and support for cards, mobile wallets, and bank payment channels.
-- SSL Wireless has public service inquiry options that include Bulk SMS, Voice SMS, Corporate Top Up, Software Development, Sales Force Automation, Ecommerce Website Development, Cloud Hosting and Cyber Security, Call Center, and Other.
+- The current prototype focuses on Payment Gateway, Bulk SMS, Corporate Top-Up, and Sales Force Automation as the primary service set.
 - SSL Wireless company material mentions pioneering online airtime recharge/top-up through Easy.com.bd and work in mobile-based SMS services for banks.
 
 ## Source URLs for product facts
