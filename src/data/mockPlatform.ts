@@ -139,65 +139,276 @@ export const currentBusiness = {
   missingItems: ["Trade license", "NID Back Side"],
 };
 
+export const businessProfile = {
+  businessName: "Rahman Traders Ltd.",
+  employeeRange: "10 - 99",
+  businessType: "Online + Store",
+  sector: "Retail / Ecommerce",
+  contactPersonName: "Subin Rahman",
+  companyAddress: "House 18, Road 7, Dhanmondi, Dhaka",
+  designation: "Managing Director",
+  department: "Operations",
+  region: "Bangladesh",
+  email: "subin@rahmantraders.example",
+  mobile: "+8801712345678",
+};
+
+export const accountSettings = {
+  name: "Subin Rahman",
+  email: "subin@rahmantraders.example",
+  mobile: "+8801712345678",
+  role: "Owner",
+  language: "English",
+  timezone: "Asia/Dhaka",
+  loginAlerts: true,
+  productUpdates: true,
+};
+
 export const services = [
   {
     id: "sslcommerz",
+    slug: "payment-gateway",
     title: "Accept payments anywhere",
+    name: "SSLCOMMERZ Payment Gateway",
     status: "Recommended",
+    serviceStatus: "Setup needed",
+    applicationStatus: "Missing information",
     description:
       "Accept payments online or in-store through cards, mobile wallets, and banks.",
     logo: "/sslcommerz.png",
     cta: "Start application",
     href: "/service-application/payment-gateway",
+    dashboardHref: "/dashboard/services",
+    packageName: "Online Business",
+    requiredDocuments: ["Trade license", "TIN certificate", "NID Front Side", "NID Back Side", "Bank cheque leaf"],
+    resources: ["Merchant document checklist", "Payment gateway onboarding overview", "API and plugin preparation"],
   },
   {
     id: "bulk-sms",
+    slug: "messaging-suite",
     title: "Manage messaging campaigns",
+    name: "Messaging Suite",
     status: "Available",
+    serviceStatus: "Draft setup",
+    applicationStatus: "Draft",
     description:
       "Prepare SMS services, sender IDs, approvals, balance, and campaign reports from a shared account.",
     logo: "/isms.png",
     cta: "Start application",
     href: "/service-application/messaging-suite",
+    dashboardHref: "/dashboard/services",
+    packageName: "Value Plan",
+    requiredDocuments: ["NID Front Side", "NID Back Side", "Trade license", "TIN certificate"],
+    resources: ["Sender ID preparation", "Campaign readiness guide", "Delivery report overview"],
   },
   {
     id: "corporate-top-up",
+    slug: "corporate-recharge",
     title: "Start corporate top-up services",
+    name: "Corporate Recharge",
     status: "Available",
+    serviceStatus: "Not started",
+    applicationStatus: "Not started",
     description:
       "Set up recharge services, manage operators, track balances, and keep activity visible for your team.",
     logo: "/virtualrecharge.png",
     cta: "Start application",
     href: "/service-application/corporate-recharge",
+    dashboardHref: "/dashboard/services",
+    packageName: "Standard",
+    requiredDocuments: ["Trade license", "TIN certificate", "VAT Certificate", "Authorized person NID"],
+    resources: ["Recharge request planning", "Operator setup guide", "Approval workflow overview"],
   },
   {
     id: "cloud-security",
+    slug: "sales-force-automation",
     title: "Coordinate field sales operations",
+    name: "Sales Force Automation",
     status: "Available",
+    serviceStatus: "Contact sales",
+    applicationStatus: "Contact sales",
     description:
       "Plan visits, track orders, manage delivery activity, and keep sales teams visible from one workflow.",
     logo: "/hercules.png",
     cta: "Start application",
     href: "/service-application/sales-force-automation",
+    dashboardHref: "/dashboard/services",
+    packageName: "Demo and scoping",
+    requiredDocuments: ["Sales team structure", "Territory plan", "Order workflow", "Reporting requirements"],
+    resources: ["Field activity planning", "Sales operations rollout guide", "Demo preparation checklist"],
   },
 ];
 
 export const applications = [
   {
+    id: "sslcommerz-payment",
     service: "SSLCOMMERZ Payment Gateway",
+    serviceSlug: "payment-gateway",
     status: "Missing information",
     lastUpdated: "Today",
     nextStep: "Upload trade license",
     cta: "Continue",
+    href: "/dashboard/applications/sslcommerz-payment",
+    actionHref: "/service-application/payment-gateway",
   },
   {
+    id: "bulk-sms-draft",
     service: "Bulk SMS",
+    serviceSlug: "messaging-suite",
     status: "Draft",
     lastUpdated: "Yesterday",
     nextStep: "Choose SMS use case",
     cta: "Continue",
+    href: "/dashboard/applications/bulk-sms-draft",
+    actionHref: "/service-application/messaging-suite",
+  },
+  {
+    id: "corporate-recharge-start",
+    service: "Corporate Recharge",
+    serviceSlug: "corporate-recharge",
+    status: "Not started",
+    lastUpdated: "-",
+    nextStep: "Start request",
+    cta: "Start",
+    href: "/dashboard/applications/corporate-recharge-start",
+    actionHref: "/service-application/corporate-recharge",
+  },
+  {
+    id: "sales-automation-contact",
+    service: "Sales Force Automation",
+    serviceSlug: "sales-force-automation",
+    status: "Contact sales",
+    lastUpdated: "This week",
+    nextStep: "Schedule discovery",
+    cta: "Contact sales",
+    href: "/dashboard/applications/sales-automation-contact",
+    actionHref: "/contact-sales",
   },
 ];
+
+export const applicationDetails = {
+  "sslcommerz-payment": {
+    id: "sslcommerz-payment",
+    service: "SSLCOMMERZ Payment Gateway",
+    status: "Missing information",
+    nextAction: "Upload trade license",
+    actionHref: "/service-application/payment-gateway",
+    supportHref: "/contact-sales",
+    submittedInfo: [
+      ["Business name", "Rahman Traders Ltd."],
+      ["Business type", "Online + Store"],
+      ["Selected package", "Online Business"],
+      ["Contact person", "Subin Rahman"],
+    ],
+    documents: [
+      ["Trade license", "Missing"],
+      ["TIN certificate", "Uploaded"],
+      ["NID Front Side", "Uploaded"],
+      ["NID Back Side", "Missing"],
+      ["Bank cheque leaf", "Pending"],
+    ],
+    timeline: [
+      ["Account created", "Completed", "Apr 29"],
+      ["Package selected", "Completed", "Apr 29"],
+      ["Documents reviewed", "Needs action", "Today"],
+      ["Compliance review", "Pending", "After missing files"],
+    ],
+    reviewNotes: [
+      "Trade license is required before compliance review can continue.",
+      "NID back side is missing from the shared document vault.",
+    ],
+    activityLog: [
+      "Today: Application flagged for missing trade license.",
+      "Yesterday: TIN certificate reused from document vault.",
+      "Apr 29: Online Business package selected.",
+    ],
+  },
+  "bulk-sms-draft": {
+    id: "bulk-sms-draft",
+    service: "Bulk SMS",
+    status: "Draft",
+    nextAction: "Choose SMS use case",
+    actionHref: "/service-application/messaging-suite",
+    supportHref: "/contact-sales",
+    submittedInfo: [
+      ["Business name", "Rahman Traders Ltd."],
+      ["Messaging need", "Campaigns and alerts"],
+      ["Selected package", "Value Plan"],
+      ["Sender ID", "Not requested"],
+    ],
+    documents: [
+      ["NID Front Side", "Uploaded"],
+      ["NID Back Side", "Missing"],
+      ["Trade license", "Missing"],
+      ["TIN certificate", "Uploaded"],
+    ],
+    timeline: [
+      ["Draft created", "Completed", "Yesterday"],
+      ["Use case selection", "Current", "Next"],
+      ["Sender ID review", "Pending", "After submission"],
+      ["Activation", "Pending", "After approval"],
+    ],
+    reviewNotes: [
+      "Select whether messaging is for campaign, alert, OTP-style notification, or mixed usage.",
+    ],
+    activityLog: [
+      "Yesterday: Messaging Suite setup saved as draft.",
+      "Yesterday: Value Plan marked as preferred package.",
+    ],
+  },
+  "corporate-recharge-start": {
+    id: "corporate-recharge-start",
+    service: "Corporate Recharge",
+    status: "Not started",
+    nextAction: "Start request",
+    actionHref: "/service-application/corporate-recharge",
+    supportHref: "/contact-sales",
+    submittedInfo: [
+      ["Business name", "Rahman Traders Ltd."],
+      ["Recharge use case", "Not provided"],
+      ["Expected volume", "Not provided"],
+      ["Package", "Standard"],
+    ],
+    documents: [
+      ["Trade license", "Missing"],
+      ["TIN certificate", "Uploaded"],
+      ["VAT Certificate", "Optional"],
+    ],
+    timeline: [
+      ["Request", "Not started", "-"],
+      ["Requirement review", "Pending", "After request"],
+      ["Commercial setup", "Pending", "After review"],
+    ],
+    reviewNotes: ["Start the request to share operator, billing, and approval requirements."],
+    activityLog: ["No application activity yet."],
+  },
+  "sales-automation-contact": {
+    id: "sales-automation-contact",
+    service: "Sales Force Automation",
+    status: "Contact sales",
+    nextAction: "Schedule discovery",
+    actionHref: "/contact-sales",
+    supportHref: "/contact-sales",
+    submittedInfo: [
+      ["Business name", "Rahman Traders Ltd."],
+      ["Team size", "10 - 99"],
+      ["Workflow", "Field sales and delivery tracking"],
+      ["Package", "Demo and scoping"],
+    ],
+    documents: [
+      ["Sales team structure", "Pending"],
+      ["Territory plan", "Pending"],
+      ["Order workflow", "Pending"],
+    ],
+    timeline: [
+      ["Interest captured", "Completed", "This week"],
+      ["Discovery call", "Current", "Next"],
+      ["Pilot scope", "Pending", "After call"],
+    ],
+    reviewNotes: ["A sales consultant should confirm workflow scope before setup starts."],
+    activityLog: ["This week: Sales Force Automation added to service workspace."],
+  },
+} as const;
 
 export type DashboardNotification = {
   id: string;
@@ -239,9 +450,115 @@ export const dashboardNotifications: DashboardNotification[] = [
 ];
 
 export const documents = [
-  { name: "Trade license", status: "Missing" },
-  { name: "TIN certificate", status: "Uploaded" },
-  { name: "BIN/VAT certificate", status: "Optional" },
-  { name: "NID Front Side", status: "Uploaded" },
-  { name: "NID Back Side", status: "Missing" },
+  {
+    id: "trade-license",
+    name: "Trade license",
+    status: "Missing",
+    usedBy: ["SSLCOMMERZ Payment Gateway", "Bulk SMS", "Corporate Recharge"],
+    lastUpdated: "-",
+  },
+  {
+    id: "tin-certificate",
+    name: "TIN certificate",
+    status: "Uploaded",
+    usedBy: ["SSLCOMMERZ Payment Gateway", "Bulk SMS", "Corporate Recharge"],
+    lastUpdated: "Apr 29",
+  },
+  {
+    id: "bin-vat",
+    name: "BIN/VAT certificate",
+    status: "Optional",
+    usedBy: ["Corporate Recharge"],
+    lastUpdated: "-",
+  },
+  {
+    id: "nid-front",
+    name: "NID Front Side",
+    status: "Uploaded",
+    usedBy: ["SSLCOMMERZ Payment Gateway", "Bulk SMS"],
+    lastUpdated: "Apr 29",
+  },
+  {
+    id: "nid-back",
+    name: "NID Back Side",
+    status: "Missing",
+    usedBy: ["SSLCOMMERZ Payment Gateway", "Bulk SMS"],
+    lastUpdated: "-",
+  },
+  {
+    id: "bank-document",
+    name: "Bank document",
+    status: "Pending",
+    usedBy: ["SSLCOMMERZ Payment Gateway"],
+    lastUpdated: "-",
+  },
+];
+
+export const billingProfile = {
+  legalName: "Rahman Traders Ltd.",
+  billingEmail: "accounts@rahmantraders.example",
+  billingAddress: "House 18, Road 7, Dhanmondi, Dhaka",
+  taxId: "TIN-8721-4402",
+};
+
+export const invoices = [
+  {
+    id: "INV-2026-004",
+    service: "SSLCOMMERZ Payment Gateway",
+    date: "May 01, 2026",
+    amount: "BDT 34,000",
+    status: "Due",
+    action: "Pay now",
+  },
+  {
+    id: "INV-2026-003",
+    service: "Messaging Suite",
+    date: "Apr 20, 2026",
+    amount: "BDT 3,360",
+    status: "Paid",
+    action: "View receipt",
+  },
+  {
+    id: "INV-2026-002",
+    service: "Corporate Recharge",
+    date: "Apr 12, 2026",
+    amount: "Custom pricing",
+    status: "Pending quote",
+    action: "View quote",
+  },
+];
+
+export const paymentHistory = [
+  ["Apr 20, 2026", "Messaging Suite Value Plan", "BDT 3,360", "Paid"],
+  ["Apr 02, 2026", "Document verification fee", "BDT 500", "Paid"],
+];
+
+export const packageBilling = [
+  ["SSLCOMMERZ Payment Gateway", "Online Business", "BDT 34,000/yr", "Due"],
+  ["Messaging Suite", "Value Plan", "BDT 3,360", "Active"],
+  ["Corporate Recharge", "Standard", "Custom pricing", "Scoping"],
+];
+
+export const dashboardSearchItems = [
+  { label: "Services", description: "Open internal service workspace", href: "/dashboard/services" },
+  { label: "Applications", description: "Review service applications", href: "/dashboard/applications" },
+  { label: "Documents", description: "Manage reusable business documents", href: "/dashboard/documents" },
+  { label: "Billing", description: "Invoices, packages, and payment history", href: "/dashboard/billing" },
+  { label: "Manage business profile", description: "Update business setup information", href: "/dashboard/profile" },
+  { label: "Account settings", description: "Update account preferences", href: "/dashboard/settings" },
+  ...services.map((service) => ({
+    label: service.name,
+    description: service.description,
+    href: "/dashboard/services",
+  })),
+  ...applications.map((application) => ({
+    label: application.service,
+    description: `${application.status}: ${application.nextStep}`,
+    href: application.href,
+  })),
+  ...documents.map((document) => ({
+    label: document.name,
+    description: `${document.status} document`,
+    href: "/dashboard/documents",
+  })),
 ];

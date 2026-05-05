@@ -27,7 +27,7 @@ export function DocumentVaultSummary() {
             </div>
           ))}
         </div>
-        <ButtonLink href="/get-started" className="mt-5 h-10 px-5">
+        <ButtonLink href="/dashboard/documents" className="mt-5 h-10 px-5">
           Manage documents
         </ButtonLink>
       </Card>
@@ -41,7 +41,7 @@ export function DocumentVaultSummary() {
         <p className="mt-2 text-sm leading-6 text-text-secondary">
           Uploading your trade license now may help complete SSLCOMMERZ and SMS applications faster.
         </p>
-        <ButtonLink href="/get-started" variant="secondary" className="mt-6 h-10 px-5">
+        <ButtonLink href="/dashboard/documents" variant="secondary" className="mt-6 h-10 px-5">
           Upload trade license
         </ButtonLink>
       </Card>

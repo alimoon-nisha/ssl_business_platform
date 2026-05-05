@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CreditCard,
   FileText,
@@ -6,30 +8,30 @@ import {
   Workflow,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
 const nav = [
-  { label: "Home", icon: Home, active: true, href: "/dashboard" },
-  { label: "Services", icon: CreditCard, comingSoon: true },
-  { label: "Applications", icon: Workflow, comingSoon: true },
-  { label: "Documents", icon: FileText, comingSoon: true },
-  { label: "Billing", icon: Receipt, comingSoon: true },
+  { label: "Home", icon: Home, href: "/dashboard" },
+  { label: "Services", icon: CreditCard, href: "/dashboard/services" },
+  { label: "Applications", icon: Workflow, href: "/dashboard/applications" },
+  { label: "Documents", icon: FileText, href: "/dashboard/documents" },
+  { label: "Billing", icon: Receipt, href: "/dashboard/billing" },
 ];
 
 export function SidebarNav() {
+  const pathname = usePathname();
+
   return (
     <aside className="hidden min-h-[calc(100vh-64px)] w-[260px] shrink-0 border-r border-border bg-white p-4 lg:block">
       <nav className="space-y-1">
-        {nav.map(({ label, icon: Icon, active, href, comingSoon }) => {
+        {nav.map(({ label, icon: Icon, href }) => {
+          const active =
+            href === "/dashboard" ? pathname === href : pathname.startsWith(href);
           const content = (
             <>
               <Icon className="size-5" aria-hidden="true" />
               <span className="min-w-0 flex-1">{label}</span>
-              {comingSoon ? (
-                <span className="rounded-full bg-surface-alt px-2 py-0.5 text-[11px] font-medium text-text-secondary">
-                  Soon
-                </span>
-              ) : null}
             </>
           );
           const className = cn(
@@ -37,21 +39,12 @@ export function SidebarNav() {
             active
               ? "bg-blue-50 text-primary"
               : "text-text-secondary hover:bg-surface hover:text-text-primary",
-            comingSoon && "cursor-not-allowed opacity-70 hover:bg-transparent hover:text-text-secondary",
           );
 
-          if (href && !comingSoon) {
-            return (
-              <Link key={label} href={href} className={className}>
-                {content}
-              </Link>
-            );
-          }
-
           return (
-            <div key={label} className={className} aria-disabled="true">
+            <Link key={label} href={href} className={className}>
               {content}
-            </div>
+            </Link>
           );
         })}
       </nav>

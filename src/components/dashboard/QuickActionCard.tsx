@@ -7,13 +7,15 @@ export function QuickActionCard({
   icon,
   title,
   body,
+  href = "/get-started",
 }: {
   icon: LucideIcon;
   title: string;
   body: string;
+  href?: string;
 }) {
   return (
-    <Link href="/get-started">
+    <Link href={href}>
       <Card className="flex h-full items-start gap-4 p-5 transition-colors hover:border-border">
         <IconBadge icon={icon} />
         <div className="min-w-0 flex-1">
