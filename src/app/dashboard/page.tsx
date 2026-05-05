@@ -52,8 +52,8 @@ export default function DashboardPage() {
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {services.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
+            {services.map((service) => (
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
         </section>

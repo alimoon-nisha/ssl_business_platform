@@ -1,7 +1,8 @@
-import { Bell, HelpCircle, Search } from "lucide-react";
+import { HelpCircle, Search } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/marketing/Header";
 import { currentBusiness } from "@/data/mockPlatform";
+import { NotificationMenu } from "./NotificationMenu";
 import { ProfileMenu } from "./ProfileMenu";
 import { ProductLauncherMenu } from "./ProductLauncherMenu";
 
@@ -35,9 +36,7 @@ export function TopBar({ showSearch = true }: { showSearch?: boolean }) {
           >
             <HelpCircle className="size-5" />
           </Link>
-          <button className="flex size-10 items-center justify-center rounded-full text-text-secondary hover:bg-surface" aria-label="Notifications">
-            <Bell className="size-5" />
-          </button>
+          <NotificationMenu />
           <ProductLauncherMenu />
           <ProfileMenu />
         </div>

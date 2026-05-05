@@ -68,37 +68,37 @@ export function ProductLauncherMenu() {
       </button>
 
       {open ? (
-        <div className="absolute right-0 top-12 z-50 w-[calc(100vw-32px)] max-w-[360px] rounded-[20px] border border-border-soft bg-surface p-4 shadow-[0_14px_36px_rgba(32,33,36,0.1)]">
-          <h2 className="px-2.5 pb-2 pt-0.5 text-left text-sm font-semibold text-text-primary">
-            All services
-          </h2>
-          <div className="rounded-2xl bg-white p-4">
-            <div className="grid grid-cols-2 gap-x-1.5 gap-y-2 min-[420px]:grid-cols-3">
-              {products.map((product) => (
-                <Link
-                  key={product.label}
-                  href={product.href}
-                  onClick={() => setOpen(false)}
-                  aria-label={
-                    product.contactSales
-                      ? `${product.label} contact sales`
-                      : product.label
-                  }
-                  className={cn(
-                    "group flex min-h-[72px] flex-col items-center justify-start gap-1.5 rounded-xl px-1.5 py-2 text-center transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-                    product.contactSales && "text-text-secondary",
-                  )}
-                >
-                  <ServiceIconBlock
-                    name={product.label}
-                    className={cn("size-8", serviceIconMap[product.label].hoverTone)}
-                  />
-                  <span className="text-xs font-medium leading-4 text-text-primary">
-                    {product.label}
-                  </span>
-                </Link>
-              ))}
-            </div>
+        <div className="absolute right-0 top-12 z-50 w-[calc(100vw-32px)] max-w-[360px] overflow-hidden rounded-[20px] border border-border-soft bg-white shadow-[0_14px_36px_rgba(32,33,36,0.1)]">
+          <div className="border-b border-border-soft px-5 py-4">
+            <h2 className="text-left text-sm font-semibold text-text-primary">
+              All services
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 gap-1.5 p-2 min-[420px]:grid-cols-3">
+            {products.map((product) => (
+              <Link
+                key={product.label}
+                href={product.href}
+                onClick={() => setOpen(false)}
+                aria-label={
+                  product.contactSales
+                    ? `${product.label} contact sales`
+                    : product.label
+                }
+                className={cn(
+                  "group flex min-h-[92px] flex-col items-center justify-center gap-2 rounded-2xl px-2 py-3 text-center transition-colors hover:bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                  product.contactSales && "text-text-secondary",
+                )}
+              >
+                <ServiceIconBlock
+                  name={product.label}
+                  className={cn("size-9", serviceIconMap[product.label].hoverTone)}
+                />
+                <span className="text-xs font-medium leading-4 text-text-primary group-hover:text-primary">
+                  {product.label}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       ) : null}

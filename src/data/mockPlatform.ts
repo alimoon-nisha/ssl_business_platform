@@ -199,6 +199,45 @@ export const applications = [
   },
 ];
 
+export type DashboardNotification = {
+  id: string;
+  kind: "attention" | "document" | "application" | "billing" | "support";
+  title: string;
+  body: string;
+  time: string;
+  href: string;
+  unread?: boolean;
+};
+
+export const dashboardNotifications: DashboardNotification[] = [
+  {
+    id: "sslcommerz-missing-info",
+    kind: "attention",
+    title: "SSLCOMMERZ needs information",
+    body: "Upload your trade license to continue the payment gateway review.",
+    time: "Today",
+    href: "/service-application/payment-gateway",
+    unread: true,
+  },
+  {
+    id: "nid-back-side-missing",
+    kind: "document",
+    title: "NID back side is missing",
+    body: "Add the missing file to keep your document vault ready for new services.",
+    time: "Today",
+    href: "/dashboard",
+    unread: true,
+  },
+  {
+    id: "bulk-sms-draft",
+    kind: "application",
+    title: "Bulk SMS setup saved as draft",
+    body: "Choose your SMS use case when you are ready to continue setup.",
+    time: "Yesterday",
+    href: "/service-application/messaging-suite",
+  },
+];
+
 export const documents = [
   { name: "Trade license", status: "Missing" },
   { name: "TIN certificate", status: "Uploaded" },
