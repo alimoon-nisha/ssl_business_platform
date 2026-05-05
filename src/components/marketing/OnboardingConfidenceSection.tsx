@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowRight, FileCheck2 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { ArrowRight, FileCheck2, Files, Search } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Card } from "@/components/ui/Card";
@@ -11,10 +12,50 @@ function easeInOut(progress: number) {
     : 1 - Math.pow(-2 * progress + 2, 3) / 2;
 }
 
+const onboardingProgressSteps: Array<{
+  title: string;
+  body: string;
+  Icon: LucideIcon;
+  iconClassName: string;
+}> = [
+  {
+    title: "Checking existing documents",
+    body: "Scanning your saved vault",
+    Icon: Search,
+    iconClassName: "bg-blue-50 text-primary",
+  },
+  {
+    title: "Found 3 documents",
+    body: "Trade license, TIN, and bank proof ready",
+    Icon: Files,
+    iconClassName: "bg-amber-50 text-warning",
+  },
+  {
+    title: "Documents reused",
+    body: "Your application can move faster",
+    Icon: FileCheck2,
+    iconClassName: "bg-green-50 text-success",
+  },
+];
+
+function getOnboardingProgressStep(progress: number) {
+  if (progress < 50) {
+    return onboardingProgressSteps[0];
+  }
+
+  if (progress < 100) {
+    return onboardingProgressSteps[1];
+  }
+
+  return onboardingProgressSteps[2];
+}
+
 export function OnboardingConfidenceSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const animationFrameRef = useRef<number | null>(null);
+  const restartTimeoutRef = useRef<number | null>(null);
   const [progress, setProgress] = useState(0);
+  const progressStep = getOnboardingProgressStep(progress);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -31,21 +72,30 @@ export function OnboardingConfidenceSection() {
           }
 
           observer.unobserve(entry.target);
-          setProgress(0);
+          const duration = 4200;
+          const restartDelay = 2600;
 
-          const startTime = window.performance.now();
-          const duration = 2400;
+          const runAnimation = () => {
+            setProgress(0);
 
-          const tick = (time: number) => {
-            const rawProgress = Math.min((time - startTime) / duration, 1);
-            setProgress(Math.round(easeInOut(rawProgress) * 100));
+            const startTime = window.performance.now();
 
-            if (rawProgress < 1) {
-              animationFrameRef.current = window.requestAnimationFrame(tick);
-            }
+            const tick = (time: number) => {
+              const rawProgress = Math.min((time - startTime) / duration, 1);
+              setProgress(Math.round(easeInOut(rawProgress) * 100));
+
+              if (rawProgress < 1) {
+                animationFrameRef.current = window.requestAnimationFrame(tick);
+                return;
+              }
+
+              restartTimeoutRef.current = window.setTimeout(runAnimation, restartDelay);
+            };
+
+            animationFrameRef.current = window.requestAnimationFrame(tick);
           };
 
-          animationFrameRef.current = window.requestAnimationFrame(tick);
+          runAnimation();
         });
       },
       {
@@ -61,6 +111,10 @@ export function OnboardingConfidenceSection() {
 
       if (animationFrameRef.current !== null) {
         window.cancelAnimationFrame(animationFrameRef.current);
+      }
+
+      if (restartTimeoutRef.current !== null) {
+        window.clearTimeout(restartTimeoutRef.current);
       }
     };
   }, []);
@@ -90,27 +144,46 @@ export function OnboardingConfidenceSection() {
               data-parallax
               data-parallax-speed="0.025"
             >
-              <div className="mb-4 flex items-center gap-3">
-                <span className="flex size-10 items-center justify-center rounded-xl bg-green-50 text-success">
-                  <FileCheck2 className="size-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <h3 className="text-sm font-semibold text-text-primary">
-                    Document vault
-                  </h3>
-                  <p className="text-xs text-text-secondary">Trade license reused</p>
-                </div>
+              <div className="mb-4 grid min-h-10">
+                {onboardingProgressSteps.map((step) => {
+                  const active = step.title === progressStep.title;
+                  const { Icon } = step;
+
+                  return (
+                    <div
+                      key={step.title}
+                      className={`col-start-1 row-start-1 flex items-center gap-3 transition-all duration-500 ease-out ${
+                        active
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-1 opacity-0"
+                      }`}
+                      aria-hidden={!active}
+                    >
+                      <span
+                        className={`flex size-10 items-center justify-center rounded-xl transition-colors duration-500 ${step.iconClassName}`}
+                      >
+                        <Icon className="size-5" aria-hidden="true" />
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="text-sm font-semibold text-text-primary">
+                          {step.title}
+                        </h3>
+                        <p className="text-xs text-text-secondary">{step.body}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
               <div
                 className="h-2 overflow-hidden rounded-full bg-white"
-                aria-label="Document vault progress"
+                aria-label={progressStep.title}
                 aria-valuemin={0}
                 aria-valuemax={100}
                 aria-valuenow={progress}
                 role="progressbar"
               >
                 <div
-                  className="h-2 rounded-full bg-success transition-[width] duration-150"
+                  className="h-2 rounded-full bg-success transition-[width] duration-300"
                   style={{ width: `${progress}%` }}
                 />
               </div>

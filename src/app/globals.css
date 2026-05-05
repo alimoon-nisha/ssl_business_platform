@@ -125,7 +125,7 @@ textarea {
   height: 75%;
   bottom: -5%;
   right: -10%;
-  background: radial-gradient(circle, rgba(30, 58, 138, 0.22) 0%, rgba(191, 219, 254, 0.1) 35%, transparent 60%);
+  background: radial-gradient(circle, rgba(217, 48, 37, 0.22) 0%, rgba(248, 113, 113, 0.12) 35%, transparent 60%);
   animation: driftBlob2 16s ease-in-out infinite;
 }
 
