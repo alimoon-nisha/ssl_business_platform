@@ -177,7 +177,7 @@ Supported query params:
 
 ```ts
 type GetStartedContext = {
-  service?: "payment-gateway" | "messaging-suite" | "corporate-recharge" | "cloud-hosting" | string;
+  service?: "payment-gateway" | "messaging-suite" | "corporate-recharge" | "sales-force-automation" | "cloud-hosting" | string;
   package?: string;
 };
 ```
@@ -1083,6 +1083,7 @@ export type ServiceSlug =
   | "payment-gateway"
   | "messaging-suite"
   | "corporate-recharge"
+  | "sales-force-automation"
   | "cloud-hosting";
 
 export type ServicePackage = {

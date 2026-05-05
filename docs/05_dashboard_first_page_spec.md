@@ -12,6 +12,7 @@ This page should answer:
 - Which services can I activate?
 - Which applications need attention?
 - Which documents are missing or reusable?
+- Which notifications need my attention?
 
 ## Design direction
 Use the same clean, white, Google Workspace-inspired language:
@@ -46,9 +47,53 @@ Center optional:
 Right:
 
 - Help icon
-- Notifications icon
-- Product launcher menu
+- Notifications menu
+- Product launcher menu / all services menu
 - Profile menu
+
+### Notifications menu
+
+The notification bell opens a compact white drawer/card that matches the dashboard design language:
+
+- White surface.
+- Thin border.
+- Minimal shadow.
+- Rounded 20px outer corners.
+- Header row with `Notifications` and unread count badge when needed.
+- Notification rows with small status-colored icons, brief title, short body, and timestamp.
+- Hover state uses subtle `bg-surface`.
+- Close on outside click or Escape.
+
+Prototype notification examples:
+
+1. `SSLCOMMERZ needs information`
+   - Body: `Upload your trade license to continue the payment gateway review.`
+   - Time: `Today`
+   - Unread
+
+2. `NID back side is missing`
+   - Body: `Add the missing file to keep your document vault ready for new services.`
+   - Time: `Today`
+   - Unread
+
+3. `Bulk SMS setup saved as draft`
+   - Body: `Choose your SMS use case when you are ready to continue setup.`
+   - Time: `Yesterday`
+
+### Product launcher menu
+
+The grid icon opens a compact `All services` drawer/card:
+
+- Same white surface treatment as the notification menu.
+- Thin border, minimal shadow, and rounded 20px outer corners.
+- Simple header divider.
+- No nested gray panel or second background surface.
+- Grid of service shortcuts with small service icons and labels.
+- Services:
+  - Payment Gateway
+  - Bulk SMS
+  - Corporate Top-Up
+  - Sales Force Automation
 
 ## Sidebar
 Navigation items:
@@ -65,6 +110,7 @@ Sidebar style:
 - Right border.
 - Active item with pale blue background and blue text.
 - Small line icons.
+- Non-home items are marked `Soon` until subpages are designed.
 
 ## Main content exact order
 1. Welcome / account readiness banner
@@ -204,12 +250,6 @@ Rows:
    - Next step: Choose SMS use case
    - CTA: Continue
 
-3. Corporate Top-Up
-   - Status: Not started
-   - Last updated: —
-   - Next step: Start request
-   - CTA: Start
-
 Status colors:
 
 - Missing information: amber
@@ -284,12 +324,12 @@ Desktop:
 
 Tablet:
 
-- Sidebar collapses to icon rail.
+- Sidebar is hidden until dedicated responsive navigation is designed.
 - Cards 2 columns.
 
 Mobile:
 
-- Sidebar becomes drawer.
+- Sidebar is hidden until dedicated responsive navigation is designed.
 - Cards stacked.
 - Tables become cards.
 
@@ -299,12 +339,15 @@ Create:
 - `DashboardShell`
 - `SidebarNav`
 - `TopBar`
+- `NotificationMenu`
+- `ProductLauncherMenu`
+- `ProfileMenu`
 - `ReadinessBanner`
 - `QuickActionCard`
 - `ServiceCard`
 - `ApplicationStatusList`
 - `DocumentVaultSummary`
-- `SimplifiedFooter`
+- `SimplifiedFooter` from the shared marketing footer module
 
 ## Data requirements for prototype
 Use a centralized mock data file:
@@ -318,6 +361,7 @@ Include:
 - Services
 - Applications
 - Documents
+- Dashboard notifications
 
 Do not scatter dummy data inside components.
 

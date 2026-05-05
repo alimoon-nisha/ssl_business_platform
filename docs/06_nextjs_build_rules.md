@@ -18,6 +18,7 @@ Create these routes:
 - `/products/payment-gateway`
 - `/products/messaging-suite`
 - `/products/corporate-recharge`
+- `/products/sales-force-automation`
 - `/contact-sales`
 - `/login`
 - `/forgot-password`
@@ -48,6 +49,8 @@ src/
         page.tsx
       corporate-recharge/
         page.tsx
+      sales-force-automation/
+        page.tsx
     contact-sales/
       page.tsx
     login/
@@ -72,6 +75,7 @@ src/
       FeatureCard.tsx
       OnboardingConfidenceSection.tsx
       AssessmentTriggerCard.tsx
+      ServiceAssessmentModal.tsx
       FAQAccordion.tsx
       ResourceCard.tsx
       CTASection.tsx
@@ -81,8 +85,12 @@ src/
       VideoDemoBlock.tsx
       SetupSteps.tsx
       ProductBenefits.tsx
+      ProductPricing.tsx
+      ProductRequirements.tsx
       ProductFAQ.tsx
       ProductCTA.tsx
+      ServiceApplicationShell.tsx
+      ServiceApplicationWizard.tsx
     auth/
       AuthShell.tsx
       AuthInput.tsx
@@ -95,12 +103,14 @@ src/
       DashboardShell.tsx
       SidebarNav.tsx
       TopBar.tsx
+      NotificationMenu.tsx
+      ProductLauncherMenu.tsx
+      ProfileMenu.tsx
       ReadinessBanner.tsx
       QuickActionCard.tsx
       ServiceCard.tsx
       ApplicationStatusList.tsx
       DocumentVaultSummary.tsx
-      BillingSupportCard.tsx
     ui/
       Button.tsx
       Card.tsx
@@ -164,6 +174,7 @@ Use realistic sample business:
 ```ts
 export const currentBusiness = {
   name: "Rahman Traders Ltd.",
+  userName: "Subin",
   profileCompletion: 65,
   missingItems: ["Trade license", "NID Back Side"],
 };
@@ -180,6 +191,7 @@ export const services = [
     description: "Accept payments online or in-store through cards, mobile wallets, and banks.",
     logo: "/sslcommerz.png",
     cta: "Start application",
+    href: "/service-application/payment-gateway",
   },
   {
     id: "bulk-sms",
@@ -187,6 +199,7 @@ export const services = [
     description: "Prepare SMS services, sender IDs, approvals, balance, and campaign reports from a shared account.",
     logo: "/isms.png",
     cta: "Start application",
+    href: "/service-application/messaging-suite",
   },
   {
     id: "corporate-top-up",
@@ -194,13 +207,48 @@ export const services = [
     description: "Set up recharge services, manage operators, track balances, and keep activity visible for your team.",
     logo: "/virtualrecharge.png",
     cta: "Start application",
+    href: "/service-application/corporate-recharge",
   },
   {
-    id: "sales-force-automation",
+    id: "cloud-security",
     title: "Coordinate field sales operations",
     description: "Plan visits, track orders, manage delivery activity, and keep sales teams visible from one workflow.",
     logo: "/hercules.png",
     cta: "Start application",
+    href: "/service-application/sales-force-automation",
+  },
+];
+```
+
+Use realistic dashboard notifications:
+
+```ts
+export const dashboardNotifications = [
+  {
+    id: "sslcommerz-missing-info",
+    kind: "attention",
+    title: "SSLCOMMERZ needs information",
+    body: "Upload your trade license to continue the payment gateway review.",
+    time: "Today",
+    href: "/service-application/payment-gateway",
+    unread: true,
+  },
+  {
+    id: "nid-back-side-missing",
+    kind: "document",
+    title: "NID back side is missing",
+    body: "Add the missing file to keep your document vault ready for new services.",
+    time: "Today",
+    href: "/dashboard",
+    unread: true,
+  },
+  {
+    id: "bulk-sms-draft",
+    kind: "application",
+    title: "Bulk SMS setup saved as draft",
+    body: "Choose your SMS use case when you are ready to continue setup.",
+    time: "Yesterday",
+    href: "/service-application/messaging-suite",
   },
 ];
 ```
@@ -234,6 +282,8 @@ Dashboard:
 
 - Use mock data.
 - Buttons can link to placeholder routes or show disabled states.
+- Header notification and product launcher menus should use lightweight client components with outside-click and Escape close behavior.
+- Product launcher should use a single white popover surface, not nested panels.
 - No API calls.
 
 ## Acceptance checklist
@@ -244,6 +294,6 @@ The prototype is acceptable only if:
 - Get-started page follows the spacious account setup structure described in the specs.
 - Content is SSL Business Hub content, not Google content.
 - Header, footer, cards, FAQ, and CTA blocks are consistent across pages.
-- Dashboard first page clearly shows service activation, applications, document vault, billing, and support.
+- Dashboard first page clearly shows service activation, applications, document vault, notifications, service launcher, and profile access.
 - Mobile layout is usable.
 - No Google assets or copied Google text are used.
