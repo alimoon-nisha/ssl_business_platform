@@ -1,11 +1,8 @@
 import {
   CreditCard,
   FileText,
-  Headphones,
   Home,
   Receipt,
-  Settings,
-  Users,
   Workflow,
 } from "lucide-react";
 import Link from "next/link";
@@ -17,9 +14,6 @@ const nav = [
   { label: "Applications", icon: Workflow, comingSoon: true },
   { label: "Documents", icon: FileText, comingSoon: true },
   { label: "Billing", icon: Receipt, comingSoon: true },
-  { label: "Team", icon: Users, comingSoon: true },
-  { label: "Support", icon: Headphones, comingSoon: true },
-  { label: "Settings", icon: Settings, comingSoon: true },
 ];
 
 export function SidebarNav() {

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SimplifiedFooter } from "@/components/marketing/Footer";
 import { SidebarNav } from "./SidebarNav";
 import { TopBar } from "./TopBar";
 
@@ -6,11 +7,14 @@ export function DashboardShell({ children }: { children: ReactNode }) {
   return (
     <main className="min-h-screen bg-surface">
       <TopBar />
-      <div className="flex">
+      <div className="flex min-h-[calc(100vh-64px)]">
         <SidebarNav />
-        <section className="min-w-0 flex-1 p-4 md:p-8">
-          <div className="mx-auto max-w-[1200px]">{children}</div>
-        </section>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <section className="min-w-0 flex-1 p-4 md:p-8">
+            <div className="mx-auto max-w-[1200px]">{children}</div>
+          </section>
+          <SimplifiedFooter />
+        </div>
       </div>
     </main>
   );

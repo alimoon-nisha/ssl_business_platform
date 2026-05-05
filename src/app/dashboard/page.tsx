@@ -1,6 +1,5 @@
 import { Headphones, Upload, UserPlus, WalletCards } from "lucide-react";
 import { ApplicationStatusList } from "@/components/dashboard/ApplicationStatusList";
-import { BillingSupportCard } from "@/components/dashboard/BillingSupportCard";
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
 import { DocumentVaultSummary } from "@/components/dashboard/DocumentVaultSummary";
 import { QuickActionCard } from "@/components/dashboard/QuickActionCard";
@@ -61,7 +60,6 @@ export default function DashboardPage() {
 
         <ApplicationStatusList />
         <DocumentVaultSummary />
-        <BillingSupportCard />
       </div>
     </DashboardShell>
   );

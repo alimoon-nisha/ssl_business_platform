@@ -169,10 +169,10 @@ export const services = [
   },
   {
     id: "cloud-security",
-    name: "Cloud Hosting and Cyber Security",
+    name: "Coordinate field sales operations",
     status: "Contact sales",
     description:
-      "Plan secure hosting, protection, and managed technology support.",
+      "Plan visits, track orders, manage delivery activity, and keep sales teams visible from one workflow.",
     cta: "Contact sales",
     href: "/contact-sales",
   },
