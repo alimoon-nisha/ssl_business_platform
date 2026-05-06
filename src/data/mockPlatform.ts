@@ -134,6 +134,7 @@ export const resourceCards = [
 
 export const currentBusiness = {
   name: "Rahman Traders Ltd.",
+  id: "88291",
   userName: "Subin",
   profileCompletion: 65,
   missingItems: ["Trade license", "NID Back Side"],
