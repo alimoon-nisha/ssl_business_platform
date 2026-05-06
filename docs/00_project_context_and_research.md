@@ -109,7 +109,7 @@ Use these states consistently across dashboard, product cards, and application t
 4. Visitor signs up or logs in.
 5. New user completes business profile basics.
 6. User lands on first dashboard page.
-7. Dashboard shows business profile health, available services, active applications, document vault status, billing and support shortcuts.
+7. Dashboard shows business profile health, available services, active applications, document vault status, notifications, and service launcher shortcuts.
 8. User starts activating a service.
 9. Platform reuses common business data and asks only for missing service-specific inputs.
 
@@ -117,8 +117,9 @@ Use these states consistently across dashboard, product cards, and application t
 For this prototype, build only:
 
 - Landing page
-- One product detail page template, initially for SSLCOMMERZ Payment Gateway
+- Shared product detail template with pages for Payment Gateway, Messaging Suite, Corporate Recharge, and Sales Force Automation
 - Signup/login/onboarding journey screens
 - First page after login, the dashboard home
+- Prototype service application entry flow
 
-Do not build full activation flows yet. Dashboard cards can link to placeholder routes.
+Do not connect full activation flows to a backend yet. Dashboard cards can link to prototype routes or placeholder routes.

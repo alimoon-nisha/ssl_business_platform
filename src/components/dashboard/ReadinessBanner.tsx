@@ -26,8 +26,8 @@ export function ReadinessBanner() {
           </p>
         </div>
         <div className="mt-7 flex flex-wrap gap-3">
-          <ButtonLink href="/get-started">Complete profile</ButtonLink>
-          <ButtonLink href="/dashboard" variant="secondary">
+          <ButtonLink href="/dashboard/profile">Complete profile</ButtonLink>
+          <ButtonLink href="/dashboard/documents" variant="secondary">
             View document vault
           </ButtonLink>
         </div>

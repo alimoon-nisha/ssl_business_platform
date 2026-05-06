@@ -11,7 +11,7 @@ Build sections in this exact order:
 
 1. Global header
 2. Hero section
-3. Product icon strip / anchor nav
+3. Product icon strip
 4. Main value statement
 5. Feature cards section
 6. Migration / onboarding confidence section
@@ -80,15 +80,14 @@ Background:
 - Very soft radial glow in bottom-left and bottom-right, barely visible.
 - No heavy gradient.
 
-## 3. Product icon strip / anchor nav
-Replicate the feel of a small icon strip under the hero.
+## 3. Product icon strip
+Replicate the feel of a small product icon strip under the hero.
 
 Structure:
 
-- Centered pill-shaped container.
-- Four or five anchor items.
-- Items: Overview, Services, Activation, Dashboard, FAQ.
-- Below or inside the strip, show a row of small product icons with labels.
+- Centered row of small service icons with labels.
+- Keep it visually light and compact.
+- The global header already provides the section navigation; do not add a second anchor nav here.
 
 Product icons:
 
@@ -207,7 +206,7 @@ Left aligned narrow content.
 
 Title:
 
-> Move your business setup into one SSL account.
+> Move your business setup into one SSL Business Hub account.
 
 Body:
 
@@ -217,11 +216,16 @@ CTA:
 
 > Learn about onboarding
 
-Right side optional visual:
+Right side visual:
 
-- A small document vault card.
-- A progress indicator.
-- A reused trade license chip.
+- A small document vault/progress card.
+- Animated progress indicator.
+- Progress copy changes at equal milestones:
+  - 0-49%: `Checking existing documents` / `Scanning your saved vault`
+  - 50-99%: `Found 3 documents` / `Trade license, TIN, and bank proof ready`
+  - 100%: `Documents reused` / `Your application can move faster`
+- The progress animation loops after a short pause at 100%.
+- Text/icon changes should transition smoothly.
 
 ## 7. FAQ section
 Use a light gray background band.
@@ -251,7 +255,7 @@ CTA: `Take assessment`
 Card 2:
 
 Title: `Talk to sales`
-Body: `Need help choosing the right service setup?`
+Body: `Need help choosing a service or package? Our team can guide you.`
 CTA: `Contact sales`
 
 ## 8. Resources / learning cards section
@@ -276,7 +280,7 @@ Centered pale gray block.
 
 Title:
 
-> Start with one SSL account today.
+> Start your SSL Business Hub account today.
 
 Body:
 

@@ -3,7 +3,7 @@
 Use these markdown files as the implementation contract for the prototype.
 
 ## Goal
-Build a Google Workspace-inspired Next.js prototype for SSL Wireless's unified business services platform. The experience should feel calm, spacious, trustworthy, and enterprise-grade, while using SSL Wireless, SSLCOMMERZ, SMS, and virtual recharge content.
+Build a Google Workspace-inspired Next.js prototype for SSL Wireless's unified business services platform. The experience should feel calm, spacious, trustworthy, and enterprise-grade, while using SSL Wireless, SSLCOMMERZ, messaging, corporate recharge, and sales force automation content.
 
 ## Important legal and design boundary
 Do not copy Google Workspace assets, logos, illustrations, product icons, brand colors as exact brand identity, or text. The goal is to use a calm, spacious, enterprise-grade SaaS design language with SSL Wireless branding and original assets.

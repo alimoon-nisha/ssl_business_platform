@@ -1,12 +1,18 @@
 # 03 Product Detail Page Spec
 
-## Route
-`/products/payment-gateway`
+## Routes
+
+Implemented product detail routes:
+
+- `/products/payment-gateway`
+- `/products/messaging-suite`
+- `/products/corporate-recharge`
+- `/products/sales-force-automation`
 
 ## Page goal
 Create a Google Workspace-inspired product detail page. The first product detail page is for SSLCOMMERZ Payment Gateway.
 
-The design should use this product-detail structure: hero at top, centered trust/product icon row, video/demo block, setup steps, benefit section, FAQ, CTA, footer.
+The design should use this product-detail structure: hero at top, centered trust/product icon row, video/demo block, setup steps, benefit section, optional pricing/requirements sections when product content provides them, FAQ, CTA, footer.
 
 ## Exact section order
 1. Global header
@@ -15,9 +21,11 @@ The design should use this product-detail structure: hero at top, centered trust
 4. Demo/video block
 5. Setup steps
 6. Benefits section
-7. Product FAQ
-8. Final product CTA
-9. Footer
+7. Optional pricing section
+8. Optional requirements section
+9. Product FAQ
+10. Final product CTA
+11. Footer
 
 ## 1. Global header
 Same as landing page.
@@ -187,7 +195,29 @@ Right visual:
 - Gateway status chip.
 - Integration checklist card.
 
-## 7. Product FAQ
+## 7. Optional pricing section
+
+Show only when the product content object includes `pricing`.
+
+Current use:
+
+- Sales Force Automation includes setup-path pricing cards.
+
+Do not show an empty pricing section for products without pricing content.
+
+## 8. Optional requirements section
+
+Show only when the product content object includes `requirements`.
+
+Current use:
+
+- Messaging Suite
+- Corporate Recharge
+- Sales Force Automation
+
+Do not show an empty requirements section for products without requirements content.
+
+## 9. Product FAQ
 Title:
 
 > Payment gateway FAQs
@@ -202,7 +232,7 @@ FAQ rows:
 6. How long does approval take?
 7. Where can I see pricing?
 
-## 8. Final product CTA
+## 10. Final product CTA
 Pale gray block.
 
 Icon at top: Payment Gateway icon.
@@ -219,15 +249,16 @@ CTA:
 
 > Get started
 
-## 9. Footer
+## 11. Footer
 Same footer as landing page.
 
 ## Product detail template requirement
 Build the page so the same layout can later support:
 
-- `/products/sms-solution`
-- `/products/corporate-top-up`
-- `/products/cloud-hosting`
+- `/products/messaging-suite`
+- `/products/corporate-recharge`
+- `/products/sales-force-automation`
+- Future product routes added to the central product content object
 
 Use a product content object rather than hardcoding every string into components.
 
@@ -239,6 +270,8 @@ Create:
 - `VideoDemoBlock`
 - `SetupSteps`
 - `ProductBenefits`
+- `ProductPricing`
+- `ProductRequirements`
 - `ProductFAQ`
 - `ProductCTA`
 

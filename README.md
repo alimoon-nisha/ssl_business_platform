@@ -11,12 +11,12 @@ This is a front-end prototype. It intentionally uses local state and mock data o
 Implemented areas:
 
 - Marketing landing page
-- Product detail pages for SSLCOMMERZ Payment Gateway, Messaging Suite, and Corporate Recharge
+- Product detail pages for SSLCOMMERZ Payment Gateway, Messaging Suite, Corporate Recharge, and Sales Force Automation
 - Contact sales request page
 - Login and forgot-password screens
 - Unified `/get-started` account setup flow
 - Selected service application entry flow
-- First dashboard page with service, application, document, billing, and support summaries
+- First dashboard page with service, application, document, notification, product launcher, and profile menu summaries
 
 Not implemented yet:
 
@@ -43,6 +43,7 @@ This repo has version-specific Next.js guidance in `AGENTS.md`. Before changing 
 - `/products/payment-gateway` - SSLCOMMERZ product detail page
 - `/products/messaging-suite` - messaging product detail page
 - `/products/corporate-recharge` - recharge product detail page
+- `/products/sales-force-automation` - field sales operations product detail page
 - `/contact-sales` - sales request form
 - `/login` - sign in
 - `/forgot-password` - password recovery prototype
@@ -61,7 +62,7 @@ src/
   components/
     auth/              Login, get-started, and auth shell components
     contact/           Contact sales form
-    dashboard/         Dashboard shell and summary cards
+    dashboard/         Dashboard shell, menus, notifications, and summary cards
     marketing/         Landing page, header, footer, FAQ, CTA components
     product/           Product detail and service application components
     ui/                Shared primitives
