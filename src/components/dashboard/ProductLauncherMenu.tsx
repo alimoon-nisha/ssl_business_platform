@@ -18,11 +18,12 @@ type ProductLauncherItem = {
 const products: ProductLauncherItem[] = [
   { label: "Payment Gateway", href: "/service-application/payment-gateway" },
   { label: "Bulk SMS", href: "/service-application/bulk-sms" },
+  { label: "Hercules", href: "/products/hercules" },
   { label: "Corporate Top-Up", href: "/service-application/corporate-top-up" },
-  {
-    label: "Sales Force Automation",
-    href: "/products/sales-force-automation",
-  },
+  { label: "Pay Link", href: "/products/pay-link" },
+  { label: "e-Sign", href: "/products/e-sign" },
+  { label: "AI Chat", href: "/products/ai-chat" },
+  { label: "Storage", href: "/products/storage" },
 ];
 
 export function ProductLauncherMenu() {

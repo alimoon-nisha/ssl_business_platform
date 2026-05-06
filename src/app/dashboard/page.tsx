@@ -4,8 +4,6 @@ import { DashboardShell } from "@/components/dashboard/DashboardShell";
 import { DocumentVaultSummary } from "@/components/dashboard/DocumentVaultSummary";
 import { QuickActionCard } from "@/components/dashboard/QuickActionCard";
 import { ReadinessBanner } from "@/components/dashboard/ReadinessBanner";
-import { ServiceCard } from "@/components/dashboard/ServiceCard";
-import { services } from "@/data/mockPlatform";
 
 const quickActions = [
   {
@@ -40,22 +38,6 @@ export default function DashboardPage() {
           {quickActions.map((action) => (
             <QuickActionCard key={action.title} {...action} />
           ))}
-        </section>
-
-        <section>
-          <div className="mb-5">
-            <h2 className="text-2xl font-semibold text-text-primary">
-              Available services
-            </h2>
-            <p className="mt-2 text-sm text-text-secondary">
-              Start with one service and add more when your business needs them.
-            </p>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {services.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
-            ))}
-          </div>
         </section>
 
         <ApplicationStatusList />

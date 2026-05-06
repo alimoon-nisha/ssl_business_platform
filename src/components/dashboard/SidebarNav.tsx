@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CreditCard,
   FileText,
@@ -10,7 +12,7 @@ import { cn } from "@/lib/cn";
 
 const nav = [
   { label: "Home", icon: Home, active: true, href: "/dashboard" },
-  { label: "Services", icon: CreditCard, comingSoon: true },
+  { label: "Services", icon: CreditCard, href: "/dashboard/services" },
   { label: "Applications", icon: Workflow, comingSoon: true },
   { label: "Documents", icon: FileText, comingSoon: true },
   { label: "Billing", icon: Receipt, comingSoon: true },
@@ -32,12 +34,13 @@ export function SidebarNav() {
               ) : null}
             </>
           );
+          
           const className = cn(
-            "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium",
+            "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors",
             active
               ? "bg-blue-50 text-primary"
               : "text-text-secondary hover:bg-surface hover:text-text-primary",
-            comingSoon && "cursor-not-allowed opacity-70 hover:bg-transparent hover:text-text-secondary",
+            comingSoon && "cursor-not-allowed opacity-70 hover:bg-transparent hover:text-text-secondary"
           );
 
           if (href && !comingSoon) {
