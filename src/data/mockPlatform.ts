@@ -507,7 +507,7 @@ export const invoices = [
     id: "INV-2026-004",
     service: "SSLCOMMERZ Payment Gateway",
     date: "May 01, 2026",
-    amount: "BDT 34,000",
+    amount: "৳ 34,000",
     status: "Due",
     action: "Pay now",
   },
@@ -515,28 +515,28 @@ export const invoices = [
     id: "INV-2026-003",
     service: "Messaging Suite",
     date: "Apr 20, 2026",
-    amount: "BDT 3,360",
+    amount: "৳ 3,360",
     status: "Paid",
-    action: "View receipt",
+    action: "View",
   },
   {
     id: "INV-2026-002",
     service: "Corporate Recharge",
     date: "Apr 12, 2026",
-    amount: "Custom pricing",
-    status: "Pending quote",
-    action: "View quote",
+    amount: "৳ 3,360",
+    status: "Pending",
+    action: "View",
   },
 ];
 
 export const paymentHistory = [
-  ["Apr 20, 2026", "Messaging Suite Value Plan", "BDT 3,360", "Paid"],
-  ["Apr 02, 2026", "Document verification fee", "BDT 500", "Paid"],
+  ["Apr 20, 2026", "Messaging Suite Value Plan", "৳ 3,360", "Paid"],
+  ["Apr 02, 2026", "Document verification fee", "৳ 500", "Paid"],
 ];
 
 export const packageBilling = [
-  ["SSLCOMMERZ Payment Gateway", "Online Business", "BDT 34,000/yr", "Due"],
-  ["Messaging Suite", "Value Plan", "BDT 3,360", "Active"],
+  ["SSLCOMMERZ Payment Gateway", "Online Business", "৳ 34,000/yr", "Due"],
+  ["Messaging Suite", "Value Plan", "৳ 3,360", "Active"],
   ["Corporate Recharge", "Standard", "Custom pricing", "Scoping"],
 ];
 

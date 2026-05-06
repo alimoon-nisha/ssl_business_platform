@@ -37,11 +37,16 @@ export function ReadinessBanner() {
           <div className="mb-4 rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
             2 items need attention
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {["Business details", "TIN certificate", "Trade license"].map((item, index) => (
-              <div key={item} className="flex items-center gap-3 rounded-xl bg-surface-alt p-3">
+              <div key={item} className="flex items-center gap-2.5 rounded-xl bg-surface-alt px-3 py-2.5">
                 <CheckCircle2 className={`size-4 ${index === 2 ? "text-warning" : "text-success"}`} />
-                <span className="text-xs font-medium text-text-secondary">{item}</span>
+                <div>
+                  <span className="block text-xs font-medium text-text-secondary">{item}</span>
+                  <span className="block text-xs font-medium text-text-secondary">
+                    {index === 2 ? "Missing" : "Uploaded"}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

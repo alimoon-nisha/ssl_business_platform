@@ -1,13 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { Eye, Upload, X } from "lucide-react";
+import { FileText, Eye, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { DashboardPageHeader, StatusBadge } from "@/components/dashboard/DashboardPrimitives";
+import { DashboardPageHeader } from "@/components/dashboard/DashboardPrimitives";
 import { documents } from "@/data/mockPlatform";
 
 type DocumentItem = (typeof documents)[number];
+
+function documentStatusClass(status: string) {
+  if (status.includes("Missing")) return "bg-orange-50 text-orange-700";
+  if (status.includes("Optional")) return "bg-surface-alt text-text-secondary";
+  if (status.includes("Pending")) return "bg-indigo-50 text-indigo-700";
+  if (status.includes("Uploaded")) return "bg-green-50 text-emerald-700";
+  return "bg-blue-50 text-primary";
+}
 
 export default function DocumentsPage() {
   const [items, setItems] = useState(documents);
@@ -40,36 +48,53 @@ export default function DocumentsPage() {
         body="Keep reusable business files ready for payments, messaging, recharge, and future SSL services."
       />
 
-      <Card className="overflow-hidden">
-        <div className="grid gap-3 border-b border-border-soft px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-text-secondary md:grid-cols-[1fr_0.6fr_1fr_0.7fr_auto]">
-          <span>Document</span>
-          <span>Status</span>
-          <span>Used by</span>
-          <span>Updated</span>
-          <span className="text-right">Actions</span>
-        </div>
+      <Card className="p-6 md:p-8">
         <div className="divide-y divide-border-soft">
           {items.map((item) => (
             <div
               key={item.id}
-              className="grid gap-4 px-6 py-5 text-sm md:grid-cols-[1fr_0.6fr_1fr_0.7fr_auto] md:items-center"
+              className="grid gap-4 py-5 text-sm md:grid-cols-[minmax(0,1.2fr)_8.5rem_minmax(0,1.5fr)_auto] md:gap-x-6 md:items-center"
             >
-              <span className="font-semibold text-text-primary">{item.name}</span>
-              <StatusBadge status={item.status} />
-              <span className="text-text-secondary">{item.usedBy.join(", ")}</span>
-              <span className="text-text-secondary">{item.lastUpdated}</span>
+              <div className="flex min-w-0 items-center gap-4">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-alt text-text-secondary">
+                  <FileText className="size-5" aria-hidden="true" />
+                </div>
+                <div className="min-w-0">
+                  <span className="block font-semibold text-[15px] text-text-primary">
+                    {item.name}
+                  </span>
+                  <p className="mt-1 text-xs text-text-secondary">
+                    Updated: {item.lastUpdated}
+                  </p>
+                </div>
+              </div>
+              <span className={`w-fit rounded-full px-2.5 py-1 text-xs font-semibold ${documentStatusClass(item.status)}`}>
+                {item.status}
+              </span>
+              <div className="min-w-0">
+                <div className="flex flex-wrap gap-1.5">
+                  {item.usedBy.map((service) => (
+                    <span
+                      key={service}
+                      className="inline-flex items-center rounded-md bg-surface-alt px-2 py-1 text-xs font-medium text-text-secondary"
+                    >
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </div>
               <div className="flex flex-wrap justify-start gap-2 md:justify-end">
                 <Button
                   type="button"
                   variant="secondary"
-                  className="h-9 px-4"
+                  className="h-10 px-4 font-semibold text-primary"
                   onClick={() => setSelectedDocument(item)}
                 >
-                  <Upload className="size-4" aria-hidden="true" />
+                  <Upload className="mr-2 size-4" aria-hidden="true" />
                   {item.status === "Uploaded" ? "Replace" : "Upload"}
                 </Button>
-                <Button type="button" variant="ghost" className="h-9 px-4">
-                  <Eye className="size-4" aria-hidden="true" />
+                <Button type="button" variant="ghost" className="h-10 px-4 font-semibold text-text-secondary hover:text-primary">
+                  <Eye className="mr-2 size-4" aria-hidden="true" />
                   View
                 </Button>
               </div>

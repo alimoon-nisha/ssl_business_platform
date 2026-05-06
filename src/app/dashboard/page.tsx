@@ -3,6 +3,8 @@ import { ApplicationStatusList } from "@/components/dashboard/ApplicationStatusL
 import { DocumentVaultSummary } from "@/components/dashboard/DocumentVaultSummary";
 import { QuickActionCard } from "@/components/dashboard/QuickActionCard";
 import { ReadinessBanner } from "@/components/dashboard/ReadinessBanner";
+import { ServiceCard } from "@/components/dashboard/ServiceCard";
+import { services } from "@/data/mockPlatform";
 
 const quickActions = [
   {
@@ -42,8 +44,22 @@ export default function DashboardPage() {
         ))}
       </section>
 
+      <section>
+        <div className="mb-6">
+          <h2 className="text-xl font-semibold text-text-primary">Available services</h2>
+          <p className="mt-1 text-sm text-text-secondary">
+            Start with one service and add more when your business needs them.
+          </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
+        </div>
+      </section>
+
       <ApplicationStatusList />
-      <DocumentVaultSummary />
+      {/* <DocumentVaultSummary /> */}
     </div>
   );
 }
