@@ -21,9 +21,8 @@ export default function AccountSettingsPage() {
   return (
     <div className="space-y-8">
       <DashboardPageHeader
-        eyebrow="Account settings"
-        title="Account settings"
-        body="Manage account identity, login preferences, and communication settings. Business profile details live separately."
+        title="Settings"
+        body="Manage your account preferences, security settings, and notifications."
       />
 
       {saved ? (

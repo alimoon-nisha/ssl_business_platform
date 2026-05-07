@@ -13,7 +13,6 @@ import { currentBusiness } from "@/data/mockPlatform";
 import { cn } from "@/lib/cn";
 
 const nav = [
-  { label: "Home", icon: Home, href: "/dashboard" },
   { label: "Services", icon: CreditCard, href: "/dashboard/services" },
   { label: "Applications", icon: Workflow, href: "/dashboard/applications" },
   { label: "Documents", icon: FileText, href: "/dashboard/documents" },
@@ -26,27 +25,34 @@ export function SidebarNav() {
   return (
     <aside className="hidden h-full w-[260px] shrink-0 flex-col overflow-hidden border-r border-border bg-white p-4 lg:flex">
       <nav className="space-y-1">
-        {nav.map(({ label, icon: Icon, href }) => {
-          const active =
-            href === "/dashboard" ? pathname === href : pathname.startsWith(href);
-          const content = (
-            <>
-              <Icon className="size-5" aria-hidden="true" />
-              <span className="min-w-0 flex-1">{label}</span>
-            </>
-          );
-          
-          const className = cn(
+        <Link
+          href="/dashboard"
+          className={cn(
             "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors",
-            active
+            pathname === "/dashboard"
               ? "bg-blue-50 text-primary"
               : "text-text-secondary hover:bg-surface hover:text-text-primary",
+          )}
+        >
+          <Home className="size-5" aria-hidden="true" />
+          <span className="min-w-0 flex-1">Home</span>
+        </Link>
 
-          );
-
+        {nav.map(({ label, icon: Icon, href }) => {
+          const active = pathname.startsWith(href);
           return (
-            <Link key={label} href={href} className={className}>
-              {content}
+            <Link
+              key={label}
+              href={href}
+              className={cn(
+                "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors",
+                active
+                  ? "bg-blue-50 text-primary"
+                  : "text-text-secondary hover:bg-surface hover:text-text-primary",
+              )}
+            >
+              <Icon className="size-5" aria-hidden="true" />
+              <span className="min-w-0 flex-1">{label}</span>
             </Link>
           );
         })}

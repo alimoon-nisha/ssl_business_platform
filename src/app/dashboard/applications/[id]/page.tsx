@@ -22,9 +22,8 @@ export default async function ApplicationDetailPage({
   return (
     <div className="space-y-8">
       <DashboardPageHeader
-        eyebrow="Application detail"
-        title={application.service}
-        body="Review progress, submitted information, documents, notes, and recent activity for this service application."
+        title={`Application: ${application.service}`}
+        body={`Reviewing setup progress for ${application.service}. ID: ${application.id}`}
         action={<StatusBadge status={application.status} />}
       />
 

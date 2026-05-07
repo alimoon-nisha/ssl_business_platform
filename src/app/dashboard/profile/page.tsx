@@ -18,9 +18,8 @@ export default function BusinessProfilePage() {
   return (
     <div className="space-y-8">
       <DashboardPageHeader
-        eyebrow="Business profile"
-        title="Manage business profile"
-        body="Update the business information collected during get started. These details can be reused across service applications."
+        title="Business profile"
+        body="Manage your workspace details, identification documents, and business contact information."
       />
 
       {saved ? (

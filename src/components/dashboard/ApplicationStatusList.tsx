@@ -12,7 +12,7 @@ function statusClass(status: string) {
 export function ApplicationStatusList() {
   return (
     <Card className="p-6 md:p-8">
-      <div className="mb-6 flex items-center justify-between gap-4">
+      <div className="mb-2 flex items-center justify-between gap-4">
         <h2 className="text-xl font-bold text-text-primary">Applications</h2>
         <ButtonLink href="/dashboard/applications" variant="ghost" className="h-9 px-4 font-semibold text-primary">
           View all

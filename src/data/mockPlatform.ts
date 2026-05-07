@@ -171,7 +171,7 @@ export const services = [
     slug: "payment-gateway",
     title: "Accept payments anywhere",
     name: "SSLCOMMERZ Payment Gateway",
-    status: "Recommended",
+    status: "Active",
     serviceStatus: "Setup needed",
     applicationStatus: "Missing information",
     description:
@@ -181,6 +181,19 @@ export const services = [
     href: "/service-application/payment-gateway",
     dashboardHref: "/dashboard/services",
     packageName: "Online Business",
+    activeDate: "Jan 15, 2026",
+    renewalDate: "Jan 15, 2027",
+    balance: "৳ 12,500",
+    price: "৳ 5,000 / month",
+    trialMonths: null as number | null,
+    kam: {
+      name: "Rahim Uddin",
+      phone: "+880 1711-123456",
+      email: "rahim@sslwireless.com",
+    },
+    poc: [
+      { name: "Nisha Ali", designation: "Technical Lead", contact: "+880 1811-654321" },
+    ],
     requiredDocuments: ["Trade license", "TIN certificate", "NID Front Side", "NID Back Side", "Bank cheque leaf"],
     resources: ["Merchant document checklist", "Payment gateway onboarding overview", "API and plugin preparation"],
   },
@@ -246,6 +259,7 @@ export const applications = [
     service: "SSLCOMMERZ Payment Gateway",
     serviceSlug: "payment-gateway",
     status: "Missing information",
+    progress: 45,
     lastUpdated: "Today",
     nextStep: "Upload trade license",
     cta: "Continue",
@@ -256,36 +270,17 @@ export const applications = [
     id: "bulk-sms-draft",
     service: "Bulk SMS",
     serviceSlug: "messaging-suite",
-    status: "Draft",
+    status: "Not started",
+    progress: 20,
     lastUpdated: "Yesterday",
     nextStep: "Choose SMS use case",
-    cta: "Continue",
+    cta: "Start",
     href: "/dashboard/applications/bulk-sms-draft",
     actionHref: "/service-application/messaging-suite",
   },
-  {
-    id: "corporate-recharge-start",
-    service: "Corporate Recharge",
-    serviceSlug: "corporate-recharge",
-    status: "Not started",
-    lastUpdated: "-",
-    nextStep: "Start request",
-    cta: "Start",
-    href: "/dashboard/applications/corporate-recharge-start",
-    actionHref: "/service-application/corporate-recharge",
-  },
-  {
-    id: "sales-automation-contact",
-    service: "Sales Force Automation",
-    serviceSlug: "sales-force-automation",
-    status: "Contact sales",
-    lastUpdated: "This week",
-    nextStep: "Schedule discovery",
-    cta: "Contact sales",
-    href: "/dashboard/applications/sales-automation-contact",
-    actionHref: "/contact-sales",
-  },
 ];
+
+
 
 export const applicationDetails = {
   "sslcommerz-payment": {
@@ -457,6 +452,10 @@ export const documents = [
     status: "Missing",
     usedBy: ["SSLCOMMERZ Payment Gateway", "Bulk SMS", "Corporate Recharge"],
     lastUpdated: "-",
+    history: [
+      { date: "Apr 20, 2026", event: "Rejected", reason: "Image was blurry and unreadable.", status: "error" },
+      { date: "Apr 15, 2026", event: "Uploaded", status: "success" },
+    ],
   },
   {
     id: "tin-certificate",
@@ -464,6 +463,10 @@ export const documents = [
     status: "Uploaded",
     usedBy: ["SSLCOMMERZ Payment Gateway", "Bulk SMS", "Corporate Recharge"],
     lastUpdated: "Apr 29",
+    history: [
+      { date: "Apr 29, 2026", event: "Approved", status: "success" },
+      { date: "Apr 28, 2026", event: "Uploaded", status: "success" },
+    ],
   },
   {
     id: "bin-vat",
@@ -471,6 +474,7 @@ export const documents = [
     status: "Optional",
     usedBy: ["Corporate Recharge"],
     lastUpdated: "-",
+    history: [],
   },
   {
     id: "nid-front",
@@ -478,6 +482,10 @@ export const documents = [
     status: "Uploaded",
     usedBy: ["SSLCOMMERZ Payment Gateway", "Bulk SMS"],
     lastUpdated: "Apr 29",
+    history: [
+      { date: "Apr 29, 2026", event: "Approved", status: "success" },
+      { date: "Apr 25, 2026", event: "Uploaded", status: "success" },
+    ],
   },
   {
     id: "nid-back",
@@ -485,6 +493,9 @@ export const documents = [
     status: "Missing",
     usedBy: ["SSLCOMMERZ Payment Gateway", "Bulk SMS"],
     lastUpdated: "-",
+    history: [
+      { date: "Apr 25, 2026", event: "Rejected", reason: "Back side of NID was not provided.", status: "error" },
+    ],
   },
   {
     id: "bank-document",
@@ -492,6 +503,9 @@ export const documents = [
     status: "Pending",
     usedBy: ["SSLCOMMERZ Payment Gateway"],
     lastUpdated: "-",
+    history: [
+      { date: "Today", event: "Uploaded", status: "success" },
+    ],
   },
 ];
 
@@ -527,11 +541,30 @@ export const invoices = [
     status: "Pending",
     action: "View",
   },
+  {
+    id: "INV-2026-001",
+    service: "Sales Force Automation",
+    date: "Mar 28, 2026",
+    amount: "৳ 5,200",
+    status: "Paid",
+    action: "View",
+  },
+  {
+    id: "INV-2025-012",
+    service: "SSLCOMMERZ Payment Gateway",
+    date: "Mar 01, 2026",
+    amount: "৳ 34,000",
+    status: "Due",
+    action: "Pay now",
+  },
 ];
 
 export const paymentHistory = [
-  ["Apr 20, 2026", "Messaging Suite Value Plan", "৳ 3,360", "Paid"],
-  ["Apr 02, 2026", "Document verification fee", "৳ 500", "Paid"],
+  { id: "PAY-2026-005", date: "Apr 20, 2026", description: "Messaging Suite Value Plan", amount: "৳ 3,360", status: "Paid", service: "Messaging Suite" },
+  { id: "PAY-2026-004", date: "Apr 02, 2026", description: "Document verification fee", amount: "৳ 500", status: "Paid", service: "Platform" },
+  { id: "PAY-2026-003", date: "Mar 15, 2026", description: "SMS Recharge - 50k Bundle", amount: "৳ 12,000", status: "Paid", service: "Messaging Suite" },
+  { id: "PAY-2026-002", date: "Mar 01, 2026", description: "SSLCOMMERZ Annual Fee", amount: "৳ 34,000", status: "Paid", service: "SSLCOMMERZ" },
+  { id: "PAY-2026-001", date: "Feb 12, 2026", description: "Wallet Top-up", amount: "৳ 10,000", status: "Paid", service: "Wallet" },
 ];
 
 export const packageBilling = [
